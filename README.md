@@ -9,7 +9,6 @@ Official web repository for POWERNEX 26, the premier National Level Technical Sy
 - Main Programme Start: 9:00 AM
 - Venue: Campus Auditorium, University College of Engineering, Ariyalur, Kathankudikadu, Thelur Post, Ariyalur - 621 704
 - Official College Website: https://auucea.edu.in
-- Online Registration: https://forms.gle/powernex26-register
 - Registration Fee: Rs. 150 per participant (Covers all 6 events, welcome kit, personalized ID card, lunch, refreshments and Anna University certificates)
 - Online Registration Deadline: 07 October 2026, 6:00 PM
 - On-Spot Registration: 08 October 2026, 8:30 AM to 9:30 AM (Subject to slot availability)
