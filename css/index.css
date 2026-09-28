@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+/* ==========================================================================
+   POWERNEX 26 | National Level EEE Technical Symposium
+   Amoled Black Theme, Human-Centric Typography & Global Tokens
+   ========================================================================== */
+
+/* 1. TYPOGRAPHY IMPORT: Plus Jakarta Sans & JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* 2. DESIGN SYSTEM TOKENS & AMOLED PALETTE */
+:root {
+  /* Amoled Dark Theme Surfaces */
+  --bg-amoled: #000000;
+  --bg-surface: #0a0a0e;
+  --bg-surface-elevated: #111116;
+  --bg-surface-card: #14141c;
+  --bg-surface-glass: rgba(14, 14, 20, 0.85);
+
+  /* EEE High-Voltage Accents */
+  --cyan: #00f0ff;
+  --cyan-glow: rgba(0, 240, 255, 0.35);
+  --electric-blue: #2563eb;
+  --volt-amber: #f59e0b;
+  --gold: #fbbf24;
+  --gold-glow: rgba(251, 191, 36, 0.35);
+  --emerald: #10b981;
+  --crimson: #ef4444;
+
+  /* Typography Colors */
+  --text-main: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dark: #475569;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-cyan: rgba(0, 240, 255, 0.35);
+  --border-gold: rgba(251, 191, 36, 0.35);
+
+  /* Soft, Elegant Human Typography */
+  --font-geist: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: var(--font-geist);
+  --font-geist-mono: 'Geist Mono', monospace;
+  --font-geist-pixel: 'Geist Pixel', var(--font-geist-mono);
+  --font-mono: var(--font-geist-mono);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s ease;
+}
+
+/* 3. BASE RESET & BODY */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-amoled);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 100% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 40%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+/* App Wrapper */
+.app-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 90px 24px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 60px 18px;
+  }
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #ffffff 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-cyan { color: var(--cyan); }
+.text-volt { color: var(--volt-amber); }
+.text-gold { color: var(--gold); }
+.text-emerald { color: var(--emerald); }

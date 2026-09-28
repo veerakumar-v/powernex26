@@ -1,0 +1,12 @@
+# Drafts and specification notes (Not for public repo)
+POWERNEX_26_WEBSITE_MASTER_FINAL_DRAFT.md
+ALL.md
+all.md
+*master*draft*.md
+
+# System & Editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

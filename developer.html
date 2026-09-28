@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Veerakumar V | Developer ID Card | POWERNEX 26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Top Navigation Header */
+    .dev-nav-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      pointer-events: auto;
+    }
+
+    .back-home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+    }
+
+    .back-home-link:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Solid Action Button */
+    .flip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: #eab308;
+      color: #000000;
+      border: 1px solid #facc15;
+      border-radius: 9999px;
+      font-family: 'Geist Mono', monospace;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      transition: background 0.2s ease, transform 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .flip-btn:hover {
+      background: #facc15;
+      transform: translateY(-1px);
+    }
+
+    .flip-btn:active {
+      transform: translateY(1px);
+    }
+
+    .flip-btn-icon {
+      transition: transform 0.5s ease;
+    }
+
+    .portal-tag {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 7px 12px;
+      border-radius: 9999px;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    /* Mobile Header Layout */
+    @media (max-width: 640px) {
+      .dev-nav-header {
+        padding: 10px 12px;
+      }
+      .back-home-link {
+        padding: 6px 12px;
+        font-size: 0.74rem;
+        gap: 5px;
+      }
+      .header-actions {
+        gap: 6px;
+      }
+      .flip-btn {
+        padding: 6px 14px;
+        font-size: 0.72rem;
+        gap: 5px;
+      }
+      .portal-tag {
+        padding: 6px 10px;
+        font-size: 0.68rem;
+      }
+      .portal-tag-label-full {
+        display: none;
+      }
+      .portal-tag-label-short {
+        display: inline;
+      }
+    }
+
+    @media (min-width: 641px) {
+      .portal-tag-label-full {
+        display: inline;
+      }
+      .portal-tag-label-short {
+        display: none;
+      }
+    }
+
+    /* 3D WebGL Canvas */
+    #webgl-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 10;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    #webgl-canvas.grabbing {
+      cursor: grabbing !important;
+    }
+
+    #webgl-canvas.link-hover {
+      cursor: pointer !important;
+    }
+
+    .interaction-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      pointer-events: none;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(148, 163, 184, 0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="dev-nav-header">
+    <a href="index.html" class="back-home-link">
+      <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i>
+      <span>POWERNEX 26</span>
+    </a>
+
+    <div class="header-actions">
+      <button class="flip-btn" id="card-flip-toggle-btn" type="button" aria-label="Flip ID Card">
+        <i data-lucide="rotate-cw" class="flip-btn-icon" style="width: 13px; height: 13px;"></i>
+        <span id="flip-btn-text">FLIP CARD</span>
+      </button>
+
+      <div class="portal-tag">
+        <span class="pulse-dot"></span>
+        <span class="portal-tag-label-full">DEVELOPER ID</span>
+        <span class="portal-tag-label-short">DEV ID</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3D Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <div class="interaction-hint">
+    <span>Drag to swing &bull; Click to flip</span>
+  </div>
+
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    // =========================================================================
+    // HD HIGH-PERFORMANCE 3D ID CARD & LANYARD VIEWER
+    // =========================================================================
+    (function initHDDeveloperLanyard() {
+      const canvas = document.getElementById('webgl-canvas');
+      if (!canvas) return;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x000000);
+
+      // Studio lighting setup
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
+      scene.add(ambientLight);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 1.4);
+      keyLight.position.set(3, 5, 5);
+      scene.add(keyLight);
+
+      const fillLight = new THREE.DirectionalLight(0xe2e8f0, 0.7);
+      fillLight.position.set(-3, -1, 4);
+      scene.add(fillLight);
+
+      const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+      backLight.position.set(0, 4, -3);
+      scene.add(backLight);
+
+      const camera = new THREE.PerspectiveCamera(34, window.innerWidth / window.innerHeight, 0.1, 100);
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+        alpha: false,
+        powerPreference: 'high-performance'
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
+
+      // Card Dimensions
+      const CARD_WIDTH = 2.4;
+      const CARD_HEIGHT = 3.65;
+      const CARD_THICKNESS = 0.04;
+
+      // -----------------------------------------------------------------------
+      // 1. HIGH RESOLUTION REALISTIC LANYARD STRAP TEXTURE (512 x 2048)
+      // -----------------------------------------------------------------------
+      function createHDStrapTexture() {
+        const c = document.createElement('canvas');
+        c.width = 512;
+        c.height = 2048;
+        const ctx = c.getContext('2d');
+
+        // Deep rich matte black fabric base
+        ctx.fillStyle = '#0c0c0f';
+        ctx.fillRect(0, 0, 512, 2048);
+
+        // Fabric micro-grain
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.025)';
+        for (let y = 0; y < 2048; y += 4) {
+          ctx.fillRect(0, y, 512, 1.5);
+        }
+
+        // Ribbed edge borders
+        ctx.strokeStyle = '#222228';
+        ctx.lineWidth = 10;
+        ctx.beginPath();
+        ctx.moveTo(16, 0); ctx.lineTo(16, 2048);
+        ctx.moveTo(496, 0); ctx.lineTo(496, 2048);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#18181f';
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.moveTo(28, 0); ctx.lineTo(28, 2048);
+        ctx.moveTo(484, 0); ctx.lineTo(484, 2048);
+        ctx.stroke();
+
+        // 3 Crisp White Atom Emblems
+        function drawHDAtomEmblem(y) {
+          ctx.save();
+          ctx.translate(256, y);
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 14;
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Central Nucleus
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath();
+          ctx.arc(0, 0, 18, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 3 Intersecting Orbital Rings
+          const orbitAngles = [0, Math.PI / 3, (2 * Math.PI) / 3];
+          orbitAngles.forEach(ang => {
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 110, 42, ang, 0, Math.PI * 2);
+            ctx.stroke();
+          });
+
+          ctx.restore();
+        }
+
+        drawHDAtomEmblem(340);
+        drawHDAtomEmblem(1024);
+        drawHDAtomEmblem(1708);
+
+        const tex = new THREE.CanvasTexture(c);
+        tex.wrapS = THREE.ClampToEdgeWrapping;
+        tex.wrapT = THREE.ClampToEdgeWrapping;
+        tex.generateMipmaps = true;
+        tex.anisotropy = maxAniso;
+        return tex;
+      }
+
+      // -----------------------------------------------------------------------
+      // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - USING me.png
+      // -----------------------------------------------------------------------
+      const frontCanvas = document.createElement('canvas');
+      frontCanvas.width = 2048;
+      frontCanvas.height = 3072;
+      const frontCtx = frontCanvas.getContext('2d');
+
+      const frontTexture = new THREE.CanvasTexture(frontCanvas);
+      frontTexture.generateMipmaps = false;
+      frontTexture.minFilter = THREE.LinearFilter;
+      frontTexture.magFilter = THREE.LinearFilter;
+      frontTexture.anisotropy = maxAniso;
+
+      let meImg = new Image();
+      meImg.src = 'me.png'; // Using me.png as developer photo
+      meImg.onload = () => {
+        renderFrontFaceHD();
+        frontTexture.needsUpdate = true;
+      };
+
+      function renderFrontFaceHD() {
+        const w = 2048;
+        const h = 3072;
+        frontCtx.clearRect(0, 0, w, h);
+
+        // Solid Matte Pitch Black Card Body
+        frontCtx.fillStyle = '#08080a';
+        frontCtx.fillRect(0, 0, w, h);
+
+        const bgGrad = frontCtx.createLinearGradient(0, 0, w, h);
+        bgGrad.addColorStop(0, '#0f0f13');
+        bgGrad.addColorStop(0.45, '#070709');
+        bgGrad.addColorStop(1, '#030305');
+        frontCtx.fillStyle = bgGrad;
+        frontCtx.fillRect(0, 0, w, h);
+
+        // Precision card outer edge border
+        frontCtx.strokeStyle = 'rgba(255, 215, 0, 0.28)';
+        frontCtx.lineWidth = 8;
+        frontCtx.strokeRect(6, 6, w - 12, h - 12);
+
+        // Metallic Punch Hole Grommet Rim at top
+        frontCtx.save();
+        frontCtx.strokeStyle = '#475569';
+        frontCtx.lineWidth = 14;
+        frontCtx.beginPath();
+        frontCtx.arc(w / 2, 130, 56, 0, Math.PI * 2);
+        frontCtx.stroke();
+
+        frontCtx.fillStyle = '#000000';
+        frontCtx.beginPath();
+        frontCtx.arc(w / 2, 130, 48, 0, Math.PI * 2);
+        frontCtx.fill();
+        frontCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        frontCtx.lineWidth = 4;
+        frontCtx.stroke();
+        frontCtx.restore();
+
+        // PHOTO: me.png (1086 x 1448 native 3:4 ratio) rendered at 900 x 1200
+        const photoW = 900;
+        const photoH = 1200;
+        const photoX = (w - photoW) / 2; // 574
+        const photoY = 440;
+        const photoRadius = 36;
+
+        frontCtx.save();
+        frontCtx.beginPath();
+        frontCtx.roundRect(photoX, photoY, photoW, photoH, photoRadius);
+        frontCtx.clip();
+
+        if (meImg.complete && meImg.naturalWidth > 0) {
+          frontCtx.imageSmoothingEnabled = true;
+          frontCtx.imageSmoothingQuality = 'high';
+          frontCtx.drawImage(
+            meImg,
+            0, 0, meImg.naturalWidth, meImg.naturalHeight,
+            photoX, photoY, photoW, photoH
+          );
+        } else {
+          frontCtx.fillStyle = '#1e1e24';
+          frontCtx.fillRect(photoX, photoY, photoW, photoH);
+        }
+        frontCtx.restore();
+
+        // Solid metallic gold border around photo
+        frontCtx.save();
+        frontCtx.strokeStyle = '#d4af37';
+        frontCtx.lineWidth = 10;
+        frontCtx.beginPath();
+        frontCtx.roundRect(photoX, photoY, photoW, photoH, photoRadius);
+        frontCtx.stroke();
+        frontCtx.restore();
+
+        // Developer Name: Veerakumar V
+        frontCtx.fillStyle = '#ffffff';
+        frontCtx.font = 'bold 124px Inter, sans-serif';
+        frontCtx.textAlign = 'center';
+        frontCtx.fillText('Veerakumar V', w / 2, 1840);
+
+        // EEE Department Pill Badge
+        frontCtx.save();
+        frontCtx.fillStyle = 'rgba(234, 179, 8, 0.12)';
+        frontCtx.strokeStyle = '#eab308';
+        frontCtx.lineWidth = 5;
+        frontCtx.beginPath();
+        frontCtx.roundRect(w / 2 - 160, 1940, 320, 108, 54);
+        frontCtx.fill();
+        frontCtx.stroke();
+
+        frontCtx.fillStyle = '#facc15';
+        frontCtx.font = 'bold 58px "Geist Mono", monospace';
+        frontCtx.textAlign = 'center';
+        frontCtx.fillText('EEE', w / 2, 2015);
+        frontCtx.restore();
+
+        // Subtitle: Electrical and Electronics Engineering
+        frontCtx.fillStyle = '#94a3b8';
+        frontCtx.font = '600 70px Inter, sans-serif';
+        frontCtx.textAlign = 'center';
+        frontCtx.fillText('Electrical and Electronics Engineering', w / 2, 2190);
+
+        // Clean Gold Divider Bar
+        frontCtx.save();
+        const dividerGrad = frontCtx.createLinearGradient(w / 2 - 400, 0, w / 2 + 400, 0);
+        dividerGrad.addColorStop(0, 'rgba(212, 175, 55, 0)');
+        dividerGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.7)');
+        dividerGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
+        frontCtx.strokeStyle = dividerGrad;
+        frontCtx.lineWidth = 4;
+        frontCtx.beginPath();
+        frontCtx.moveTo(w / 2 - 400, 2330);
+        frontCtx.lineTo(w / 2 + 400, 2330);
+        frontCtx.stroke();
+        frontCtx.restore();
+      }
+
+      renderFrontFaceHD();
+
+      // -----------------------------------------------------------------------
+      // 3. ULTRA-HD BACK CARD TEXTURE (2048 x 3072) - LOGOS FROM THE INTERNET
+      // -----------------------------------------------------------------------
+      const backCanvas = document.createElement('canvas');
+      backCanvas.width = 2048;
+      backCanvas.height = 3072;
+      const backCtx = backCanvas.getContext('2d');
+
+      const backTexture = new THREE.CanvasTexture(backCanvas);
+      backTexture.generateMipmaps = false;
+      backTexture.minFilter = THREE.LinearFilter;
+      backTexture.magFilter = THREE.LinearFilter;
+      backTexture.anisotropy = maxAniso;
+
+      // Sourced directly from online CDN repository (Zero local image dependencies)
+      const instaImg = new Image();
+      instaImg.crossOrigin = 'anonymous';
+      instaImg.src = 'https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Instagram.svg';
+
+      const linkedImg = new Image();
+      linkedImg.crossOrigin = 'anonymous';
+      linkedImg.src = 'https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/LinkedIn.svg';
+
+      const gitImg = new Image();
+      gitImg.crossOrigin = 'anonymous';
+      gitImg.src = 'https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Github-Dark.svg';
+
+      let logosLoaded = 0;
+      function checkLogos() {
+        logosLoaded++;
+        renderBackFaceHD();
+        backTexture.needsUpdate = true;
+      }
+      instaImg.onload = checkLogos;
+      linkedImg.onload = checkLogos;
+      gitImg.onload = checkLogos;
+
+      function renderBackFaceHD() {
+        const w = 2048;
+        const h = 3072;
+        backCtx.clearRect(0, 0, w, h);
+
+        // Pitch Black Base
+        backCtx.fillStyle = '#08080a';
+        backCtx.fillRect(0, 0, w, h);
+
+        const bgGrad = backCtx.createLinearGradient(0, 0, w, h);
+        bgGrad.addColorStop(0, '#0f0f13');
+        bgGrad.addColorStop(0.45, '#070709');
+        bgGrad.addColorStop(1, '#030305');
+        backCtx.fillStyle = bgGrad;
+        backCtx.fillRect(0, 0, w, h);
+
+        backCtx.strokeStyle = 'rgba(255, 215, 0, 0.28)';
+        backCtx.lineWidth = 8;
+        backCtx.strokeRect(6, 6, w - 12, h - 12);
+
+        // Punch Hole Grommet Rim
+        backCtx.save();
+        backCtx.strokeStyle = '#475569';
+        backCtx.lineWidth = 14;
+        backCtx.beginPath();
+        backCtx.arc(w / 2, 130, 56, 0, Math.PI * 2);
+        backCtx.stroke();
+
+        backCtx.fillStyle = '#000000';
+        backCtx.beginPath();
+        backCtx.arc(w / 2, 130, 48, 0, Math.PI * 2);
+        backCtx.fill();
+        backCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        backCtx.lineWidth = 4;
+        backCtx.stroke();
+        backCtx.restore();
+
+        // Header Title: PROFILES & CONTACT
+        backCtx.fillStyle = '#94a3b8';
+        backCtx.font = 'bold 56px "Geist Mono", monospace';
+        backCtx.textAlign = 'center';
+        backCtx.letterSpacing = '8px';
+        backCtx.fillText('PROFILES & CONTACT', w / 2, 450);
+
+        // 3 Profile Buttons
+        const rows = [
+          {
+            title: 'Instagram',
+            handle: '@mr_veerakumar.v',
+            img: instaImg,
+            accent: '#e1306c'
+          },
+          {
+            title: 'LinkedIn',
+            handle: 'v-veerakumar',
+            img: linkedImg,
+            accent: '#0a66c2'
+          },
+          {
+            title: 'GitHub',
+            handle: 'veerakumar-v',
+            img: gitImg,
+            accent: '#24292f'
+          }
+        ];
+
+        let startY = 640;
+        const rowH = 340;
+        const rowW = 1600;
+        const rowX = (w - rowW) / 2;
+
+        rows.forEach((r) => {
+          backCtx.save();
+          backCtx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+          backCtx.strokeStyle = 'rgba(255, 255, 255, 0.14)';
+          backCtx.lineWidth = 4;
+          backCtx.beginPath();
+          backCtx.roundRect(rowX, startY, rowW, rowH, 36);
+          backCtx.fill();
+          backCtx.stroke();
+
+          // Logo Icon
+          const iconR = 90;
+          const iconX = rowX + 170;
+          const iconY = startY + rowH / 2;
+
+          backCtx.beginPath();
+          backCtx.arc(iconX, iconY, iconR, 0, Math.PI * 2);
+          backCtx.clip();
+
+          if (r.img && r.img.complete && r.img.naturalWidth > 0) {
+            backCtx.imageSmoothingEnabled = true;
+            backCtx.imageSmoothingQuality = 'high';
+            backCtx.drawImage(r.img, iconX - iconR, iconY - iconR, iconR * 2, iconR * 2);
+          } else {
+            backCtx.fillStyle = r.accent;
+            backCtx.fillRect(iconX - iconR, iconY - iconR, iconR * 2, iconR * 2);
+          }
+          backCtx.restore();
+
+          // Labels
+          backCtx.fillStyle = '#94a3b8';
+          backCtx.font = '600 52px Inter, sans-serif';
+          backCtx.textAlign = 'left';
+          backCtx.fillText(r.title, rowX + 320, startY + 135);
+
+          backCtx.fillStyle = '#ffffff';
+          backCtx.font = 'bold 72px "Geist Mono", monospace';
+          backCtx.fillText(r.handle, rowX + 320, startY + 235);
+
+          // Arrow Chevron
+          backCtx.save();
+          backCtx.strokeStyle = '#eab308';
+          backCtx.lineWidth = 6;
+          backCtx.beginPath();
+          const ax = rowX + rowW - 120;
+          const ay = startY + rowH / 2;
+          backCtx.moveTo(ax - 20, ay - 20);
+          backCtx.lineTo(ax + 8, ay);
+          backCtx.lineTo(ax - 20, ay + 20);
+          backCtx.stroke();
+          backCtx.restore();
+
+          startY += 440;
+        });
+
+        // Email Bar at bottom
+        backCtx.save();
+        const emailY = 2140;
+        const emailH = 240;
+        backCtx.fillStyle = 'rgba(234, 179, 8, 0.08)';
+        backCtx.strokeStyle = 'rgba(234, 179, 8, 0.4)';
+        backCtx.lineWidth = 4;
+        backCtx.beginPath();
+        backCtx.roundRect(rowX, emailY, rowW, emailH, 36);
+        backCtx.fill();
+        backCtx.stroke();
+
+        backCtx.fillStyle = '#facc15';
+        backCtx.font = 'bold 64px "Geist Mono", monospace';
+        backCtx.textAlign = 'center';
+        backCtx.fillText('uceadeveloper@gmail.com', w / 2, emailY + 145);
+        backCtx.restore();
+      }
+
+      renderBackFaceHD();
+
+      // Card Mesh & Materials
+      const edgeMaterial = new THREE.MeshStandardMaterial({
+        color: 0x18181f,
+        metalness: 0.8,
+        roughness: 0.3
+      });
+
+      const frontMaterial = new THREE.MeshStandardMaterial({
+        map: frontTexture,
+        roughness: 0.45,
+        metalness: 0.05
+      });
+
+      const backMaterial = new THREE.MeshStandardMaterial({
+        map: backTexture,
+        roughness: 0.45,
+        metalness: 0.05
+      });
+
+      const materials = [
+        edgeMaterial,
+        edgeMaterial,
+        edgeMaterial,
+        edgeMaterial,
+        frontMaterial,
+        backMaterial
+      ];
+
+      const cardGeo = new THREE.BoxGeometry(CARD_WIDTH, CARD_HEIGHT, CARD_THICKNESS);
+      const cardMesh = new THREE.Mesh(cardGeo, materials);
+
+      const cardPivot = new THREE.Group();
+      cardMesh.position.y = -CARD_HEIGHT / 2 - 0.25;
+      cardPivot.add(cardMesh);
+
+      // -----------------------------------------------------------------------
+      // 4. REALISTIC GUNMETAL HARDWARE ASSEMBLY
+      // -----------------------------------------------------------------------
+      const metalMaterial = new THREE.MeshStandardMaterial({
+        color: 0x222226,
+        metalness: 0.85,
+        roughness: 0.3
+      });
+
+      const hardwareGroup = new THREE.Group();
+
+      // A. Bottom Ribbon Clamp Bar
+      const clampGeo = new THREE.BoxGeometry(0.34, 0.08, 0.05);
+      const clampMesh = new THREE.Mesh(clampGeo, metalMaterial);
+      hardwareGroup.add(clampMesh);
+
+      const crimpGeo = new THREE.BoxGeometry(0.35, 0.015, 0.055);
+      const crimpMesh = new THREE.Mesh(crimpGeo, metalMaterial);
+      hardwareGroup.add(crimpMesh);
+
+      // B. Ring Connector
+      const ringGeo = new THREE.TorusGeometry(0.085, 0.02, 16, 32);
+      const ringMesh = new THREE.Mesh(ringGeo, metalMaterial);
+      ringMesh.position.set(0, -0.07, 0);
+      ringMesh.rotation.x = Math.PI / 2;
+      hardwareGroup.add(ringMesh);
+
+      // C. Swivel Collar
+      const swivelGeo = new THREE.CylinderGeometry(0.04, 0.045, 0.08, 20);
+      const swivelMesh = new THREE.Mesh(swivelGeo, metalMaterial);
+      swivelMesh.position.set(0, -0.15, 0);
+      hardwareGroup.add(swivelMesh);
+
+      const swivelBeadGeo = new THREE.SphereGeometry(0.042, 16, 16);
+      const swivelBead = new THREE.Mesh(swivelBeadGeo, metalMaterial);
+      swivelBead.position.set(0, -0.11, 0);
+      hardwareGroup.add(swivelBead);
+
+      // D. Lobster Claw Body & Trigger
+      const hookBodyGeo = new THREE.CylinderGeometry(0.028, 0.028, 0.13, 16);
+      const hookBody = new THREE.Mesh(hookBodyGeo, metalMaterial);
+      hookBody.position.set(0, -0.23, 0);
+      hardwareGroup.add(hookBody);
+
+      const triggerGeo = new THREE.BoxGeometry(0.02, 0.04, 0.03);
+      const trigger = new THREE.Mesh(triggerGeo, metalMaterial);
+      trigger.position.set(0.035, -0.22, 0);
+      hardwareGroup.add(trigger);
+
+      // E. Curved Lobster Hook Beak (Physically loops through card punch hole)
+      const hookCurve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0, -0.27, 0),
+        new THREE.Vector3(-0.015, -0.34, 0.035),
+        new THREE.Vector3(0, -0.40, 0.025),
+        new THREE.Vector3(0.015, -0.42, 0.0),
+        new THREE.Vector3(0.01, -0.41, -0.028),
+        new THREE.Vector3(0, -0.34, -0.045),
+        new THREE.Vector3(-0.01, -0.29, -0.025)
+      ]);
+      const hookBeakGeo = new THREE.TubeGeometry(hookCurve, 32, 0.017, 12, false);
+      const hookBeak = new THREE.Mesh(hookBeakGeo, metalMaterial);
+      hardwareGroup.add(hookBeak);
+
+      cardPivot.add(hardwareGroup);
+      scene.add(cardPivot);
+
+      // -----------------------------------------------------------------------
+      // 5. RESPONSIVE LANYARD RIBBON & VERLET PHYSICS
+      // -----------------------------------------------------------------------
+      const strapTex = createHDStrapTexture();
+      const ROPE_SEGMENTS = 12;
+      const RIBBON_WIDTH = 0.28;
+
+      let TOTAL_ROPE_LENGTH = 1.6;
+      let ROPE_TOP = new THREE.Vector3(0, 3.2, 0);
+
+      const ropePoints = [];
+      const oldRopePoints = [];
+
+      function setupRopeNodes() {
+        const isMobile = window.innerWidth < 640;
+        TOTAL_ROPE_LENGTH = isMobile ? 1.2 : 1.7;
+        ROPE_TOP.set(0, isMobile ? 2.75 : 3.3, 0);
+
+        ropePoints.length = 0;
+        oldRopePoints.length = 0;
+        for (let i = 0; i <= ROPE_SEGMENTS; i++) {
+          const t = i / ROPE_SEGMENTS;
+          const p = new THREE.Vector3(0, ROPE_TOP.y - t * TOTAL_ROPE_LENGTH, 0);
+          ropePoints.push(p);
+          oldRopePoints.push(p.clone());
+        }
+      }
+
+      setupRopeNodes();
+
+      const ribbonGeo = new THREE.BufferGeometry();
+      const vertexCount = (ROPE_SEGMENTS + 1) * 2;
+      const positions = new Float32Array(vertexCount * 3);
+      const uvs = new Float32Array(vertexCount * 2);
+      const indices = [];
+
+      for (let i = 0; i < ROPE_SEGMENTS; i++) {
+        const a = i * 2;
+        const b = i * 2 + 1;
+        const c = (i + 1) * 2;
+        const d = (i + 1) * 2 + 1;
+        indices.push(a, b, c);
+        indices.push(b, d, c);
+      }
+
+      ribbonGeo.setIndex(indices);
+      ribbonGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      ribbonGeo.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+
+      for (let i = 0; i <= ROPE_SEGMENTS; i++) {
+        const v = 1.0 - (i / ROPE_SEGMENTS);
+        uvs[i * 4 + 0] = 0.0;
+        uvs[i * 4 + 1] = v;
+        uvs[i * 4 + 2] = 1.0;
+        uvs[i * 4 + 3] = v;
+      }
+      ribbonGeo.attributes.uv.needsUpdate = true;
+
+      const ribbonMat = new THREE.MeshStandardMaterial({
+        map: strapTex,
+        roughness: 0.85,
+        metalness: 0.05,
+        side: THREE.DoubleSide
+      });
+      const ribbonMesh = new THREE.Mesh(ribbonGeo, ribbonMat);
+      scene.add(ribbonMesh);
+
+      function updateRibbonGeometry() {
+        const posAttr = ribbonGeo.attributes.position;
+        const halfW = RIBBON_WIDTH / 2;
+
+        for (let i = 0; i <= ROPE_SEGMENTS; i++) {
+          const pt = ropePoints[i];
+          let tangent = new THREE.Vector3(0, -1, 0);
+          if (i < ROPE_SEGMENTS) {
+            tangent.subVectors(ropePoints[i + 1], pt).normalize();
+          } else {
+            tangent.subVectors(pt, ropePoints[i - 1]).normalize();
+          }
+
+          const lateral = new THREE.Vector3().crossVectors(tangent, new THREE.Vector3(0, 0, 1)).normalize().multiplyScalar(halfW);
+          if (lateral.lengthSq() < 0.0001) lateral.set(halfW, 0, 0);
+
+          posAttr.setXYZ(i * 2 + 0, pt.x - lateral.x, pt.y - lateral.y, pt.z - lateral.z);
+          posAttr.setXYZ(i * 2 + 1, pt.x + lateral.x, pt.y + lateral.y, pt.z + lateral.z);
+        }
+        posAttr.needsUpdate = true;
+        ribbonGeo.computeVertexNormals();
+      }
+
+      // -----------------------------------------------------------------------
+      // 6. ROCK-SOLID FLIP CONTROLLER & TOUCH/CLICK INTERACTIONS
+      // -----------------------------------------------------------------------
+      let isFlipped = false;
+      let targetRotationY = 0;
+      let currentRotationY = 0;
+
+      const flipToggleBtn = document.getElementById('card-flip-toggle-btn');
+      const flipBtnText = document.getElementById('flip-btn-text');
+
+      function performFlipToggle() {
+        isFlipped = !isFlipped;
+        targetRotationY = isFlipped ? Math.PI : 0;
+        if (flipBtnText) {
+          flipBtnText.textContent = isFlipped ? 'SHOW FRONT' : 'FLIP CARD';
+        }
+      }
+
+      if (flipToggleBtn) {
+        flipToggleBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          performFlipToggle();
+        });
+      }
+
+      function getClickedLink(hitPoint) {
+        const local = cardMesh.worldToLocal(hitPoint.clone());
+        const normY = (1.825 - local.y) / 3.65;
+        const normX = (local.x + 1.2) / 2.4;
+
+        if (normX < 0.08 || normX > 0.92) return null;
+
+        if (normY >= 0.20 && normY < 0.32) {
+          return 'https://instagram.com/mr_veerakumar.v';
+        }
+        if (normY >= 0.34 && normY < 0.46) {
+          return 'https://www.linkedin.com/in/v-veerakumar/';
+        }
+        if (normY >= 0.48 && normY < 0.60) {
+          return 'https://github.com/veerakumar-v';
+        }
+        if (normY >= 0.68 && normY < 0.82) {
+          return 'mailto:uceadeveloper@gmail.com';
+        }
+        return null;
+      }
+
+      let isDragging = false;
+      let dragStartPos = { x: 0, y: 0 };
+      const dragPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+      const planeIntersect = new THREE.Vector3();
+
+      canvas.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('button') || e.target.closest('a')) return;
+
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        dragStartPos = { x: e.clientX, y: e.clientY };
+
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObject(cardMesh);
+        if (intersects.length > 0) {
+          isDragging = true;
+          canvas.classList.add('grabbing');
+          if (canvas.setPointerCapture) {
+            canvas.setPointerCapture(e.pointerId);
+          }
+          dragPlane.setFromNormalAndCoplanarPoint(
+            camera.getWorldDirection(new THREE.Vector3()).negate(),
+            cardPivot.position
+          );
+        }
+      });
+
+      canvas.addEventListener('pointermove', (e) => {
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+        if (isDragging) {
+          raycaster.setFromCamera(mouse, camera);
+          if (raycaster.ray.intersectPlane(dragPlane, planeIntersect)) {
+            const endNode = ropePoints[ROPE_SEGMENTS];
+            endNode.x += (planeIntersect.x - endNode.x) * 0.35;
+            endNode.y += (planeIntersect.y - endNode.y) * 0.35;
+            endNode.z += (planeIntersect.z - endNode.z) * 0.35;
+          }
+        } else if (isFlipped) {
+          raycaster.setFromCamera(mouse, camera);
+          const intersects = raycaster.intersectObject(cardMesh);
+          if (intersects.length > 0) {
+            const link = getClickedLink(intersects[0].point);
+            if (link) {
+              canvas.classList.add('link-hover');
+            } else {
+              canvas.classList.remove('link-hover');
+            }
+          } else {
+            canvas.classList.remove('link-hover');
+          }
+        } else {
+          canvas.classList.remove('link-hover');
+        }
+      });
+
+      function handlePointerUpOrCancel(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        canvas.classList.remove('grabbing');
+        if (canvas.releasePointerCapture) {
+          try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
+
+        const distMoved = Math.hypot(e.clientX - dragStartPos.x, e.clientY - dragStartPos.y);
+
+        if (distMoved < 7) {
+          raycaster.setFromCamera(mouse, camera);
+          const intersects = raycaster.intersectObject(cardMesh);
+          if (intersects.length > 0) {
+            if (isFlipped) {
+              const link = getClickedLink(intersects[0].point);
+              if (link) {
+                if (link.startsWith('mailto:')) {
+                  window.location.href = link;
+                } else {
+                  window.open(link, '_blank');
+                }
+              } else {
+                performFlipToggle();
+              }
+            } else {
+              performFlipToggle();
+            }
+          }
+        }
+      }
+
+      canvas.addEventListener('pointerup', handlePointerUpOrCancel);
+      canvas.addEventListener('pointercancel', handlePointerUpOrCancel);
+
+      // -----------------------------------------------------------------------
+      // 7. RESPONSIVE VIEWPORT & CAMERA CALCULATION
+      // -----------------------------------------------------------------------
+      function updateViewportFraming() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const aspect = width / height;
+
+        camera.aspect = aspect;
+
+        if (aspect < 0.72) {
+          camera.fov = 37;
+          camera.position.set(0, -0.65, 8.4);
+        } else if (aspect < 1.0) {
+          camera.fov = 35;
+          camera.position.set(0, -0.45, 8.5);
+        } else {
+          camera.fov = 33;
+          camera.position.set(0, -0.32, 8.6);
+        }
+
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      }
+
+      window.addEventListener('resize', () => {
+        updateViewportFraming();
+        setupRopeNodes();
+      });
+
+      updateViewportFraming();
+
+      // -----------------------------------------------------------------------
+      // 8. LUXURIOUS SMOOTH, SLOW RENDER & PHYSICS LOOP
+      // -----------------------------------------------------------------------
+      const gravity = new THREE.Vector3(0, -0.012, 0);
+      const segmentLen = TOTAL_ROPE_LENGTH / ROPE_SEGMENTS;
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        for (let i = 1; i <= ROPE_SEGMENTS; i++) {
+          if (i === ROPE_SEGMENTS && isDragging) continue;
+
+          const p = ropePoints[i];
+          const oldP = oldRopePoints[i];
+          const vx = (p.x - oldP.x) * 0.96;
+          const vy = (p.y - oldP.y) * 0.96;
+          const vz = (p.z - oldP.z) * 0.96;
+
+          oldP.copy(p);
+
+          p.x += vx + gravity.x;
+          p.y += vy + gravity.y;
+          p.z += vz + gravity.z;
+        }
+
+        ropePoints[0].copy(ROPE_TOP);
+
+        for (let pass = 0; pass < 8; pass++) {
+          for (let i = 0; i < ROPE_SEGMENTS; i++) {
+            const p1 = ropePoints[i];
+            const p2 = ropePoints[i + 1];
+
+            const dx = p2.x - p1.x;
+            const dy = p2.y - p1.y;
+            const dz = p2.z - p1.z;
+            const dist = Math.hypot(dx, dy, dz) || 0.001;
+            const diff = (dist - segmentLen) / dist;
+
+            if (i === 0) {
+              p2.x -= dx * diff;
+              p2.y -= dy * diff;
+              p2.z -= dz * diff;
+            } else if (i + 1 === ROPE_SEGMENTS && isDragging) {
+              p1.x += dx * diff;
+              p1.y += dy * diff;
+              p1.z += dz * diff;
+            } else {
+              p1.x += dx * diff * 0.5;
+              p1.y += dy * diff * 0.5;
+              p1.z += dz * diff * 0.5;
+              p2.x -= dx * diff * 0.5;
+              p2.y -= dy * diff * 0.5;
+              p2.z -= dz * diff * 0.5;
+            }
+          }
+        }
+
+        updateRibbonGeometry();
+
+        const ropeTip = ropePoints[ROPE_SEGMENTS];
+        const ropePreTip = ropePoints[ROPE_SEGMENTS - 1];
+        cardPivot.position.copy(ropeTip);
+
+        const ropeDir = new THREE.Vector3().subVectors(ropeTip, ropePreTip).normalize();
+        const targetRotZ = THREE.MathUtils.clamp(-ropeDir.x * 0.65, -0.5, 0.5);
+        const targetRotX = THREE.MathUtils.clamp(ropeDir.z * 0.65, -0.4, 0.4);
+
+        cardPivot.rotation.z += (targetRotZ - cardPivot.rotation.z) * 0.08;
+        cardPivot.rotation.x += (targetRotX - cardPivot.rotation.x) * 0.08;
+
+        currentRotationY += (targetRotationY - currentRotationY) * 0.045;
+        cardMesh.rotation.y = currentRotationY;
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    })();
+  </script>
+</body>
+</html>

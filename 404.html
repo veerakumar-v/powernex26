@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Grid Node Offline | POWERNEX 26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient radar grid background */
+    .radar-container {
+      position: relative;
+      width: min(92vw, 440px);
+      height: min(92vw, 440px);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #radar-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Outline-Mix 404 Numeral */
+    .numeral-wrap {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .numeral-404 {
+      font-family: 'Geist Mono', monospace;
+      font-size: clamp(4.5rem, 14vw, 7.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .num-solid {
+      background: linear-gradient(180deg, #ffffff 0%, #64748b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .num-outline {
+      color: transparent;
+      -webkit-text-stroke: 2px #00f0ff;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+      position: relative;
+    }
+
+    .radar-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #ef4444;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .radar-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 8px #ef4444;
+      animation: blink 1.2s infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Content block */
+    .content-box {
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      z-index: 20;
+    }
+
+    .error-title {
+      font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .error-desc {
+      font-size: 0.92rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* Inline Search Bar */
+    .search-form {
+      position: relative;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 12px;
+      padding: 6px 14px;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: #00f0ff;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 0.9rem;
+      padding: 8px;
+      font-family: inherit;
+    }
+
+    .search-input::placeholder {
+      color: #64748b;
+    }
+
+    .search-btn {
+      background: #00f0ff;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Geist Mono', monospace;
+      transition: all 0.2s ease;
+    }
+
+    .search-btn:hover {
+      background: #38bdf8;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+    }
+
+    /* Action buttons */
+    .action-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      font-family: 'Geist Mono', monospace;
+    }
+
+    .btn-home {
+      background: #00f0ff;
+      color: #000000;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
+    }
+
+    .btn-home:hover {
+      background: #38bdf8;
+      box-shadow: 0 0 26px rgba(0, 240, 255, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-contact {
+      background: rgba(255, 255, 255, 0.04);
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-contact:hover {
+      background: rgba(0, 240, 255, 0.08);
+      border-color: rgba(0, 240, 255, 0.35);
+      color: #00f0ff;
+      transform: translateY(-2px);
+    }
+
+    /* Live Search Results Container */
+    #search-results {
+      text-align: left;
+      margin-top: 10px;
+      background: #090e17;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .search-item {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      font-size: 0.85rem;
+      text-decoration: none;
+      display: block;
+      transition: background 0.2s ease;
+    }
+
+    .search-item:hover {
+      background: rgba(0, 240, 255, 0.1);
+      color: #00f0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Radar Container with Canvas & Outline Numeral -->
+  <div class="radar-container">
+    <canvas id="radar-canvas"></canvas>
+    <div class="numeral-wrap">
+      <div class="numeral-404">
+        <span class="num-solid">4</span>
+        <span class="num-outline">0</span>
+        <span class="num-solid">4</span>
+      </div>
+      <div class="radar-status-badge">
+        <span class="radar-status-dot"></span>
+        <span>NO FEEDER SIGNAL LOCATED</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content & Inline Search -->
+  <div class="content-box">
+    <h1 class="error-title">Target Circuit Not Found</h1>
+    <p class="error-desc">
+      The requested high-voltage route or symposium page has tripped or does not exist. Use the radar search below or re-route back to the main grid.
+    </p>
+
+    <!-- Inline Search Form -->
+    <div class="search-form">
+      <div class="search-input-wrap">
+        <i data-lucide="search" style="width: 18px; height: 18px; color: #64748b; margin-right: 8px;"></i>
+        <input type="text" id="radar-search-input" class="search-input" placeholder="Search events (Paper, TechMain, Robo Relay, Rulebook)..." autocomplete="off">
+        <button type="button" id="radar-search-btn" class="search-btn">PING</button>
+      </div>
+      <div id="search-results"></div>
+    </div>
+
+    <!-- Actions -->
+    <div class="action-group">
+      <a href="index.html" class="btn-action btn-home">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+        <span>Return to Grid</span>
+      </a>
+      <a href="mailto:uceadeveloper@gmail.com" class="btn-action btn-contact">
+        <i data-lucide="mail" style="width: 16px; height: 16px;"></i>
+        <span>Contact Developer</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    // =========================================================================
+    // RADAR-SWEEP 404 WITH SWEEP-SYNCED CONTACT PINGS
+    // =========================================================================
+    (function initRadarSweep() {
+      const canvas = document.getElementById('radar-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let size = canvas.parentElement.clientWidth;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resize() {
+        size = canvas.parentElement.clientWidth;
+        canvas.width = Math.floor(size * dpr);
+        canvas.height = Math.floor(size * dpr);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      let sweepAngle = 0;
+      const SWEEP_SPEED = 0.035; // radians per frame
+
+      // Targets/Pings located on the radar (radius ratio, angle)
+      const targets = [
+        { r: 0.32, angle: 0.8, alpha: 0, label: "BUS-1" },
+        { r: 0.58, angle: 2.1, alpha: 0, label: "FD-4" },
+        { r: 0.75, angle: 3.8, alpha: 0, label: "KV-11" },
+        { r: 0.44, angle: 5.2, alpha: 0, label: "RELAY-2" }
+      ];
+
+      function render() {
+        ctx.save();
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.scale(dpr, dpr);
+
+        const cx = size / 2;
+        const cy = size / 2;
+        const maxR = size / 2 - 8;
+
+        // 1. Concentric Range Rings
+        const rings = [0.25, 0.5, 0.75, 1.0];
+        ctx.lineWidth = 1;
+        rings.forEach((ratio) => {
+          ctx.beginPath();
+          ctx.arc(cx, cy, maxR * ratio, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+          ctx.stroke();
+        });
+
+        // 2. Radial Crosshair Axes
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.15)';
+        ctx.beginPath();
+        ctx.moveTo(cx - maxR, cy);
+        ctx.lineTo(cx + maxR, cy);
+        ctx.moveTo(cx, cy - maxR);
+        ctx.lineTo(cx, cy + maxR);
+        ctx.stroke();
+
+        // 3. Diagonal Guides
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.06)';
+        ctx.beginPath();
+        ctx.moveTo(cx - maxR * 0.7, cy - maxR * 0.7);
+        ctx.lineTo(cx + maxR * 0.7, cy + maxR * 0.7);
+        ctx.moveTo(cx - maxR * 0.7, cy + maxR * 0.7);
+        ctx.lineTo(cx + maxR * 0.7, cy - maxR * 0.7);
+        ctx.stroke();
+
+        // 4. Rotating Radar Sweep Beam (Gradient Fan)
+        const beamAngle = 0.55; // Angle width of sweep trail
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR);
+        grad.addColorStop(0, 'rgba(0, 240, 255, 0.28)');
+        grad.addColorStop(0.8, 'rgba(0, 240, 255, 0.12)');
+        grad.addColorStop(1, 'rgba(0, 240, 255, 0.0)');
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, maxR, sweepAngle - beamAngle, sweepAngle, false);
+        ctx.closePath();
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // Leading Bright Sweep Line
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(sweepAngle) * maxR, cy + Math.sin(sweepAngle) * maxR);
+        ctx.strokeStyle = '#00f0ff';
+        ctx.lineWidth = 1.8;
+        ctx.shadowColor = '#00f0ff';
+        ctx.shadowBlur = 10;
+        ctx.stroke();
+        ctx.restore();
+
+        // 5. Sweep-Synced Contact Pings
+        targets.forEach((t) => {
+          // Normalize angle difference
+          let diff = (sweepAngle - t.angle) % (Math.PI * 2);
+          if (diff < 0) diff += Math.PI * 2;
+
+          // If the leading edge just crossed, trigger high alpha ping
+          if (diff < SWEEP_SPEED * 1.5) {
+            t.alpha = 1.0;
+          }
+
+          if (t.alpha > 0.02) {
+            const tx = cx + Math.cos(t.angle) * (maxR * t.r);
+            const ty = cy + Math.sin(t.angle) * (maxR * t.r);
+
+            ctx.save();
+            ctx.fillStyle = `rgba(0, 240, 255, ${t.alpha})`;
+            ctx.shadowColor = '#00f0ff';
+            ctx.shadowBlur = 12;
+
+            // Ping circle
+            ctx.beginPath();
+            ctx.arc(tx, ty, 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Expanding ripple ring
+            const rippleR = 4 + (1 - t.alpha) * 16;
+            ctx.strokeStyle = `rgba(0, 240, 255, ${t.alpha * 0.6})`;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(tx, ty, rippleR, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Target Tag
+            ctx.font = '9px "Geist Mono", monospace';
+            ctx.fillStyle = `rgba(0, 240, 255, ${t.alpha * 0.8})`;
+            ctx.fillText(t.label, tx + 8, ty - 4);
+            ctx.restore();
+
+            t.alpha *= 0.965; // Decay ping
+          }
+        });
+
+        ctx.restore();
+
+        sweepAngle = (sweepAngle + SWEEP_SPEED) % (Math.PI * 2);
+        requestAnimationFrame(render);
+      }
+
+      render();
+    })();
+
+    // =========================================================================
+    // INLINE SEARCH IMPLEMENTATION
+    // =========================================================================
+    (function initInlineSearch() {
+      const searchInput = document.getElementById('radar-search-input');
+      const searchBtn = document.getElementById('radar-search-btn');
+      const resultsDiv = document.getElementById('search-results');
+
+      const searchablePages = [
+        { title: "Home Grid & Hero", url: "index.html#hero" },
+        { title: "About POWERNEX 26 & Key Info", url: "index.html#about" },
+        { title: "Symposium Themes & Circuit Breaker", url: "index.html#tracks" },
+        { title: "Technical Events Arena", url: "index.html#technical" },
+        { title: "Paper Presentation Event", url: "index.html#technical" },
+        { title: "TechMain Circuit & Quiz", url: "index.html#technical" },
+        { title: "Debugging Circuit Competition", url: "index.html#technical" },
+        { title: "Non-Technical Events", url: "index.html#non-technical" },
+        { title: "Robo Relay Arena", url: "index.html#non-technical" },
+        { title: "Mission Impossible Strategy", url: "index.html#non-technical" },
+        { title: "Electro Enigma Mystery", url: "index.html#non-technical" },
+        { title: "Master Rulebook & Judging Criteria", url: "index.html#rulebook" },
+        { title: "Symposium Schedule Timeline", url: "index.html#schedule" },
+        { title: "Prizes & Championship Trophy", url: "index.html#prizes" },
+        { title: "Campus Location & Coordinators", url: "index.html#location" },
+        { title: "Google Form Registration (Rs. 150)", url: "index.html#register" },
+        { title: "Developer Portfolio ID Card", url: "developer.html" }
+      ];
+
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+          resultsDiv.style.display = 'none';
+          return;
+        }
+
+        const matches = searchablePages.filter(p => p.title.toLowerCase().includes(query));
+        if (matches.length > 0) {
+          resultsDiv.innerHTML = matches.map(m => `
+            <a href="${m.url}" class="search-item">
+              <i data-lucide="corner-down-right" style="width: 12px; height: 12px; vertical-align: middle; margin-right: 6px;"></i>
+              ${m.title}
+            </a>
+          `).join('');
+          resultsDiv.style.display = 'block';
+          if (window.lucide) window.lucide.createIcons();
+        } else {
+          resultsDiv.innerHTML = `<div style="padding: 12px; color: #64748b; font-size: 0.85rem; text-align: center;">No grid coordinates match "${query}". Try searching 'Paper', 'Relay', or 'Rulebook'.</div>`;
+          resultsDiv.style.display = 'block';
+        }
+      }
+
+      searchInput.addEventListener('input', performSearch);
+      searchBtn.addEventListener('click', performSearch);
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performSearch();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POWERNEX 26 | National Level EEE Technical Symposium | Anna University Ariyalur</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="title" content="POWERNEX 26 | National Level EEE Technical Symposium | Anna University Ariyalur">
+  <meta name="description" content="POWERNEX 26 is the premier National Level Technical Symposium organized by the Department of Electrical and Electronics Engineering (EEE), University College of Engineering, Ariyalur (Anna University, Chennai) on 08 October 2026. Featuring Paper Presentation, TechMain, Debugging Circuit, Robo Relay, Mission Impossible, Electro Enigma, and the Overall Championship Trophy. Flat registration fee: Rs. 150 per participant.">
+  <meta name="keywords" content="POWERNEX 26, POWERNEX, EEE Symposium, Anna University Ariyalur, Electrical Engineering Symposium, Circuit Debugging, Paper Presentation, Robo Relay, Mission Impossible, Electro Enigma, TechMain">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="POWERNEX 26 | National Level EEE Technical Symposium">
+  <meta property="og:description" content="Think Electric. Think Future. Be the Change! Join us on 08 October 2026 at UCE Ariyalur. 6 events, Rs. 150 flat fee with lunch, Anna University certificates, cash prizes (Rs. 500 / Rs. 400 / Rs. 300) and Overall Championship Trophy.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f0ff'%3E%3Cpath d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/%3E%3C/svg%3E">
+
+  <!-- CSS Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="amoled-theme">
+  <!-- ====================================================================
+       SMOOTH ELECTRIC LIGHTNING GRADIENT-TRACING PRELOADER
+       ==================================================================== -->
+  <div id="site-preloader" class="site-preloader">
+    <div class="preloader-content">
+      <div class="gradient-tracing-wrapper" style="width: 200px; height: 200px; position: relative;">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" class="gradient-tracing-svg">
+          <!-- Background faint path -->
+          <path
+            d="M100,0 L75,75 L125,75 L50,200 L100,100 L50,100 L100,0"
+            stroke="#1a1a24"
+            stroke-opacity="0.4"
+            stroke-width="3"
+          />
+          <!-- High-voltage glowing tracing path -->
+          <path
+            class="tracing-path-element"
+            d="M100,0 L75,75 L125,75 L50,200 L100,100 L50,100 L100,0"
+            stroke="url(#lightning-tracing-grad)"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3.5"
+          />
+          <defs>
+            <linearGradient id="lightning-tracing-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F1C40F" stop-opacity="0">
+                <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="50%" stop-color="#F1C40F">
+                <animate attributeName="stop-color" values="#F1C40F;#00F0FF;#F1C40F" dur="2s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="100%" stop-color="#E67E22" stop-opacity="0">
+                <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+              </stop>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="preloader-caption">
+        <span class="preloader-brand">POWERNEX 26</span>
+        <span class="preloader-pulse-text">ENERGIZING HIGH VOLTAGE GRID...</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Main App Wrapper -->
+    <!-- Ambient Electric Pulse Layer & High-Voltage Lightning Canvas -->
+  <div class="ambient-lightning-glow" aria-hidden="true"></div>
+  <canvas id="lightning-canvas" class="lightning-canvas" aria-hidden="true"></canvas>
+  <div class="app-container">
+
+    <!-- ====================================================================
+         1. FLOATING SCROLLSPY NAVBAR WITH THEME CONTROLLER & AURA BUTTON
+         ==================================================================== -->
+    <header class="power-nav" id="power-nav">
+      <div class="nav-container">
+        
+        <!-- Brand Logo & Title with Anna University Crest -->
+        <a href="#hero" class="nav-brand" title="POWERNEX 26 Homepage">
+          <img src="logo.svg" alt="Anna University Logo" class="nav-college-logo">
+          <div class="nav-brand-text">
+            <span class="nav-brand-sub">Dept of EEE . <span class="highlight-blue">UCE Ariyalur</span></span>
+            <span class="nav-brand-title">POWER<span>NEX</span> '26</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu Links -->
+        <ul class="nav-links-menu">
+          <li class="nav-link-item"><a href="#hero" class="nav-link-btn active">Home</a></li>
+          <li class="nav-link-item"><a href="#about" class="nav-link-btn">About</a></li>
+          <li class="nav-link-item"><a href="#tracks" class="nav-link-btn">Themes</a></li>
+          <li class="nav-link-item"><a href="#technical" class="nav-link-btn">Events</a></li>
+          <li class="nav-link-item"><a href="#rulebook" class="nav-link-btn">Rulebook</a></li>
+          <li class="nav-link-item"><a href="#agenda" class="nav-link-btn">Schedule</a></li>
+          <li class="nav-link-item"><a href="#prizes" class="nav-link-btn">Prizes</a></li>
+          <li class="nav-link-item"><a href="#faq" class="nav-link-btn">FAQ</a></li>
+          <li class="nav-link-item"><a href="#location" class="nav-link-btn">Venue</a></li>
+        </ul>
+
+        <!-- Nav Actions: Theme Controller & Aura Dual Button -->
+        <div class="nav-actions">
+          
+          <!-- DaisyUI Swap Rotate Theme Controller -->
+          
+
+          <!-- Aura Dual Button (Direct Google Form Link) -->
+          <div class="aura">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn" title="Register on Official Google Form">
+              <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i>
+              <span>Register (Rs. 150)</span>
+            </a>
+          </div>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Mobile Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Interactive Share Button with Tooltip -->
+          <div class="tooltip-container" id="hero-share-container">
+            <button class="button-content" id="site-share-btn" type="button" aria-label="Share POWERNEX 26">
+              <span class="text">Share</span>
+              <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+              </svg>
+            </button>
+            <div class="tooltip-content">
+              <div class="social-icons">
+                <a href="https://twitter.com/intent/tweet?text=Join%20POWERNEX%2026%20-%20National%20Level%20EEE%20Technical%20Symposium%20at%20University%20College%20of%20Engineering%20Ariyalur!%20Register:%20https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform" target="_blank" rel="noopener noreferrer" class="social-icon twitter" title="Share on Twitter / X">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=Join%20POWERNEX%2026%20National%20Level%20EEE%20Technical%20Symposium%20at%20Anna%20University%20Ariyalur!%20Register%20at:%20https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp" title="Share on WhatsApp">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="Share on LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <button type="button" class="social-icon copy-link-btn" id="copy-site-link-btn" title="Copy Website Link">
+                  <i data-lucide="link" style="width: 18px; height: 18px; color: #fff;"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         LIVE ELECTRICAL GRID TELEMETRY STATUS RIBBON
+         ==================================================================== -->
+    <div class="eee-telemetry-ribbon" aria-label="Electrical Grid Telemetry Status">
+      <div class="telemetry-track-content">
+        <div class="telemetry-node">
+          <span class="pulse-led-live"></span>
+          <span class="telemetry-param">3-PHASE GRID:</span>
+          <span class="telemetry-value">415 V AC • 50.00 Hz</span>
+        </div>
+        <span class="telemetry-sep">•</span>
+        <div class="telemetry-node">
+          <i data-lucide="zap" class="telemetry-icon"></i>
+          <span class="telemetry-param">POWER FACTOR:</span>
+          <span class="telemetry-value">0.99 (OPTIMAL)</span>
+        </div>
+        <span class="telemetry-sep">•</span>
+        <div class="telemetry-node">
+          <i data-lucide="gauge" class="telemetry-icon"></i>
+          <span class="telemetry-param">SUBSTATION:</span>
+          <span class="telemetry-value">11 kV KAVANUR CORE FEEDER</span>
+        </div>
+        <span class="telemetry-sep">•</span>
+        <div class="telemetry-node">
+          <i data-lucide="shield-check" class="telemetry-icon"></i>
+          <span class="telemetry-param">PROTECTION:</span>
+          <span class="telemetry-value live-glow">RELAYS ARMED</span>
+        </div>
+        <span class="telemetry-sep">•</span>
+        <div class="telemetry-node">
+          <i data-lucide="activity" class="telemetry-icon"></i>
+          <span class="telemetry-param">SYMPOSIUM STATUS:</span>
+          <span class="telemetry-value live-glow">ENERGIZED • 08 OCT 2026</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu-drawer" id="mobile-menu-drawer">
+      <div>
+        <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close Menu" style="background: none; border: none; color: #fff; cursor: pointer; margin-bottom: 20px;">
+          <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+        </button>
+
+        <div style="margin-bottom: 24px; text-align: left;">
+          <img src="logo.svg" alt="Anna University Logo" style="width: 50px; height: 50px; margin-bottom: 10px;">
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff;">
+            POWERNEX 26
+          </h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">
+            Department of Electrical and Electronics Engineering
+          </p>
+        </div>
+
+        <ul class="mobile-nav-list">
+          <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+          <li><a href="#about" class="mobile-nav-link">About POWERNEX</a></li>
+          <li><a href="#tracks" class="mobile-nav-link">Themes &amp; Tracks</a></li>
+          <li><a href="#technical" class="mobile-nav-link">Technical Events</a></li>
+          <li><a href="#non-technical" class="mobile-nav-link">Non-Technical Events</a></li>
+          <li><a href="#rulebook" class="mobile-nav-link">Master Rulebook</a></li>
+          <li><a href="#agenda" class="mobile-nav-link">Event Schedule</a></li>
+          <li><a href="#prizes" class="mobile-nav-link">Prizes &amp; Trophy</a></li>
+          <li><a href="#perks" class="mobile-nav-link">Benefits</a></li>
+          <li><a href="#faq" class="mobile-nav-link">FAQ &amp; Support</a></li>
+          <li><a href="#location" class="mobile-nav-link">Coordinators &amp; Venue</a></li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 30px;">
+        <div class="aura" style="width: 100%;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn" style="width: 100%; justify-content: center;">
+            <i data-lucide="sparkles"></i>
+            <span>Register Now (Rs. 150)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+
+    <!-- ====================================================================
+         2. HERO SECTION (SINGLE LINE POWERNEX 26 & EEE THEME)
+         ==================================================================== -->
+    <section class="section-fade-in" id="hero">
+      <div class="section-container hero-wrapper">
+        
+        <!-- Department Crest & Badge Header -->
+        <div class="hero-logo-badge">
+          <img src="logo.svg" alt="Anna University Crest" class="hero-crest-img">
+          <div class="hero-dept-text">
+            DEPARTMENT OF ELECTRICAL &amp; ELECTRONICS ENGINEERING
+          </div>
+        </div>
+
+        <h2 class="hero-institution-title">UNIVERSITY COLLEGE OF ENGINEERING, ARIYALUR</h2>
+        <p class="hero-affiliation">(A Constituent College of Anna University, Chennai)</p>
+
+        <!-- SINGLE LINE ENFORCED POWERNEX 26 -->
+        <h1 class="hero-main-headline">
+          <span class="hero-title-power">POWERNEX</span><span class="hero-title-year">26</span>
+        </h1>
+
+        <!-- Slogan & Typewriter (Official Master Draft Slogans) -->
+        <div class="hero-tagline-wrap">
+          <p class="hero-tagline" id="typewriter-text">THINK ELECTRIC. THINK FUTURE. BE THE CHANGE!</p>
+          <span class="hero-typewriter-cursor"></span>
+        </div>
+
+        <p class="hero-brand-sub">POWERING INNOVATION FOR A BETTER TOMORROW</p>
+
+        <!-- Crisp Symposium Highlights (No Essays) -->
+        <div class="hero-highlights-chips">
+          <span class="chip-item"><i data-lucide="zap"></i> 6 Flagship Events</span>
+          <span class="chip-item"><i data-lucide="trophy"></i> Grand Championship Trophy</span>
+          <span class="chip-item"><i data-lucide="award"></i> Official Anna University Certificates</span>
+          <span class="chip-item"><i data-lucide="users"></i> Open to All Departments</span>
+          <span class="chip-item"><i data-lucide="utensils"></i> Deluxe Food &amp; Welcome Kit</span>
+        </div>
+
+        <!-- CTA Buttons with Aura Dual Button & Share -->
+        <div class="hero-cta-group">
+          <div class="aura">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn" title="Register on Official Google Form">
+              <i data-lucide="zap"></i>
+              <span>Register Now (Rs. 150)</span>
+            </a>
+          </div>
+
+          <a href="#rulebook" class="btn-secondary-action">
+            <i data-lucide="book-open"></i>
+            <span>Official Rulebook</span>
+          </a>
+
+          <button class="btn-secondary-action" id="add-calendar-btn">
+            <i data-lucide="calendar-plus"></i>
+            <span>Add to Calendar</span>
+          </button>
+
+          <!-- Interactive Share Button with Tooltip -->
+          <div class="tooltip-container" id="hero-share-container">
+            <button class="button-content" id="site-share-btn" type="button" aria-label="Share POWERNEX 26">
+              <span class="text">Share</span>
+              <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+              </svg>
+            </button>
+            <div class="tooltip-content">
+              <div class="social-icons">
+                <a href="https://twitter.com/intent/tweet?text=Join%20POWERNEX%2026%20-%20National%20Level%20EEE%20Technical%20Symposium%20at%20University%20College%20of%20Engineering%20Ariyalur!%20Register:%20https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform" target="_blank" rel="noopener noreferrer" class="social-icon twitter" title="Share on Twitter / X">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=Join%20POWERNEX%2026%20National%20Level%20EEE%20Technical%20Symposium%20at%20Anna%20University%20Ariyalur!%20Register%20at:%20https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp" title="Share on WhatsApp">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="Share on LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <button type="button" class="social-icon copy-link-btn" id="copy-site-link-btn" title="Copy Website Link">
+                  <i data-lucide="link" style="width: 18px; height: 18px; color: #fff;"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4-Card Key Info Bar -->
+        <div class="hero-key-info-bar">
+          
+          <div class="info-pill-card">
+            <div class="info-card-icon">
+              <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div class="info-card-data">
+              <span class="info-card-label">EVENT DATE</span>
+              <span class="info-card-val">08 October 2026</span>
+            </div>
+          </div>
+
+          <div class="info-pill-card">
+            <div class="info-card-icon amber">
+              <i data-lucide="clock" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div class="info-card-data">
+              <span class="info-card-label">TIMING</span>
+              <span class="info-card-val">8:30 AM - 5:00 PM</span>
+            </div>
+          </div>
+
+          <div class="info-pill-card">
+            <div class="info-card-icon green">
+              <i data-lucide="map-pin" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div class="info-card-data">
+              <span class="info-card-label">CAMPUS VENUE</span>
+              <span class="info-card-val">Auditorium, UCE Ariyalur</span>
+            </div>
+          </div>
+
+          <div class="info-pill-card">
+            <div class="info-card-icon gold">
+              <i data-lucide="tag" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div class="info-card-data">
+              <span class="info-card-label">REGISTRATION FEE</span>
+              <span class="info-card-val text-volt">Rs. 150 / Person</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. DAISYUI COUNTDOWN TIMER
+         ==================================================================== -->
+    <section class="section-fade-in section-container countdown-section">
+      <div class="countdown-box-wrapper">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="clock" style="width: 12px; height: 12px; vertical-align: middle;"></i> SYMPOSIUM COUNTDOWN
+        </span>
+        <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 4px;">Time Remaining Until Inauguration</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">
+          Online Registration Deadline: 07 October 2026, 6:00 PM • On-Spot: 08 October 2026, 8:30 AM
+        </p>
+
+        <!-- DaisyUI Countdown Component -->
+        <div class="countdown-grid-daisy">
+          <div class="countdown-unit-col">
+            <span class="countdown font-mono">
+              <span id="cd-days" style="--value:15;" aria-live="polite" aria-label="15">15</span>
+            </span>
+            <span class="countdown-unit-label">days</span>
+          </div>
+          <div class="countdown-unit-col">
+            <span class="countdown font-mono">
+              <span id="cd-hours" style="--value:10;" aria-live="polite" aria-label="10">10</span>
+            </span>
+            <span class="countdown-unit-label">hours</span>
+          </div>
+          <div class="countdown-unit-col">
+            <span class="countdown font-mono">
+              <span id="cd-min" style="--value:24;" aria-live="polite" aria-label="24">24</span>
+            </span>
+            <span class="countdown-unit-label">min</span>
+          </div>
+          <div class="countdown-unit-col">
+            <span class="countdown font-mono">
+              <span id="cd-sec" style="--value:59;" aria-live="polite" aria-label="59">59</span>
+            </span>
+            <span class="countdown-unit-label">sec</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <span style="font-size: 0.85rem; color: var(--volt-amber); font-weight: 600;">
+            Rs. 150 flat fee covers all 6 events, welcome kit, personalized ID card, lunch, refreshments &amp; certificates.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. ABOUT POWERNEX 26 & INSTITUTION SECTION
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="about">
+      <div style="text-align: center; margin-bottom: 44px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="info" style="width: 12px; height: 12px; vertical-align: middle;"></i> ABOUT THE SYMPOSIUM
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 12px;">
+          Engineered for <span class="text-gradient-cyan">Excellence</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+          Organized with pride by the Department of Electrical and Electronics Engineering, University College of Engineering, Ariyalur.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        
+        <div class="event-card" style="padding: 30px;">
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="cpu" class="text-cyan"></i> The POWERNEX 26 Vision
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.92rem; margin-bottom: 16px;">
+            POWERNEX 26 is the annual national level technical symposium designed to challenge, inspire, and elevate engineering students from all technical disciplines across India. Built on the core ethos of electrical innovation, practical circuit debugging, competitive teamwork, and rapid problem-solving, this one-day symposium creates an arena where classroom theory transforms into real-world engineering mastery.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.92rem;">
+            Hosted at the sprawling campus of <strong>University College of Engineering, Ariyalur</strong> (A Constituent College of Anna University, Chennai), POWERNEX 26 welcomes students from <strong>all engineering departments</strong> to compete on an equal footing.
+          </p>
+        </div>
+
+        <div class="event-card" style="padding: 30px;">
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="shield-check" class="text-volt"></i> Key Highlights
+          </h3>
+          <ul class="rule-bullet-list" style="margin-bottom: 24px;">
+            <li><strong>All Departments Eligible:</strong> Students from all engineering disciplines are warmly invited. Formal EEE background is not required.</li>
+            <li><strong>Anna University Certificates:</strong> Official certificates of participation awarded to all registered attendees.</li>
+            <li><strong>No Hidden Costs:</strong> Flat Rs. 150 covers all 6 events, welcome kit, ID badge, hot lunch, and refreshments.</li>
+            <li><strong>Overall Championship Trophy:</strong> Awarded to the visiting college securing the highest aggregate points across events.</li>
+          </ul>
+
+          <div style="background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 12px; padding: 14px; display: flex; align-items: center; gap: 12px;">
+            <i data-lucide="trophy" class="text-cyan" style="width: 28px; height: 28px; flex-shrink: 0;"></i>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+              <strong style="color: #fff;">Championship Cup:</strong> 1st place earns 10 pts, 2nd earns 7 pts, 3rd earns 5 pts for your college leaderboard!
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. EEE INNOVATION THEMES & TRACKS
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="tracks">
+      <div style="text-align: center; margin-bottom: 44px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="layers" style="width: 12px; height: 12px; vertical-align: middle;"></i> EEE RESEARCH TRACKS
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 12px;">
+          Frontier <span class="text-gradient-cyan">Electrical Themes</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+          Specialized electrical, energy, and electronics engineering domains for research presentations.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        
+        <div class="event-card" style="padding: 24px;">
+          <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--cyan); margin-bottom: 14px;">
+            <i data-lucide="sun"></i>
+          </div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Renewable Energy &amp; Smart Grids</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">Solar PV integration, microgrids, battery energy storage systems (BESS), and intelligent power distribution networks.</p>
+        </div>
+
+        <div class="event-card" style="padding: 24px;">
+          <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.2); display: flex; align-items: center; justify-content: center; color: var(--volt-amber); margin-bottom: 14px;">
+            <i data-lucide="zap"></i>
+          </div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px;">EV Powertrains &amp; Power Electronics</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">Electric vehicle drivetrains, battery management systems (BMS), high-efficiency SiC/GaN inverters, and fast charging.</p>
+        </div>
+
+        <div class="event-card" style="padding: 24px;">
+          <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; color: var(--emerald); margin-bottom: 14px;">
+            <i data-lucide="cpu"></i>
+          </div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Industrial Automation &amp; PLC</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">SCADA systems, industrial sensors, relay logic, motor drives, telemetry, and automated industrial electrical panels.</p>
+        </div>
+
+        <div class="event-card" style="padding: 24px;">
+          <div style="width: 42px; height: 42px; border-radius: 10px; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); display: flex; align-items: center; justify-content: center; color: #60a5fa; margin-bottom: 14px;">
+            <i data-lucide="activity"></i>
+          </div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px;">High Voltage &amp; Power Systems</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">Switchgear protection, transmission line fault localization, digital relays, and electrical machine condition monitoring.</p>
+        </div>
+
+      </div>
+    
+        <!-- Interactive High-Voltage 3-Phase Circuit Breaker Console -->
+        <div class="high-voltage-breaker-console">
+          <div class="breaker-header">
+            <div class="breaker-title-group">
+              <span class="rating-plate-badge">RATED: 415V / 63A AC</span>
+              <h3 class="breaker-main-heading">HIGH VOLTAGE DIAGNOSTIC BUSBAR CONSOLE</h3>
+            </div>
+            <div class="breaker-status-pill" id="grid-status-badge">
+              <span class="breaker-led-dot green" id="breaker-led"></span>
+              <span id="breaker-status-text">FEEDER ONLINE</span>
+            </div>
+          </div>
+
+          <div class="breaker-metrics-grid">
+            <div class="metric-meter">
+              <span class="meter-label">BUSBAR VOLTAGE</span>
+              <span class="meter-val" id="meter-voltage">415.2 V</span>
+              <span class="meter-sub">RMS Phase-to-Phase</span>
+            </div>
+            <div class="metric-meter">
+              <span class="meter-label">LOAD CURRENT</span>
+              <span class="meter-val" id="meter-current">18.4 A</span>
+              <span class="meter-sub">Active Line Draw</span>
+            </div>
+            <div class="metric-meter">
+              <span class="meter-label">FREQUENCY</span>
+              <span class="meter-val" id="meter-freq">50.02 Hz</span>
+              <span class="meter-sub">Synchronized Grid</span>
+            </div>
+          </div>
+
+          <div class="breaker-action-row">
+            <p class="breaker-instruction-text">
+              Simulate an industrial feeder trip &amp; emergency manual reset. Test protective relay coordination.
+            </p>
+            <button type="button" class="btn-breaker-trip" id="breaker-trip-btn">
+              <i data-lucide="power"></i>
+              <span id="breaker-btn-label">TRIP CIRCUIT BREAKER</span>
+            </button>
+          </div>
+        </div>
+
+    </section>
+
+    <!-- ====================================================================
+         6. TECHNICAL ARENA (3 EVENTS + UPDATED BLOCK TIMINGS)
+         ==================================================================== -->
+    
+    <!-- ====================================================================
+         UNIFIED EVENTS ARENA WITH TECHNICAL & NON-TECHNICAL TABS & 3D FLIP CARDS
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="events" style="position: relative;">
+      <!-- Anchors for direct links and smooth scrollspy -->
+      <span id="technical" style="position: absolute; top: -85px;"></span>
+      <span id="non-technical" style="position: absolute; top: -85px;"></span>
+
+      <div style="text-align: center; margin-bottom: 28px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="zap" style="width: 12px; height: 12px; vertical-align: middle;"></i> 6 FLAGSHIP COMPETITIONS
+        </span>
+        <h2 style="font-size: clamp(1.9rem, 3.8vw, 2.7rem); font-weight: 800; color: #fff; margin-bottom: 10px;">
+          Symposium <span class="text-gradient-cyan">Events Arena</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.92rem;">
+          Select a track below. Hover or tap any 3D card to flip for rules, guidelines, and registration.
+        </p>
+
+        <!-- INTERACTIVE EVENTS TRACK TABS -->
+        <div class="events-track-tabs" role="tablist" aria-label="Symposium Event Tracks">
+          <button class="event-track-tab-btn active" id="tab-btn-technical" data-track="technical" role="tab" aria-selected="true" aria-controls="panel-technical">
+            <i data-lucide="cpu" style="width: 16px; height: 16px;"></i>
+            <span>Technical Events</span>
+            <span class="track-count-badge">3</span>
+          </button>
+          <button class="event-track-tab-btn" id="tab-btn-nontech" data-track="non-technical" role="tab" aria-selected="false" aria-controls="panel-non-technical">
+            <i data-lucide="gamepad-2" style="width: 16px; height: 16px;"></i>
+            <span>Non-Technical Events</span>
+            <span class="track-count-badge">3</span>
+          </button>
+          <button class="event-track-tab-btn" id="tab-btn-all" data-track="all" role="tab" aria-selected="false">
+            <i data-lucide="layers" style="width: 16px; height: 16px;"></i>
+            <span>All Events</span>
+            <span class="track-count-badge">6</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TECHNICAL EVENTS TAB PANEL -->
+      <div class="events-tab-panel active" id="panel-technical" role="tabpanel" aria-labelledby="tab-btn-technical">
+        <div class="arena-grid">
+          
+          <div class="flip-card" tabindex="0" role="button" aria-label="PAPER PRESENTATION 3D Flip Card">
+            <div class="flip-card-inner">
+              
+              <!-- FRONT OF CARD (Title, Participants Limit, IC Chip & Contactless Icons) -->
+              <div class="flip-card-front">
+                <div class="card-front-top">
+                  <span class="card-track-tag">TECHNICAL TRACK</span>
+                  <span class="card-time-tag">10:30 AM - 12:45 PM</span>
+                </div>
+                
+                <div class="card-chip-container">
+                  <svg version="1.1" class="card-chip-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOYfEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSWekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GSe0WYfES7ml2Xe0WXeESUeEOWfEWcf0eWfESXe0SXfEWYekSVeUKXfEWxklawkVaZfEWWekOUekOWekSYfESZe0eXekWYfEWZe0WZe0eVeUSWeETAnmDCoWLJpmbxy4P1zoXwyoLIpWbjvXjivnjgu3bfu3beunWvkFWxkle/nmDivXiWekTnwXvkwHrCoWOuj1SXe0TEo2TDo2PlwHratnKZfEbQrWvPrWuafUfbt3PJp2agg0v0zYX0zYSfgkvKp2frxX7mwHrlv3rsxn/yzIPgvHfduXWXe0XuyIDzzISsjVO1lVm0lFitjVPzzIPqxX7duna0lVncuHTLqGjvyIHeuXXxyYGZfUayk1iyk1e2lln1zYTEomO2llrbtnOafkjFpGSbfkfZtXLhvHfkv3nqxH3mwXujhU3KqWizlFilh06khk2fgkqsjlPHpWXJp2erjVOhg0yWe0SliE+XekShhEvAn2D///+gx8TWAAAARnRSTlMACVCTtsRl7Pv7+vxkBab7pZv5+ZlL/UnU/f3SJCVe+Fx39naA9/75XSMh0/3SSkia+pil/KRj7Pr662JPkrbP7OLQ0JFOijI1MwAAAAFiS0dEorDd34wAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IDx2lsiuJAAACLElEQVRIx2NgGAXkAUYmZhZWPICFmYkRVQcbOwenmzse4MbFzc6DpIGXj8PD04sA8PbhF+CFaxEU8iWkAQT8hEVgOkTF/InR4eUVICYO1SIhCRMLDAoKDvFDVhUaEhwUFAjjSUlDdMiEhcOEItzdI6OiYxA6YqODIt3dI2DcuDBZsBY5eVTr4xMSYcyk5BRUOXkFsBZFJTQnp6alQxgZmVloUkrKYC0qqmji2WE5EEZuWB6alKoKdi35YQUQRkFYPpFaCouKIYzi6EDitJSUlsGY5RWVRGjJLyxNy4ZxqtIqqvOxaVELQwZFZdkIJVU1RSiSalAt6rUwUBdWG1CP6pT6gNqwOrgCdQyHNYR5YQFhDXj8MiK1IAeyN6aORiyBjByVTc0FqBoKWpqwRCVSgilOaY2OaUPw29qjOzqLvTAchpos47u6EZyYnngUSRwpuTe6D+6qaFQdOPNLRzOM1dzhRZyW+CZouHk3dWLXglFcFIflQhj9YWjJGlZcaKAVSvjyPrRQ0oQVKDAQHlYFYUwIm4gqExGmBSkutaVQJeomwViTJqPK6OhCy2Q9sQBk8cY0DxjTJw0lAQWK6cOKfgNhpKK7ZMpUeF3jPa28BCETamiEqJKM+X1gxvWXpoUjVIVPnwErw71nmpgiqiQGBjNzbgs3j1nus+fMndc+Cwm0T52/oNR9lsdCS24ra7Tq1cbWjpXV3sHRCb1idXZ0sGdltXNxRateRwHRAACYHutzk/2I5QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg==" />
+                  </svg>
+                  <svg version="1.1" class="card-contactless-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQflGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/FfPeMM/MLt99/NuHdfPd888/57jn3nvsQWWj/VcMlvMMd5KRTogqx9iCdIjUUmcGR9ImUYowyP3xNGQJoRLVaZ2DaZf8kyjEJALhI28ELioyiwC+Rc3QZwRYyO/DH51hQgWm6DMIh10KmD4u9O16K49itVoPOAmcGAWWOepXIRScAoJZ2Frro8oN+EyTT6lWkkg6msZfMSR35QTJmjU0g15tIGSJ08ZZMJkHkHpNZgSkyXosS13TkJpZ62mPIJvOSzC1bp8vRhhCakEk7G9/o4gmZdbpsTcKu0m63FbnBP9Qrc15zbkbemfgNDtEOI8NO5L5O9VYyRYgmJayZ9nPaxZrSjW4+F6Uw9yQqIiIZwhp2huQTf6OIvCZyGM6gDJBZbyXifJXr7FZjGXsdxADxI7HUJFB6iWvsIhFpkoiIiGTJfjJfiCuJg2ZEspq9EHGVpYgzKqwJqSAOEwuJQ/pxPvE3cYltJCLdxBLiSKKIE5HxJKcTRNeadxfhDiuYw44zVs1dxKwRk/uCxIiQkxKBsSctRVAge9g1E15EHE6yRUaJecRxcWlukdRIbGFOSZCMWQA/iWauIP3slREHXPyliqBcrrD71AmzZ+rD1Mt2Yr8TZc/UR4/YtFnbijnHi3UrN9vKQ9rPaJf867ZiaqDB+czeKYmd3pNa6fuI75MiC0uXXSR5aEMf7s7a6r/PudVXkjFb/SsrCRfROk0Fx6+H1i9kkTGn/E1vEmt1m089fh+RKdQ5O+xNJPUicUIjO0Dm7HwvErEr0YxeibL1StSh37STafE4I7zcBdRq1DiOkdmlTJVnkQTBTS7X1FYyvfO4piaInKbDCDaT2anLudYXCRFsQBgAcIF2/Okwgvz5+Z4tsw118dzruvIvjhTB+HOuWy8UvovEH6beitBKxDyxm9MmISKCWrzB7bSlaqGlsf0FC0gMjzTg6GgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDItMTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1NiswMDowMIXeN6gAAAAASUVORK5CYII=" />
+                  </svg>
+                </div>
+
+                <div class="card-title-wrap">
+                  <h3 class="card-event-heading">PAPER PRESENTATION</h3>
+                </div>
+
+                <div class="card-front-specs">
+                  <div class="spec-row">
+                    <i data-lucide="users" class="spec-icon"></i>
+                    <span><strong>Participants:</strong> 2-3 Members / Team</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="map-pin" class="spec-icon"></i>
+                    <span><strong>Venue:</strong> Seminar Hall A</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="clock" class="spec-icon"></i>
+                    <span><strong>Slot:</strong> 10:30 AM - 12:45 PM</span>
+                  </div>
+                </div>
+
+                <div class="card-front-flip-hint">
+                  <span class="hint-text">Hover or Tap for Rules &amp; Details</span>
+                  <i data-lucide="rotate-cw" class="hint-rotate-icon"></i>
+                </div>
+              </div>
+
+              <!-- BACK OF CARD (Magnetic Strip, Code EEE-26, Rules, Register Button) -->
+              <div class="flip-card-back">
+                <div class="strip"></div>
+                <div class="mstrip"></div>
+                <div class="sstrip"><p class="code">POWERNEX-26</p></div>
+
+                <div class="card-back-inner-content">
+                  <h4 class="card-back-heading">PAPER PRESENTATION</h4>
+                  <p class="card-back-summary">Showcase innovations in renewable energy, smart grids, EV powertrains, power electronics, or embedded systems.</p>
+
+                  <div class="card-back-rules-container">
+                    <span class="rules-header-label">Event Guidelines:</span>
+                    <ul class="rules-list-items">
+                      <li>Strictly 10-12 PPT slides.</li><li>7 mins presentation + 3 mins jury Q&amp;A.</li><li>Screening based on submitted abstract.</li><li>Evaluated on technical depth &amp; practical feasibility.</li>
+                    </ul>
+                  </div>
+
+                  <div class="card-back-action-wrap">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn-flip-register">
+                      <span>Register for Event</span>
+                      <i data-lucide="arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" role="button" aria-label="TECHMAIN 3D Flip Card">
+            <div class="flip-card-inner">
+              
+              <!-- FRONT OF CARD (Title, Participants Limit, IC Chip & Contactless Icons) -->
+              <div class="flip-card-front">
+                <div class="card-front-top">
+                  <span class="card-track-tag">TECHNICAL TRACK</span>
+                  <span class="card-time-tag">10:30 AM - 12:45 PM</span>
+                </div>
+                
+                <div class="card-chip-container">
+                  <svg version="1.1" class="card-chip-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOYfEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSWekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GSe0WYfES7ml2Xe0WXeESUeEOWfEWcf0eWfESXe0SXfEWYekSVeUKXfEWxklawkVaZfEWWekOUekOWekSYfESZe0eXekWYfEWZe0WZe0eVeUSWeETAnmDCoWLJpmbxy4P1zoXwyoLIpWbjvXjivnjgu3bfu3beunWvkFWxkle/nmDivXiWekTnwXvkwHrCoWOuj1SXe0TEo2TDo2PlwHratnKZfEbQrWvPrWuafUfbt3PJp2agg0v0zYX0zYSfgkvKp2frxX7mwHrlv3rsxn/yzIPgvHfduXWXe0XuyIDzzISsjVO1lVm0lFitjVPzzIPqxX7duna0lVncuHTLqGjvyIHeuXXxyYGZfUayk1iyk1e2lln1zYTEomO2llrbtnOafkjFpGSbfkfZtXLhvHfkv3nqxH3mwXujhU3KqWizlFilh06khk2fgkqsjlPHpWXJp2erjVOhg0yWe0SliE+XekShhEvAn2D///+gx8TWAAAARnRSTlMACVCTtsRl7Pv7+vxkBab7pZv5+ZlL/UnU/f3SJCVe+Fx39naA9/75XSMh0/3SSkia+pil/KRj7Pr662JPkrbP7OLQ0JFOijI1MwAAAAFiS0dEorDd34wAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IDx2lsiuJAAACLElEQVRIx2NgGAXkAUYmZhZWPICFmYkRVQcbOwenmzse4MbFzc6DpIGXj8PD04sA8PbhF+CFaxEU8iWkAQT8hEVgOkTF/InR4eUVICYO1SIhCRMLDAoKDvFDVhUaEhwUFAjjSUlDdMiEhcOEItzdI6OiYxA6YqODIt3dI2DcuDBZsBY5eVTr4xMSYcyk5BRUOXkFsBZFJTQnp6alQxgZmVloUkrKYC0qqmji2WE5EEZuWB6alKoKdi35YQUQRkFYPpFaCouKIYzi6EDitJSUlsGY5RWVRGjJLyxNy4ZxqtIqqvOxaVELQwZFZdkIJVU1RSiSalAt6rUwUBdWG1CP6pT6gNqwOrgCdQyHNYR5YQFhDXj8MiK1IAeyN6aORiyBjByVTc0FqBoKWpqwRCVSgilOaY2OaUPw29qjOzqLvTAchpos47u6EZyYnngUSRwpuTe6D+6qaFQdOPNLRzOM1dzhRZyW+CZouHk3dWLXglFcFIflQhj9YWjJGlZcaKAVSvjyPrRQ0oQVKDAQHlYFYUwIm4gqExGmBSkutaVQJeomwViTJqPK6OhCy2Q9sQBk8cY0DxjTJw0lAQWK6cOKfgNhpKK7ZMpUeF3jPa28BCETamiEqJKM+X1gxvWXpoUjVIVPnwErw71nmpgiqiQGBjNzbgs3j1nus+fMndc+Cwm0T52/oNR9lsdCS24ra7Tq1cbWjpXV3sHRCb1idXZ0sGdltXNxRateRwHRAACYHutzk/2I5QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg==" />
+                  </svg>
+                  <svg version="1.1" class="card-contactless-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQflGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/FfPeMM/MLt99/NuHdfPd888/57jn3nvsQWWj/VcMlvMMd5KRTogqx9iCdIjUUmcGR9ImUYowyP3xNGQJoRLVaZ2DaZf8kyjEJALhI28ELioyiwC+Rc3QZwRYyO/DH51hQgWm6DMIh10KmD4u9O16K49itVoPOAmcGAWWOepXIRScAoJZ2Frro8oN+EyTT6lWkkg6msZfMSR35QTJmjU0g15tIGSJ08ZZMJkHkHpNZgSkyXosS13TkJpZ62mPIJvOSzC1bp8vRhhCakEk7G9/o4gmZdbpsTcKu0m63FbnBP9Qrc15zbkbemfgNDtEOI8NO5L5O9VYyRYgmJayZ9nPaxZrSjW4+F6Uw9yQqIiIZwhp2huQTf6OIvCZyGM6gDJBZbyXifJXr7FZjGXsdxADxI7HUJFB6iWvsIhFpkoiIiGTJfjJfiCuJg2ZEspq9EHGVpYgzKqwJqSAOEwuJQ/pxPvE3cYltJCLdxBLiSKKIE5HxJKcTRNeadxfhDiuYw44zVs1dxKwRk/uCxIiQkxKBsSctRVAge9g1E15EHE6yRUaJecRxcWlukdRIbGFOSZCMWQA/iWauIP3slREHXPyliqBcrrD71AmzZ+rD1Mt2Yr8TZc/UR4/YtFnbijnHi3UrN9vKQ9rPaJf867ZiaqDB+czeKYmd3pNa6fuI75MiC0uXXSR5aEMf7s7a6r/PudVXkjFb/SsrCRfROk0Fx6+H1i9kkTGn/E1vEmt1m089fh+RKdQ5O+xNJPUicUIjO0Dm7HwvErEr0YxeibL1StSh37STafE4I7zcBdRq1DiOkdmlTJVnkQTBTS7X1FYyvfO4piaInKbDCDaT2anLudYXCRFsQBgAcIF2/Okwgvz5+Z4tsw118dzruvIvjhTB+HOuWy8UvovEH6beitBKxDyxm9MmISKCWrzB7bSlaqGlsf0FC0gMjzTg6GgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDItMTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1NiswMDowMIXeN6gAAAAASUVORK5CYII=" />
+                  </svg>
+                </div>
+
+                <div class="card-title-wrap">
+                  <h3 class="card-event-heading">TECHMAIN</h3>
+                </div>
+
+                <div class="card-front-specs">
+                  <div class="spec-row">
+                    <i data-lucide="users" class="spec-icon"></i>
+                    <span><strong>Participants:</strong> Individual Participant</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="map-pin" class="spec-icon"></i>
+                    <span><strong>Venue:</strong> EEE Computing Lab</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="clock" class="spec-icon"></i>
+                    <span><strong>Slot:</strong> 10:30 AM - 12:45 PM</span>
+                  </div>
+                </div>
+
+                <div class="card-front-flip-hint">
+                  <span class="hint-text">Hover or Tap for Rules &amp; Details</span>
+                  <i data-lucide="rotate-cw" class="hint-rotate-icon"></i>
+                </div>
+              </div>
+
+              <!-- BACK OF CARD (Magnetic Strip, Code EEE-26, Rules, Register Button) -->
+              <div class="flip-card-back">
+                <div class="strip"></div>
+                <div class="mstrip"></div>
+                <div class="sstrip"><p class="code">POWERNEX-26</p></div>
+
+                <div class="card-back-inner-content">
+                  <h4 class="card-back-heading">TECHMAIN</h4>
+                  <p class="card-back-summary">The ultimate multi-stage technical challenge testing electrical core concepts, logical deduction, and live problem solving.</p>
+
+                  <div class="card-back-rules-container">
+                    <span class="rules-header-label">Event Guidelines:</span>
+                    <ul class="rules-list-items">
+                      <li>Round 1: Rapid 30-min Technical Aptitude Screening.</li><li>Round 2: Live Diagnostic Stage on Hardware/Logic.</li><li>Strictly individual event; zero collaboration.</li><li>Ranked purely on speed, accuracy, and engineering logic.</li>
+                    </ul>
+                  </div>
+
+                  <div class="card-back-action-wrap">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn-flip-register">
+                      <span>Register for Event</span>
+                      <i data-lucide="arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" role="button" aria-label="DEBUGGING CIRCUIT 3D Flip Card">
+            <div class="flip-card-inner">
+              
+              <!-- FRONT OF CARD (Title, Participants Limit, IC Chip & Contactless Icons) -->
+              <div class="flip-card-front">
+                <div class="card-front-top">
+                  <span class="card-track-tag">TECHNICAL TRACK</span>
+                  <span class="card-time-tag">Morning &amp; Afternoon Slots</span>
+                </div>
+                
+                <div class="card-chip-container">
+                  <svg version="1.1" class="card-chip-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOYfEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSWekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GSe0WYfES7ml2Xe0WXeESUeEOWfEWcf0eWfESXe0SXfEWYekSVeUKXfEWxklawkVaZfEWWekOUekOWekSYfESZe0eXekWYfEWZe0WZe0eVeUSWeETAnmDCoWLJpmbxy4P1zoXwyoLIpWbjvXjivnjgu3bfu3beunWvkFWxkle/nmDivXiWekTnwXvkwHrCoWOuj1SXe0TEo2TDo2PlwHratnKZfEbQrWvPrWuafUfbt3PJp2agg0v0zYX0zYSfgkvKp2frxX7mwHrlv3rsxn/yzIPgvHfduXWXe0XuyIDzzISsjVO1lVm0lFitjVPzzIPqxX7duna0lVncuHTLqGjvyIHeuXXxyYGZfUayk1iyk1e2lln1zYTEomO2llrbtnOafkjFpGSbfkfZtXLhvHfkv3nqxH3mwXujhU3KqWizlFilh06khk2fgkqsjlPHpWXJp2erjVOhg0yWe0SliE+XekShhEvAn2D///+gx8TWAAAARnRSTlMACVCTtsRl7Pv7+vxkBab7pZv5+ZlL/UnU/f3SJCVe+Fx39naA9/75XSMh0/3SSkia+pil/KRj7Pr662JPkrbP7OLQ0JFOijI1MwAAAAFiS0dEorDd34wAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IDx2lsiuJAAACLElEQVRIx2NgGAXkAUYmZhZWPICFmYkRVQcbOwenmzse4MbFzc6DpIGXj8PD04sA8PbhF+CFaxEU8iWkAQT8hEVgOkTF/InR4eUVICYO1SIhCRMLDAoKDvFDVhUaEhwUFAjjSUlDdMiEhcOEItzdI6OiYxA6YqODIt3dI2DcuDBZsBY5eVTr4xMSYcyk5BRUOXkFsBZFJTQnp6alQxgZmVloUkrKYC0qqmji2WE5EEZuWB6alKoKdi35YQUQRkFYPpFaCouKIYzi6EDitJSUlsGY5RWVRGjJLyxNy4ZxqtIqqvOxaVELQwZFZdkIJVU1RSiSalAt6rUwUBdWG1CP6pT6gNqwOrgCdQyHNYR5YQFhDXj8MiK1IAeyN6aORiyBjByVTc0FqBoKWpqwRCVSgilOaY2OaUPw29qjOzqLvTAchpos47u6EZyYnngUSRwpuTe6D+6qaFQdOPNLRzOM1dzhRZyW+CZouHk3dWLXglFcFIflQhj9YWjJGlZcaKAVSvjyPrRQ0oQVKDAQHlYFYUwIm4gqExGmBSkutaVQJeomwViTJqPK6OhCy2Q9sQBk8cY0DxjTJw0lAQWK6cOKfgNhpKK7ZMpUeF3jPa28BCETamiEqJKM+X1gxvWXpoUjVIVPnwErw71nmpgiqiQGBjNzbgs3j1nus+fMndc+Cwm0T52/oNR9lsdCS24ra7Tq1cbWjpXV3sHRCb1idXZ0sGdltXNxRateRwHRAACYHutzk/2I5QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg==" />
+                  </svg>
+                  <svg version="1.1" class="card-contactless-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQflGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/FfPeMM/MLt99/NuHdfPd888/57jn3nvsQWWj/VcMlvMMd5KRTogqx9iCdIjUUmcGR9ImUYowyP3xNGQJoRLVaZ2DaZf8kyjEJALhI28ELioyiwC+Rc3QZwRYyO/DH51hQgWm6DMIh10KmD4u9O16K49itVoPOAmcGAWWOepXIRScAoJZ2Frro8oN+EyTT6lWkkg6msZfMSR35QTJmjU0g15tIGSJ08ZZMJkHkHpNZgSkyXosS13TkJpZ62mPIJvOSzC1bp8vRhhCakEk7G9/o4gmZdbpsTcKu0m63FbnBP9Qrc15zbkbemfgNDtEOI8NO5L5O9VYyRYgmJayZ9nPaxZrSjW4+F6Uw9yQqIiIZwhp2huQTf6OIvCZyGM6gDJBZbyXifJXr7FZjGXsdxADxI7HUJFB6iWvsIhFpkoiIiGTJfjJfiCuJg2ZEspq9EHGVpYgzKqwJqSAOEwuJQ/pxPvE3cYltJCLdxBLiSKKIE5HxJKcTRNeadxfhDiuYw44zVs1dxKwRk/uCxIiQkxKBsSctRVAge9g1E15EHE6yRUaJecRxcWlukdRIbGFOSZCMWQA/iWauIP3slREHXPyliqBcrrD71AmzZ+rD1Mt2Yr8TZc/UR4/YtFnbijnHi3UrN9vKQ9rPaJf867ZiaqDB+czeKYmd3pNa6fuI75MiC0uXXSR5aEMf7s7a6r/PudVXkjFb/SsrCRfROk0Fx6+H1i9kkTGn/E1vEmt1m089fh+RKdQ5O+xNJPUicUIjO0Dm7HwvErEr0YxeibL1StSh37STafE4I7zcBdRq1DiOkdmlTJVnkQTBTS7X1FYyvfO4piaInKbDCDaT2anLudYXCRFsQBgAcIF2/Okwgvz5+Z4tsw118dzruvIvjhTB+HOuWy8UvovEH6beitBKxDyxm9MmISKCWrzB7bSlaqGlsf0FC0gMjzTg6GgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDItMTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1NiswMDowMIXeN6gAAAAASUVORK5CYII=" />
+                  </svg>
+                </div>
+
+                <div class="card-title-wrap">
+                  <h3 class="card-event-heading">DEBUGGING CIRCUIT</h3>
+                </div>
+
+                <div class="card-front-specs">
+                  <div class="spec-row">
+                    <i data-lucide="users" class="spec-icon"></i>
+                    <span><strong>Participants:</strong> 2 Members / Team</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="map-pin" class="spec-icon"></i>
+                    <span><strong>Venue:</strong> Power Electronics Lab</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="clock" class="spec-icon"></i>
+                    <span><strong>Slot:</strong> Morning &amp; Afternoon Slots</span>
+                  </div>
+                </div>
+
+                <div class="card-front-flip-hint">
+                  <span class="hint-text">Hover or Tap for Rules &amp; Details</span>
+                  <i data-lucide="rotate-cw" class="hint-rotate-icon"></i>
+                </div>
+              </div>
+
+              <!-- BACK OF CARD (Magnetic Strip, Code EEE-26, Rules, Register Button) -->
+              <div class="flip-card-back">
+                <div class="strip"></div>
+                <div class="mstrip"></div>
+                <div class="sstrip"><p class="code">POWERNEX-26</p></div>
+
+                <div class="card-back-inner-content">
+                  <h4 class="card-back-heading">DEBUGGING CIRCUIT</h4>
+                  <p class="card-back-summary">Hands-on diagnostic duel with real physical hardware: trace wiring faults, troubleshoot blown components, and restore clean DC circuit operation.</p>
+
+                  <div class="card-back-rules-container">
+                    <span class="rules-header-label">Event Guidelines:</span>
+                    <ul class="rules-list-items">
+                      <li>Dual-slot availability: participate in Morning or Afternoon.</li><li>Hardware, multimeters, and breadboard kits provided.</li><li>Low-voltage DC testbeds only (safe laboratory standard).</li><li>Fastest accurate circuit restoration takes qualification.</li>
+                    </ul>
+                  </div>
+
+                  <div class="card-back-action-wrap">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn-flip-register">
+                      <span>Register for Event</span>
+                      <i data-lucide="arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NON-TECHNICAL EVENTS TAB PANEL -->
+      <div class="events-tab-panel" id="panel-non-technical" role="tabpanel" aria-labelledby="tab-btn-nontech">
+        <div class="arena-grid">
+          
+          <div class="flip-card" tabindex="0" role="button" aria-label="ROBO RELAY 3D Flip Card">
+            <div class="flip-card-inner">
+              
+              <!-- FRONT OF CARD (Title, Participants Limit, IC Chip & Contactless Icons) -->
+              <div class="flip-card-front">
+                <div class="card-front-top">
+                  <span class="card-track-tag">NON-TECHNICAL TRACK</span>
+                  <span class="card-time-tag">01:45 PM - 03:30 PM</span>
+                </div>
+                
+                <div class="card-chip-container">
+                  <svg version="1.1" class="card-chip-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOYfEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSWekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GSe0WYfES7ml2Xe0WXeESUeEOWfEWcf0eWfESXe0SXfEWYekSVeUKXfEWxklawkVaZfEWWekOUekOWekSYfESZe0eXekWYfEWZe0WZe0eVeUSWeETAnmDCoWLJpmbxy4P1zoXwyoLIpWbjvXjivnjgu3bfu3beunWvkFWxkle/nmDivXiWekTnwXvkwHrCoWOuj1SXe0TEo2TDo2PlwHratnKZfEbQrWvPrWuafUfbt3PJp2agg0v0zYX0zYSfgkvKp2frxX7mwHrlv3rsxn/yzIPgvHfduXWXe0XuyIDzzISsjVO1lVm0lFitjVPzzIPqxX7duna0lVncuHTLqGjvyIHeuXXxyYGZfUayk1iyk1e2lln1zYTEomO2llrbtnOafkjFpGSbfkfZtXLhvHfkv3nqxH3mwXujhU3KqWizlFilh06khk2fgkqsjlPHpWXJp2erjVOhg0yWe0SliE+XekShhEvAn2D///+gx8TWAAAARnRSTlMACVCTtsRl7Pv7+vxkBab7pZv5+ZlL/UnU/f3SJCVe+Fx39naA9/75XSMh0/3SSkia+pil/KRj7Pr662JPkrbP7OLQ0JFOijI1MwAAAAFiS0dEorDd34wAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IDx2lsiuJAAACLElEQVRIx2NgGAXkAUYmZhZWPICFmYkRVQcbOwenmzse4MbFzc6DpIGXj8PD04sA8PbhF+CFaxEU8iWkAQT8hEVgOkTF/InR4eUVICYO1SIhCRMLDAoKDvFDVhUaEhwUFAjjSUlDdMiEhcOEItzdI6OiYxA6YqODIt3dI2DcuDBZsBY5eVTr4xMSYcyk5BRUOXkFsBZFJTQnp6alQxgZmVloUkrKYC0qqmji2WE5EEZuWB6alKoKdi35YQUQRkFYPpFaCouKIYzi6EDitJSUlsGY5RWVRGjJLyxNy4ZxqtIqqvOxaVELQwZFZdkIJVU1RSiSalAt6rUwUBdWG1CP6pT6gNqwOrgCdQyHNYR5YQFhDXj8MiK1IAeyN6aORiyBjByVTc0FqBoKWpqwRCVSgilOaY2OaUPw29qjOzqLvTAchpos47u6EZyYnngUSRwpuTe6D+6qaFQdOPNLRzOM1dzhRZyW+CZouHk3dWLXglFcFIflQhj9YWjJGlZcaKAVSvjyPrRQ0oQVKDAQHlYFYUwIm4gqExGmBSkutaVQJeomwViTJqPK6OhCy2Q9sQBk8cY0DxjTJw0lAQWK6cOKfgNhpKK7ZMpUeF3jPa28BCETamiEqJKM+X1gxvWXpoUjVIVPnwErw71nmpgiqiQGBjNzbgs3j1nus+fMndc+Cwm0T52/oNR9lsdCS24ra7Tq1cbWjpXV3sHRCb1idXZ0sGdltXNxRateRwHRAACYHutzk/2I5QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg==" />
+                  </svg>
+                  <svg version="1.1" class="card-contactless-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQflGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/FfPeMM/MLt99/NuHdfPd888/57jn3nvsQWWj/VcMlvMMd5KRTogqx9iCdIjUUmcGR9ImUYowyP3xNGQJoRLVaZ2DaZf8kyjEJALhI28ELioyiwC+Rc3QZwRYyO/DH51hQgWm6DMIh10KmD4u9O16K49itVoPOAmcGAWWOepXIRScAoJZ2Frro8oN+EyTT6lWkkg6msZfMSR35QTJmjU0g15tIGSJ08ZZMJkHkHpNZgSkyXosS13TkJpZ62mPIJvOSzC1bp8vRhhCakEk7G9/o4gmZdbpsTcKu0m63FbnBP9Qrc15zbkbemfgNDtEOI8NO5L5O9VYyRYgmJayZ9nPaxZrSjW4+F6Uw9yQqIiIZwhp2huQTf6OIvCZyGM6gDJBZbyXifJXr7FZjGXsdxADxI7HUJFB6iWvsIhFpkoiIiGTJfjJfiCuJg2ZEspq9EHGVpYgzKqwJqSAOEwuJQ/pxPvE3cYltJCLdxBLiSKKIE5HxJKcTRNeadxfhDiuYw44zVs1dxKwRk/uCxIiQkxKBsSctRVAge9g1E15EHE6yRUaJecRxcWlukdRIbGFOSZCMWQA/iWauIP3slREHXPyliqBcrrD71AmzZ+rD1Mt2Yr8TZc/UR4/YtFnbijnHi3UrN9vKQ9rPaJf867ZiaqDB+czeKYmd3pNa6fuI75MiC0uXXSR5aEMf7s7a6r/PudVXkjFb/SsrCRfROk0Fx6+H1i9kkTGn/E1vEmt1m089fh+RKdQ5O+xNJPUicUIjO0Dm7HwvErEr0YxeibL1StSh37STafE4I7zcBdRq1DiOkdmlTJVnkQTBTS7X1FYyvfO4piaInKbDCDaT2anLudYXCRFsQBgAcIF2/Okwgvz5+Z4tsw118dzruvIvjhTB+HOuWy8UvovEH6beitBKxDyxm9MmISKCWrzB7bSlaqGlsf0FC0gMjzTg6GgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDItMTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1NiswMDowMIXeN6gAAAAASUVORK5CYII=" />
+                  </svg>
+                </div>
+
+                <div class="card-title-wrap">
+                  <h3 class="card-event-heading">ROBO RELAY</h3>
+                </div>
+
+                <div class="card-front-specs">
+                  <div class="spec-row">
+                    <i data-lucide="users" class="spec-icon"></i>
+                    <span><strong>Participants:</strong> 2-3 Members / Team</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="map-pin" class="spec-icon"></i>
+                    <span><strong>Venue:</strong> Robotics Arena (Ground Floor)</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="clock" class="spec-icon"></i>
+                    <span><strong>Slot:</strong> 01:45 PM - 03:30 PM</span>
+                  </div>
+                </div>
+
+                <div class="card-front-flip-hint">
+                  <span class="hint-text">Hover or Tap for Rules &amp; Details</span>
+                  <i data-lucide="rotate-cw" class="hint-rotate-icon"></i>
+                </div>
+              </div>
+
+              <!-- BACK OF CARD (Magnetic Strip, Code EEE-26, Rules, Register Button) -->
+              <div class="flip-card-back">
+                <div class="strip"></div>
+                <div class="mstrip"></div>
+                <div class="sstrip"><p class="code">POWERNEX-26</p></div>
+
+                <div class="card-back-inner-content">
+                  <h4 class="card-back-heading">ROBO RELAY</h4>
+                  <p class="card-back-summary">High-octane robotic obstacle relay through hairpin chicanes and precision checkpoints tested against live stopwatches.</p>
+
+                  <div class="card-back-rules-container">
+                    <span class="rules-header-label">Event Guidelines:</span>
+                    <ul class="rules-list-items">
+                      <li>Dedicated taped lanes with hairpin turns and chicanes.</li><li>Clean baton/checkpoint handoff between drivers.</li><li>Boundary line breach adds +3s time penalty.</li><li>Fastest clean lap completion claims victory.</li>
+                    </ul>
+                  </div>
+
+                  <div class="card-back-action-wrap">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn-flip-register">
+                      <span>Register for Event</span>
+                      <i data-lucide="arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" role="button" aria-label="MISSION IMPOSSIBLE 3D Flip Card">
+            <div class="flip-card-inner">
+              
+              <!-- FRONT OF CARD (Title, Participants Limit, IC Chip & Contactless Icons) -->
+              <div class="flip-card-front">
+                <div class="card-front-top">
+                  <span class="card-track-tag">NON-TECHNICAL TRACK</span>
+                  <span class="card-time-tag">01:45 PM - 03:30 PM</span>
+                </div>
+                
+                <div class="card-chip-container">
+                  <svg version="1.1" class="card-chip-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOYfEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSWekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GSe0WYfES7ml2Xe0WXeESUeEOWfEWcf0eWfESXe0SXfEWYekSVeUKXfEWxklawkVaZfEWWekOUekOWekSYfESZe0eXekWYfEWZe0WZe0eVeUSWeETAnmDCoWLJpmbxy4P1zoXwyoLIpWbjvXjivnjgu3bfu3beunWvkFWxkle/nmDivXiWekTnwXvkwHrCoWOuj1SXe0TEo2TDo2PlwHratnKZfEbQrWvPrWuafUfbt3PJp2agg0v0zYX0zYSfgkvKp2frxX7mwHrlv3rsxn/yzIPgvHfduXWXe0XuyIDzzISsjVO1lVm0lFitjVPzzIPqxX7duna0lVncuHTLqGjvyIHeuXXxyYGZfUayk1iyk1e2lln1zYTEomO2llrbtnOafkjFpGSbfkfZtXLhvHfkv3nqxH3mwXujhU3KqWizlFilh06khk2fgkqsjlPHpWXJp2erjVOhg0yWe0SliE+XekShhEvAn2D///+gx8TWAAAARnRSTlMACVCTtsRl7Pv7+vxkBab7pZv5+ZlL/UnU/f3SJCVe+Fx39naA9/75XSMh0/3SSkia+pil/KRj7Pr662JPkrbP7OLQ0JFOijI1MwAAAAFiS0dEorDd34wAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IDx2lsiuJAAACLElEQVRIx2NgGAXkAUYmZhZWPICFmYkRVQcbOwenmzse4MbFzc6DpIGXj8PD04sA8PbhF+CFaxEU8iWkAQT8hEVgOkTF/InR4eUVICYO1SIhCRMLDAoKDvFDVhUaEhwUFAjjSUlDdMiEhcOEItzdI6OiYxA6YqODIt3dI2DcuDBZsBY5eVTr4xMSYcyk5BRUOXkFsBZFJTQnp6alQxgZmVloUkrKYC0qqmji2WE5EEZuWB6alKoKdi35YQUQRkFYPpFaCouKIYzi6EDitJSUlsGY5RWVRGjJLyxNy4ZxqtIqqvOxaVELQwZFZdkIJVU1RSiSalAt6rUwUBdWG1CP6pT6gNqwOrgCdQyHNYR5YQFhDXj8MiK1IAeyN6aORiyBjByVTc0FqBoKWpqwRCVSgilOaY2OaUPw29qjOzqLvTAchpos47u6EZyYnngUSRwpuTe6D+6qaFQdOPNLRzOM1dzhRZyW+CZouHk3dWLXglFcFIflQhj9YWjJGlZcaKAVSvjyPrRQ0oQVKDAQHlYFYUwIm4gqExGmBSkutaVQJeomwViTJqPK6OhCy2Q9sQBk8cY0DxjTJw0lAQWK6cOKfgNhpKK7ZMpUeF3jPa28BCETamiEqJKM+X1gxvWXpoUjVIVPnwErw71nmpgiqiQGBjNzbgs3j1nus+fMndc+Cwm0T52/oNR9lsdCS24ra7Tq1cbWjpXV3sHRCb1idXZ0sGdltXNxRateRwHRAACYHutzk/2I5QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg==" />
+                  </svg>
+                  <svg version="1.1" class="card-contactless-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQflGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/FfPeMM/MLt99/NuHdfPd888/57jn3nvsQWWj/VcMlvMMd5KRTogqx9iCdIjUUmcGR9ImUYowyP3xNGQJoRLVaZ2DaZf8kyjEJALhI28ELioyiwC+Rc3QZwRYyO/DH51hQgWm6DMIh10KmD4u9O16K49itVoPOAmcGAWWOepXIRScAoJZ2Frro8oN+EyTT6lWkkg6msZfMSR35QTJmjU0g15tIGSJ08ZZMJkHkHpNZgSkyXosS13TkJpZ62mPIJvOSzC1bp8vRhhCakEk7G9/o4gmZdbpsTcKu0m63FbnBP9Qrc15zbkbemfgNDtEOI8NO5L5O9VYyRYgmJayZ9nPaxZrSjW4+F6Uw9yQqIiIZwhp2huQTf6OIvCZyGM6gDJBZbyXifJXr7FZjGXsdxADxI7HUJFB6iWvsIhFpkoiIiGTJfjJfiCuJg2ZEspq9EHGVpYgzKqwJqSAOEwuJQ/pxPvE3cYltJCLdxBLiSKKIE5HxJKcTRNeadxfhDiuYw44zVs1dxKwRk/uCxIiQkxKBsSctRVAge9g1E15EHE6yRUaJecRxcWlukdRIbGFOSZCMWQA/iWauIP3slREHXPyliqBcrrD71AmzZ+rD1Mt2Yr8TZc/UR4/YtFnbijnHi3UrN9vKQ9rPaJf867ZiaqDB+czeKYmd3pNa6fuI75MiC0uXXSR5aEMf7s7a6r/PudVXkjFb/SsrCRfROk0Fx6+H1i9kkTGn/E1vEmt1m089fh+RKdQ5O+xNJPUicUIjO0Dm7HwvErEr0YxeibL1StSh37STafE4I7zcBdRq1DiOkdmlTJVnkQTBTS7X1FYyvfO4piaInKbDCDaT2anLudYXCRFsQBgAcIF2/Okwgvz5+Z4tsw118dzruvIvjhTB+HOuWy8UvovEH6beitBKxDyxm9MmISKCWrzB7bSlaqGlsf0FC0gMjzTg6GgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDItMTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1NiswMDowMIXeN6gAAAAASUVORK5CYII=" />
+                  </svg>
+                </div>
+
+                <div class="card-title-wrap">
+                  <h3 class="card-event-heading">MISSION IMPOSSIBLE</h3>
+                </div>
+
+                <div class="card-front-specs">
+                  <div class="spec-row">
+                    <i data-lucide="users" class="spec-icon"></i>
+                    <span><strong>Participants:</strong> 3-4 Members / Team</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="map-pin" class="spec-icon"></i>
+                    <span><strong>Venue:</strong> Department Corridors &amp; Rooms</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="clock" class="spec-icon"></i>
+                    <span><strong>Slot:</strong> 01:45 PM - 03:30 PM</span>
+                  </div>
+                </div>
+
+                <div class="card-front-flip-hint">
+                  <span class="hint-text">Hover or Tap for Rules &amp; Details</span>
+                  <i data-lucide="rotate-cw" class="hint-rotate-icon"></i>
+                </div>
+              </div>
+
+              <!-- BACK OF CARD (Magnetic Strip, Code EEE-26, Rules, Register Button) -->
+              <div class="flip-card-back">
+                <div class="strip"></div>
+                <div class="mstrip"></div>
+                <div class="sstrip"><p class="code">POWERNEX-26</p></div>
+
+                <div class="card-back-inner-content">
+                  <h4 class="card-back-heading">MISSION IMPOSSIBLE</h4>
+                  <p class="card-back-summary">Multi-stage tactical campus adventure: decode cryptic clues, crack observation ciphers, and unlock the final terminal challenge.</p>
+
+                  <div class="card-back-rules-container">
+                    <span class="rules-header-label">Event Guidelines:</span>
+                    <ul class="rules-list-items">
+                      <li>5 Checkpoints: Observation, logic word, memory, drawing.</li><li>Checkpoints must be cleared sequentially.</li><li>Final stage: High-pressure cipher decode on laptop.</li><li>Team coordination and rapid deduction are vital.</li>
+                    </ul>
+                  </div>
+
+                  <div class="card-back-action-wrap">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn-flip-register">
+                      <span>Register for Event</span>
+                      <i data-lucide="arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" role="button" aria-label="ELECTRO ENIGMA 3D Flip Card">
+            <div class="flip-card-inner">
+              
+              <!-- FRONT OF CARD (Title, Participants Limit, IC Chip & Contactless Icons) -->
+              <div class="flip-card-front">
+                <div class="card-front-top">
+                  <span class="card-track-tag">NON-TECHNICAL TRACK</span>
+                  <span class="card-time-tag">01:45 PM - 03:30 PM</span>
+                </div>
+                
+                <div class="card-chip-container">
+                  <svg version="1.1" class="card-chip-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOYfEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSWekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GSe0WYfES7ml2Xe0WXeESUeEOWfEWcf0eWfESXe0SXfEWYekSVeUKXfEWxklawkVaZfEWWekOUekOWekSYfESZe0eXekWYfEWZe0WZe0eVeUSWeETAnmDCoWLJpmbxy4P1zoXwyoLIpWbjvXjivnjgu3bfu3beunWvkFWxkle/nmDivXiWekTnwXvkwHrCoWOuj1SXe0TEo2TDo2PlwHratnKZfEbQrWvPrWuafUfbt3PJp2agg0v0zYX0zYSfgkvKp2frxX7mwHrlv3rsxn/yzIPgvHfduXWXe0XuyIDzzISsjVO1lVm0lFitjVPzzIPqxX7duna0lVncuHTLqGjvyIHeuXXxyYGZfUayk1iyk1e2lln1zYTEomO2llrbtnOafkjFpGSbfkfZtXLhvHfkv3nqxH3mwXujhU3KqWizlFilh06khk2fgkqsjlPHpWXJp2erjVOhg0yWe0SliE+XekShhEvAn2D///+gx8TWAAAARnRSTlMACVCTtsRl7Pv7+vxkBab7pZv5+ZlL/UnU/f3SJCVe+Fx39naA9/75XSMh0/3SSkia+pil/KRj7Pr662JPkrbP7OLQ0JFOijI1MwAAAAFiS0dEorDd34wAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IDx2lsiuJAAACLElEQVRIx2NgGAXkAUYmZhZWPICFmYkRVQcbOwenmzse4MbFzc6DpIGXj8PD04sA8PbhF+CFaxEU8iWkAQT8hEVgOkTF/InR4eUVICYO1SIhCRMLDAoKDvFDVhUaEhwUFAjjSUlDdMiEhcOEItzdI6OiYxA6YqODIt3dI2DcuDBZsBY5eVTr4xMSYcyk5BRUOXkFsBZFJTQnp6alQxgZmVloUkrKYC0qqmji2WE5EEZuWB6alKoKdi35YQUQRkFYPpFaCouKIYzi6EDitJSUlsGY5RWVRGjJLyxNy4ZxqtIqqvOxaVELQwZFZdkIJVU1RSiSalAt6rUwUBdWG1CP6pT6gNqwOrgCdQyHNYR5YQFhDXj8MiK1IAeyN6aORiyBjByVTc0FqBoKWpqwRCVSgilOaY2OaUPw29qjOzqLvTAchpos47u6EZyYnngUSRwpuTe6D+6qaFQdOPNLRzOM1dzhRZyW+CZouHk3dWLXglFcFIflQhj9YWjJGlZcaKAVSvjyPrRQ0oQVKDAQHlYFYUwIm4gqExGmBSkutaVQJeomwViTJqPK6OhCy2Q9sQBk8cY0DxjTJw0lAQWK6cOKfgNhpKK7ZMpUeF3jPa28BCETamiEqJKM+X1gxvWXpoUjVIVPnwErw71nmpgiqiQGBjNzbgs3j1nus+fMndc+Cwm0T52/oNR9lsdCS24ra7Tq1cbWjpXV3sHRCb1idXZ0sGdltXNxRateRwHRAACYHutzk/2I5QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAyLTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg==" />
+                  </svg>
+                  <svg version="1.1" class="card-contactless-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50">
+                    <image width="50" height="50" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQflGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/FfPeMM/MLt99/NuHdfPd888/57jn3nvsQWWj/VcMlvMMd5KRTogqx9iCdIjUUmcGR9ImUYowyP3xNGQJoRLVaZ2DaZf8kyjEJALhI28ELioyiwC+Rc3QZwRYyO/DH51hQgWm6DMIh10KmD4u9O16K49itVoPOAmcGAWWOepXIRScAoJZ2Frro8oN+EyTT6lWkkg6msZfMSR35QTJmjU0g15tIGSJ08ZZMJkHkHpNZgSkyXosS13TkJpZ62mPIJvOSzC1bp8vRhhCakEk7G9/o4gmZdbpsTcKu0m63FbnBP9Qrc15zbkbemfgNDtEOI8NO5L5O9VYyRYgmJayZ9nPaxZrSjW4+F6Uw9yQqIiIZwhp2huQTf6OIvCZyGM6gDJBZbyXifJXr7FZjGXsdxADxI7HUJFB6iWvsIhFpkoiIiGTJfjJfiCuJg2ZEspq9EHGVpYgzKqwJqSAOEwuJQ/pxPvE3cYltJCLdxBLiSKKIE5HxJKcTRNeadxfhDiuYw44zVs1dxKwRk/uCxIiQkxKBsSctRVAge9g1E15EHE6yRUaJecRxcWlukdRIbGFOSZCMWQA/iWauIP3slREHXPyliqBcrrD71AmzZ+rD1Mt2Yr8TZc/UR4/YtFnbijnHi3UrN9vKQ9rPaJf867ZiaqDB+czeKYmd3pNa6fuI75MiC0uXXSR5aEMf7s7a6r/PudVXkjFb/SsrCRfROk0Fx6+H1i9kkTGn/E1vEmt1m089fh+RKdQ5O+xNJPUicUIjO0Dm7HwvErEr0YxeibL1StSh37STafE4I7zcBdRq1DiOkdmlTJVnkQTBTS7X1FYyvfO4piaInKbDCDaT2anLudYXCRFsQBgAcIF2/Okwgvz5+Z4tsw118dzruvIvjhTB+HOuWy8UvovEH6beitBKxDyxm9MmISKCWrzB7bSlaqGlsf0FC0gMjzTg6GgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDItMTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1NiswMDowMIXeN6gAAAAASUVORK5CYII=" />
+                  </svg>
+                </div>
+
+                <div class="card-title-wrap">
+                  <h3 class="card-event-heading">ELECTRO ENIGMA</h3>
+                </div>
+
+                <div class="card-front-specs">
+                  <div class="spec-row">
+                    <i data-lucide="users" class="spec-icon"></i>
+                    <span><strong>Participants:</strong> 2-3 Members / Team</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="map-pin" class="spec-icon"></i>
+                    <span><strong>Venue:</strong> Lecture Hall 2</span>
+                  </div>
+                  <div class="spec-row">
+                    <i data-lucide="clock" class="spec-icon"></i>
+                    <span><strong>Slot:</strong> 01:45 PM - 03:30 PM</span>
+                  </div>
+                </div>
+
+                <div class="card-front-flip-hint">
+                  <span class="hint-text">Hover or Tap for Rules &amp; Details</span>
+                  <i data-lucide="rotate-cw" class="hint-rotate-icon"></i>
+                </div>
+              </div>
+
+              <!-- BACK OF CARD (Magnetic Strip, Code EEE-26, Rules, Register Button) -->
+              <div class="flip-card-back">
+                <div class="strip"></div>
+                <div class="mstrip"></div>
+                <div class="sstrip"><p class="code">POWERNEX-26</p></div>
+
+                <div class="card-back-inner-content">
+                  <h4 class="card-back-heading">ELECTRO ENIGMA</h4>
+                  <p class="card-back-summary">High-voltage pop-culture and electrical connections trivia: identify audio/visual clues, movie tech gadgets, and electrical mysteries.</p>
+
+                  <div class="card-back-rules-container">
+                    <span class="rules-header-label">Event Guidelines:</span>
+                    <ul class="rules-list-items">
+                      <li>Round 1: Visual connection riddles and gadget clues.</li><li>Round 2: Sci-fi pop-culture energy trivia.</li><li>10-second buzzer timer per question with zero negative marking.</li><li>Electronic gadgets / phones strictly prohibited.</li>
+                    </ul>
+                  </div>
+
+                  <div class="card-back-action-wrap">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn-flip-register">
+                      <span>Register for Event</span>
+                      <i data-lucide="arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================================
+         8. MASTER RULEBOOK ACCORDION & TABS
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="rulebook">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="book-open" style="width: 12px; height: 12px; vertical-align: middle;"></i> SYMPOSIUM REGULATIONS
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 12px;">
+          Official <span class="text-gradient-cyan">Rulebook</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+          Competition framework, general campus code of conduct, and participation guidelines.
+        </p>
+      </div>
+
+      <!-- Rulebook Tabs Navigation -->
+      <div class="rulebook-nav-tabs">
+        <button class="rule-tab-btn active" data-rule-filter="all">All Protocols</button>
+        <button class="rule-tab-btn" data-rule-filter="general">General Rules</button>
+        <button class="rule-tab-btn" data-rule-filter="technical">Technical Rules</button>
+        <button class="rule-tab-btn" data-rule-filter="nontech">Non-Tech Rules</button>
+        <button class="rule-tab-btn" data-rule-filter="laptop">Laptop Policy</button>
+        <button class="rule-tab-btn" data-rule-filter="clash">Event Scheduling</button>
+      </div>
+
+      <!-- Rulebook Cards Stream -->
+      <div class="rulebook-cards-stream">
+        
+        <div class="rulebook-card" data-rule-category="general">
+          <div class="rule-card-header">
+            <span class="card-badge-pill">GENERAL</span>
+            <h3 class="rule-card-title">1. Identification &amp; College Verification</h3>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+            Every participant must produce a valid <strong>College Identity Card</strong> and registration confirmation at the verification desk upon arrival. Registration fee is <strong>Rs. 150 per participant</strong> and is non-refundable. One ticket covers entry to all 6 events, welcome kit, personalized ID card, lunch, refreshments, and Anna University certificates.
+          </p>
+          <ul class="rule-bullet-list">
+            <li>Strict reporting time: <strong>8:30 AM IST</strong> on 08 October 2026.</li>
+            <li>Verification counters close promptly at <strong>9:30 AM</strong> for the Inaugural Ceremony.</li>
+            <li>Decent formal or semi-formal academic dress code is mandatory.</li>
+          </ul>
+        </div>
+
+        <div class="rulebook-card" data-rule-category="general">
+          <div class="rule-card-header">
+            <span class="card-badge-pill">GENERAL</span>
+            <h3 class="rule-card-title">2. Authority of Judges &amp; Organizing Committee</h3>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+            The evaluation and decisions made by the judges and faculty committee are <strong>final, absolute, and binding</strong>. Any argument, dispute, or disruptive behavior will result in immediate team disqualification without refund.
+          </p>
+          <ul class="rule-bullet-list">
+            <li>Misconduct, tampering with lab apparatus, or cheating leads to immediate expulsion.</li>
+            <li>College property must be respected throughout the campus premises.</li>
+          </ul>
+        </div>
+
+        <div class="rulebook-card" data-rule-category="technical">
+          <div class="rule-card-header">
+            <span class="card-badge-pill">TECHNICAL</span>
+            <h3 class="rule-card-title">3. Technical Events Specifications</h3>
+          </div>
+          <div style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+            <p><strong>Paper Presentation:</strong> 1 to 3 members. Standard IEEE two-column paper format. Total time: 7 mins presentation + 3 mins Q&amp;A. Bring 2 printed hard copies for the panel and slide deck on a USB drive. Plagiarism above 20% is strictly disqualified.</p>
+            <p style="margin-top: 10px;"><strong>TechMain:</strong> Individual event. Round 1: 30 written MCQs in 25 mins. Round 2: 30 oral speed buzzer questions. <strong>Zero negative marking</strong> across all rounds. Mobile phones prohibited.</p>
+            <p style="margin-top: 10px;"><strong>Debugging Circuit:</strong> 2 to 4 members. Safe low-voltage DC breadboard circuits only. <strong>Teams must bring their own laptop &amp; charger</strong> for circuit checks and datasheet references. Internet access is permitted.</p>
+          </div>
+        </div>
+
+        <div class="rulebook-card" data-rule-category="nontech">
+          <div class="rule-card-header">
+            <span class="card-badge-pill">NON-TECH</span>
+            <h3 class="rule-card-title">4. Non-Technical Events Specifications</h3>
+          </div>
+          <div style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+            <p><strong>Robo Relay:</strong> 2 members per team. 1 performer is blindfolded on the obstacle course; 1 member directs exclusively through voice commands. <strong>Strictly no physical contact</strong>. 3-strike boundary penalty rule applies.</p>
+            <p style="margin-top: 10px;"><strong>Mission Impossible:</strong> 2 members per team. 5 sequential clue checkpoints across campus. Maximum 3 attempts per clue. The final checkpoint requires 1 member to decrypt digital clues on laptop.</p>
+            <p style="margin-top: 10px;"><strong>Electro Enigma:</strong> 2 members per team. 3 rounds of visual connection, electrical symbols, and cinema technology trivia. Strict 10-second timer per question. Zero negative marking.</p>
+          </div>
+        </div>
+
+        <div class="rulebook-card" data-rule-category="laptop">
+          <div class="rule-card-header">
+            <span class="card-badge-pill">LAPTOP</span>
+            <h3 class="rule-card-title">5. Laptop &amp; Internet Regulations</h3>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+            Teams participating in <strong>Debugging Circuit</strong> and <strong>Mission Impossible</strong> must bring at least one fully charged laptop with power adapter.
+          </p>
+          <ul class="rule-bullet-list">
+            <li>Internet access via mobile hotspot is permitted during Debugging Circuit for component datasheets.</li>
+            <li>Dedicated power outlets will be accessible in laboratories.</li>
+            <li>Organizers are not responsible for unattended personal devices; keep belongings secure.</li>
+          </ul>
+        </div>
+
+        <div class="rulebook-card" data-rule-category="clash">
+          <div class="rule-card-header">
+            <span class="card-badge-pill">SCHEDULING</span>
+            <h3 class="rule-card-title">6. Morning &amp; Afternoon Block Distribution</h3>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+            Events are structured into two non-clashing blocks so you can participate across categories:
+          </p>
+          <ul class="rule-bullet-list">
+            <li><strong>Morning Block (10:30 AM - 12:45 PM):</strong> Paper Presentation, TechMain &amp; Debugging Circuit</li>
+            <li><strong>Afternoon Block (01:45 PM - 03:30 PM):</strong> Debugging Circuit, Robo Relay, Mission Impossible, Electro Enigma</li>
+            <li>Debugging Circuit is accessible across both sessions to provide maximum scheduling flexibility.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         9. EVENT-DAY SCHEDULE (DAISYUI TIMELINE-SNAP-ICON SPECIFIED LAYOUT)
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="agenda">
+      <div style="text-align: center; margin-bottom: 44px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="calendar" style="width: 12px; height: 12px; vertical-align: middle;"></i> AGENDA &amp; SCHEDULE
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 12px;">
+          Event-Day <span class="text-gradient-cyan">Schedule</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+          Chronological breakdown of POWERNEX 26 on Thursday, 08 October 2026.
+        </p>
+      </div>
+
+      <!-- Specified DaisyUI Timeline Snap-Icon Layout -->
+      <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+        
+        <!-- Item 1: Registration -->
+        <li>
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-start mb-10 md:text-end">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">08:30 AM - 09:30 AM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Reporting &amp; Verification Desk</div>
+            Participant check-in, verification of college identity cards, distribution of official welcome kits, event badges, and food tokens at Reception Foyer.
+          </div>
+          <hr />
+        </li>
+
+        <!-- Item 2: Inauguration -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-end md:mb-10">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">09:30 AM - 10:15 AM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Grand Inaugural Ceremony</div>
+            Lighting of the kuthuvilakku, welcome address by HOD Dr. S. Senthilkumar, presidential remarks, and keynote address at Main Auditorium.
+          </div>
+          <hr />
+        </li>
+
+        <!-- Item 3: Morning Refreshments -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-start mb-10 md:text-end">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">10:15 AM - 10:30 AM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Morning Refreshments &amp; Networking</div>
+            Tea, coffee, and traditional snacks served to all registered attendees and faculty guests.
+          </div>
+          <hr />
+        </li>
+
+        <!-- Item 4: Morning Block (Paper Presentation, TechMain & Debugging Circuit) -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-end md:mb-10">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">10:30 AM - 12:45 PM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Morning Block Competitions</div>
+            Parallel technical sessions: <strong>Paper Presentation</strong> (Seminar Hall A), <strong>TechMain Quiz</strong> (EEE Hall 1), and <strong>Debugging Circuit</strong> (Hardware Lab Session 1).
+          </div>
+          <hr />
+        </li>
+
+        <!-- Item 5: Lunch -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-start mb-10 md:text-end">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">12:45 PM - 01:45 PM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Grand Networking Lunch</div>
+            Wholesome hot lunch meal served to all registered participants in the college dining hall (included in the Rs. 150 registration fee).
+          </div>
+          <hr />
+        </li>
+
+        <!-- Item 6: Afternoon Block -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-end md:mb-10">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">01:45 PM - 03:30 PM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Afternoon Block Competitions</div>
+            Simultaneous showdown: <strong>Debugging Circuit</strong> (Hardware Lab Session 2), <strong>Robo Relay</strong> (Obstacle Court), <strong>Mission Impossible</strong> (Campus Trail), and <strong>Electro Enigma</strong> (Audio-Visual Hall).
+          </div>
+          <hr />
+        </li>
+
+        <!-- Item 7: Tea Break -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-start mb-10 md:text-end">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">03:30 PM - 04:00 PM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Tea Break &amp; Score Compilation</div>
+            Refreshment break while jury members and faculty coordinators consolidate scores for event winners and the Overall Championship Trophy.
+          </div>
+          <hr />
+        </li>
+
+        <!-- Item 8: Valedictory -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-cyan">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-end md:mb-10">
+            <time class="font-mono text-cyan" style="font-size: 0.85rem;">04:00 PM - 05:00 PM</time>
+            <div class="text-lg font-black text-white" style="margin: 2px 0 6px 0;">Valedictory &amp; Prize Distribution</div>
+            Presentation of Cash Prizes (Rs. 500, Rs. 400, Rs. 300 per event), Anna University certificates of merit, and the grand crowning of the POWERNEX 26 Overall Champion Institution.
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- ====================================================================
+         10. PRIZES PODIUM & OVERALL CHAMPIONSHIP TROPHY
+         ==================================================================== -->
+    
+    <section class="section-fade-in" id="prizes">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="section-tag-pill"><i data-lucide="award"></i> AWARDS &amp; RECOGNITION</span>
+          <h2 class="section-title-large">GRAND OVERALL CHAMPIONSHIP</h2>
+          <p class="section-sub-clean">One Prestigious Institutional Championship Awarded at Valedictory</p>
+        </div>
+
+        <div class="championship-showcase-box">
+          <div class="trophy-glow-icon">
+            <i data-lucide="trophy" style="width: 64px; height: 64px; color: var(--gold);"></i>
+          </div>
+          <h3 class="championship-main-title">POWERNEX '26 OVERALL CHAMPIONSHIP TROPHY</h3>
+          <p class="championship-sub-desc">
+            Awarded to the top-performing college institution with the highest cumulative points across all 6 events. Distributed exclusively at the Grand Valedictory Ceremony after all events conclude.
+          </p>
+
+          <div class="perks-horizontal-grid">
+            <div class="perk-box">
+              <i data-lucide="trophy" style="color: var(--gold);"></i>
+              <h4>Championship Trophy</h4>
+              <p>Rotating Institutional Rolling Trophy &amp; Grand Cash Prize.</p>
+            </div>
+            <div class="perk-box">
+              <i data-lucide="file-check" style="color: var(--cyan);"></i>
+              <h4>Merit Certificates</h4>
+              <p>Official Anna University Merit Certificates for event winners.</p>
+            </div>
+            <div class="perk-box">
+              <i data-lucide="award" style="color: var(--emerald);"></i>
+              <h4>Participation Certificates</h4>
+              <p>Issued to every verified attendee with individual serial numbers.</p>
+            </div>
+            <div class="perk-box">
+              <i data-lucide="coffee" style="color: var(--volt-amber);"></i>
+              <h4>Deluxe Food &amp; Kit</h4>
+              <p>Hot lunch, morning refreshments, notepad, folder &amp; pen.</p>
+            </div>
+          </div>
+
+          <div class="valedictory-timing-pill">
+            <i data-lucide="clock"></i>
+            <span>VALEDICTORY &amp; PRIZE CEREMONY: 03:30 PM - 04:30 PM • CAMPUS AUDITORIUM</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         11. PARTICIPANT PERKS: WHAT RS. 150 COVERS
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="perks">
+      <div style="text-align: center; margin-bottom: 44px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="gift" style="width: 12px; height: 12px; vertical-align: middle;"></i> ALL-INCLUSIVE VALUE
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 12px;">
+          What Your <span class="text-gradient-cyan">Rs. 150 Includes</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+          Maximum value, zero hidden charges. One pass unlocks the entire symposium experience.
+        </p>
+      </div>
+
+      <div class="perks-grid">
+        
+        <div class="perk-card">
+          <div class="perk-icon-wrap"><i data-lucide="ticket"></i></div>
+          <h4 class="perk-card-title">All 6 Events Access</h4>
+          <p class="perk-card-desc">No per-event fees. Single registration unlocks entry to Paper Presentation, TechMain, Debugging Circuit, Robo Relay, Mission Impossible, and Electro Enigma.</p>
+        </div>
+
+        <div class="perk-card">
+          <div class="perk-icon-wrap"><i data-lucide="award"></i></div>
+          <h4 class="perk-card-title">Anna University Certificate</h4>
+          <p class="perk-card-desc">Official Certificate of Participation issued by the Department of Electrical &amp; Electronics Engineering, University College of Engineering, Ariyalur.</p>
+        </div>
+
+        <div class="perk-card">
+          <div class="perk-icon-wrap"><i data-lucide="utensils"></i></div>
+          <h4 class="perk-card-title">Wholesome Hot Lunch</h4>
+          <p class="perk-card-desc">Full afternoon hot lunch meal provided in the college dining hall, keeping your energy high throughout the competition.</p>
+        </div>
+
+        <div class="perk-card">
+          <div class="perk-icon-wrap"><i data-lucide="coffee"></i></div>
+          <h4 class="perk-card-title">Morning &amp; Evening Tea</h4>
+          <p class="perk-card-desc">Tea, coffee, and traditional snacks served during the morning inauguration break and afternoon scoring compilation session.</p>
+        </div>
+
+        <div class="perk-card">
+          <div class="perk-icon-wrap"><i data-lucide="id-card"></i></div>
+          <h4 class="perk-card-title">Personalized ID &amp; Lanyard</h4>
+          <p class="perk-card-desc">Official POWERNEX 26 symposium event badge and branded lanyard distributed at the verification desk.</p>
+        </div>
+
+        <div class="perk-card">
+          <div class="perk-icon-wrap"><i data-lucide="package"></i></div>
+          <h4 class="perk-card-title">Official Welcome Kit</h4>
+          <p class="perk-card-desc">Symposium folder, notepad, pen, official event roadmap schedule, and technical rulebook booklet.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         12. FREQUENTLY ASKED QUESTIONS (FAQ)
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="faq">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="help-circle" style="width: 12px; height: 12px; vertical-align: middle;"></i> FAQ &amp; SUPPORT
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 12px;">
+          Frequently Asked <span class="text-gradient-cyan">Questions</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+          Clear, concise answers to all common participant queries regarding POWERNEX 26.
+        </p>
+      </div>
+
+      <!-- FAQ Tabs -->
+      <div class="faq-tab-filters">
+        <button class="faq-filter-btn active" data-faq-filter="all">All Questions</button>
+        <button class="faq-filter-btn" data-faq-filter="registration">Registration</button>
+        <button class="faq-filter-btn" data-faq-filter="events">Events &amp; Laptops</button>
+        <button class="faq-filter-btn" data-faq-filter="general">General &amp; Travel</button>
+      </div>
+
+      <!-- FAQ Accordion Container -->
+      <div class="faq-accordion-container">
+        
+        <div class="faq-card-item open" data-faq-cat="general">
+          <button class="faq-trigger-btn">
+            <span>Can students from non-EEE departments participate?</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-content-drawer">
+            <div class="faq-body-text">
+              <strong>Yes, absolutely!</strong> POWERNEX 26 is an open intercollegiate symposium. Students from Mechanical, ECE, Civil, Mechatronics, Instrumentation, and other engineering disciplines are actively encouraged and eligible for all 6 events. Formal EEE enrollment is not required.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card-item" data-faq-cat="registration">
+          <button class="faq-trigger-btn">
+            <span>Is the Rs. 150 registration fee per person or per team?</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-content-drawer">
+            <div class="faq-body-text">
+              The registration fee is <strong>Rs. 150 per individual participant</strong>. For team events (such as Paper Presentation with 3 members, or Circuit Debugging with 4 members), each member of the team pays Rs. 150 to receive their individual welcome kit, lunch token, and Anna University certificate.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card-item" data-faq-cat="registration">
+          <button class="faq-trigger-btn">
+            <span>What are the key deadlines for online and on-spot registration?</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-content-drawer">
+            <div class="faq-body-text">
+              Online registration closes strictly on <strong>07 October 2026 at 6:00 PM IST</strong>. On-spot registration will be open on the event day, <strong>08 October 2026 from 8:30 AM to 9:30 AM</strong> at the college verification desk, subject to slot availability.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card-item" data-faq-cat="events">
+          <button class="faq-trigger-btn">
+            <span>Do we need to bring our own laptops for Debugging Circuit?</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-content-drawer">
+            <div class="faq-body-text">
+              <strong>Yes, mandatory.</strong> Each team participating in Debugging Circuit must bring at least one laptop with power adapter for circuit design checks and datasheet references. Mobile internet access is permitted.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card-item" data-faq-cat="events">
+          <button class="faq-trigger-btn">
+            <span>How are the Morning and Afternoon blocks organized?</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-content-drawer">
+            <div class="faq-body-text">
+              Events are scheduled as:
+              <br>• <strong>Morning Block (10:30 AM - 12:45 PM):</strong> Paper Presentation, TechMain &amp; Debugging Circuit
+              <br>• <strong>Afternoon Block (01:45 PM - 03:30 PM):</strong> Debugging Circuit, Robo Relay, Mission Impossible, Electro Enigma
+              <br>Debugging Circuit runs across both blocks to prevent scheduling clashes.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card-item" data-faq-cat="general">
+          <button class="faq-trigger-btn">
+            <span>How will the Overall Championship Trophy be decided?</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-content-drawer">
+            <div class="faq-body-text">
+              The trophy is awarded based on a cumulative points system across all 6 events (1st place = 10 pts, 2nd place = 7 pts, 3rd place = 5 pts). The visiting engineering college with the highest aggregated points takes home the prestigious POWERNEX 26 Championship Cup.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         13. COORDINATORS & PINNED CAMPUS LOCATION
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="location">
+      <div style="text-align: center; margin-bottom: 44px;">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="phone" style="width: 12px; height: 12px; vertical-align: middle;"></i> GET IN TOUCH
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 12px;">
+          Coordinators &amp; <span class="text-gradient-cyan">Campus Location</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+          Connect directly with our faculty and student coordinators for queries, travel guidance, and assistance.
+        </p>
+      </div>
+
+      <!-- 3 Coordinators Cards Grid -->
+      <div class="coordinators-grid">
+        
+        <!-- Faculty Coordinator -->
+        <div class="coordinator-card">
+          <div class="coord-avatar">
+            <i data-lucide="user-check"></i>
+          </div>
+          <div class="coord-role">HEAD OF THE DEPARTMENT</div>
+          <h4 class="coord-name">Dr. S. Senthilkumar</h4>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 12px;">
+            Head of the Department, Department of EEE<br>
+            University College of Engineering, Ariyalur
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.82rem; color: var(--cyan);">
+            <i data-lucide="building" style="width: 16px; height: 16px;"></i> Dept of EEE, UCE Ariyalur
+          </div>
+        </div>
+
+        <!-- Student Coordinator 1 -->
+        <div class="coordinator-card">
+          <div class="coord-avatar" style="border-color: rgba(245, 158, 11, 0.4); color: var(--volt-amber);">
+            <i data-lucide="phone"></i>
+          </div>
+          <div class="coord-role" style="color: var(--volt-amber);">STUDENT COORDINATOR</div>
+          <h4 class="coord-name">Mr. Yuvanraj A.</h4>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 12px;">
+            Department of Electrical and Electronics Engineering<br>
+            University College of Engineering, Ariyalur
+          </p>
+          <a href="tel:7339086778" class="coord-contact-link" style="margin-bottom: 8px;">
+            <i data-lucide="phone"></i> 7339086778
+          </a>
+          <a href="mailto:yuvanraj2505@gmail.com" class="coord-contact-link" style="background: rgba(255, 255, 255, 0.04); color: var(--text-secondary);">
+            <i data-lucide="mail"></i> yuvanraj2505@gmail.com
+          </a>
+        </div>
+
+        <!-- Student Coordinator 2 -->
+        <div class="coordinator-card">
+          <div class="coord-avatar" style="border-color: rgba(16, 185, 129, 0.4); color: var(--emerald);">
+            <i data-lucide="mail"></i>
+          </div>
+          <div class="coord-role" style="color: var(--emerald);">STUDENT COORDINATOR</div>
+          <h4 class="coord-name">Mr. Arun Annamalai G.</h4>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 12px;">
+            Department of Electrical and Electronics Engineering<br>
+            University College of Engineering, Ariyalur
+          </p>
+          <a href="tel:+919360341413" class="coord-contact-link" style="margin-bottom: 8px;">
+            <i data-lucide="phone"></i> +91 93603 41413
+          </a>
+          <a href="mailto:arunannamalai7939@gmail.com" class="coord-contact-link" style="background: rgba(255, 255, 255, 0.04); color: var(--text-secondary);">
+            <i data-lucide="mail"></i> arunannamalai7939@gmail.com
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Campus Location & Pinned Map -->
+      <div class="location-grid-layout">
+        
+        <div class="location-info-panel">
+          <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+            <i data-lucide="map-pin" style="width: 12px; height: 12px; vertical-align: middle;"></i> SYMPOSIUM LOCATION
+          </span>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 4px;">
+            University College of Engineering, Ariyalur
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 14px;">
+            (A Constituent College of Anna University, Chennai)
+          </p>
+
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+            <strong>Campus Address:</strong><br>
+            University College of Engineering,<br>
+            Kavanur, Tamil Nadu - 621 731, India.<br>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); display: inline-block; margin-top: 4px;">Plus Code: 45JX+669 Kavanur</span>
+          </p>
+          <div style="margin-bottom: 18px;">
+            <a href="https://auucea.edu.in" target="_blank" rel="noopener noreferrer" class="coord-contact-link" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 240, 255, 0.06); border: 1px solid rgba(0, 240, 255, 0.25); color: var(--cyan); text-decoration: none;">
+              <i data-lucide="globe"></i> Official College Website: auucea.edu.in
+            </a>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 14px; margin-bottom: 18px;">
+            <h5 style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">
+              Transit Guidance
+            </h5>
+            <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 4px;">
+              <strong>Plus Code Navigation:</strong> Search <strong>45JX+669</strong> on Google Maps for pinpoint satellite navigation directly to the college main entrance.
+            </p>
+            <p style="font-size: 0.84rem; color: var(--text-secondary);">
+              <strong>From Ariyalur Transit:</strong> Frequent buses and transport connect from Ariyalur Railway Station &amp; Central Bus Stand toward Kavanur to the campus gate.
+            </p>
+          </div>
+
+          <div class="aura" style="width: 100%;">
+            <a href="https://www.google.com/maps/search/?api=1&query=45JX%2B669+University+College+of+Engineering,+Kavanur,+Tamil+Nadu+621731" target="_blank" rel="noopener noreferrer" class="btn" style="width: 100%; justify-content: center;">
+              <i data-lucide="external-link"></i>
+              <span>Open in Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pinned Google Maps Iframe -->
+        <div class="map-card-wrapper">
+          <iframe 
+            title="University College of Engineering Ariyalur Pinned Campus Map"
+            src="https://maps.google.com/maps?q=45JX%2B669+University+College+of+Engineering,+Kavanur,+Tamil+Nadu+621731&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="350" 
+            style="border:0; display: block;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div style="padding: 10px 14px; background: #000; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="crosshair" style="width: 14px; height: 14px; color: var(--cyan);"></i>
+            <span>Pinned Location: 45JX+669 University College of Engineering, Kavanur, Tamil Nadu 621731</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         14. REGISTRATION CLIMAX PORTAL SECTION
+         ==================================================================== -->
+    <section class="section-fade-in section-container climax-portal-section" id="register">
+      <div class="climax-box">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="sparkles" style="width: 12px; height: 12px; vertical-align: middle;"></i> LIMITED SEATS AVAILABLE
+        </span>
+        <h2 class="climax-headline">
+          Ready to <span class="text-gradient-cyan">Power the Future?</span>
+        </h2>
+        <p class="climax-sub">
+          Lock in your entry for POWERNEX 26 today. Join electrical and electronics engineering talents for a high-voltage championship on 08 October 2026.
+        </p>
+
+        <div style="display: flex; justify-content: center;">
+          <div class="aura">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn" style="font-size: 1.05rem; padding: 16px 36px;">
+              <i data-lucide="zap"></i>
+              <span>Register Now via Google Form (Rs. 150)</span>
+            </a>
+          </div>
+        </div>
+
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 18px; font-family: var(--font-mono);">
+          Online Registration Deadline: 07 October 2026, 6:00 PM • On-spot at 8:30 AM on 08 October 2026
+        </p>
+      </div>
+    </section>
+
+    
+    <!-- ====================================================================
+         13B. PEEK RATING ATTENDEE EXPERIENCE SECTION (React Bits)
+         ==================================================================== -->
+    <section class="section-fade-in section-container" id="rating-section" style="margin-top: 24px; margin-bottom: 24px;">
+      <div class="rating-card-box">
+        <span class="card-badge-pill" style="margin-bottom: 12px; display: inline-block;">
+          <i data-lucide="star" style="width: 12px; height: 12px; vertical-align: middle;"></i> SYMPOSIUM FEEDBACK
+        </span>
+        <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 6px;">
+          Rate <span class="text-gradient-cyan">POWERNEX 26</span>
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; max-width: 480px; margin: 0 auto 16px;">
+          How was your experience exploring our events, schedule, and registration portal?
+        </p>
+
+        <!-- React Bits PeekRating DOM mount -->
+        <div id="peek-rating-container" style="display: flex; justify-content: center;"></div>
+        <div id="rating-feedback-display" class="rating-status-text">Select rating to commit feedback</div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         15. FOOTER
+         ==================================================================== -->
+    <footer class="power-footer">
+      <div class="footer-top-grid">
+        
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <img src="logo.svg" alt="Anna University Logo" style="width: 34px; height: 34px;">
+            <span style="font-size: 1.3rem; font-weight: 800; color: #fff;">POWERNEX 26</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
+            National Level Technical Symposium organized by the Department of Electrical &amp; Electronics Engineering, University College of Engineering, Ariyalur (A Constituent College of Anna University, Chennai).
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--volt-amber);">
+            <i data-lucide="calendar" style="width: 14px; height: 14px; vertical-align: middle;"></i> 08 October 2026 • Ariyalur, Tamil Nadu
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About POWERNEX</a></li>
+            <li><a href="#tracks">Themes &amp; Tracks</a></li>
+            <li><a href="#technical">Technical Events</a></li>
+            <li><a href="#non-technical">Non-Tech Events</a></li>
+            <li><a href="#rulebook">Master Rulebook</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Official Events</h4>
+          <ul class="footer-links-list">
+            <li><a href="#technical">Paper Presentation</a></li>
+            <li><a href="#technical">TechMain</a></li>
+            <li><a href="#technical">Debugging Circuit</a></li>
+            <li><a href="#non-technical">Robo Relay</a></li>
+            <li><a href="#non-technical">Mission Impossible</a></li>
+            <li><a href="#non-technical">Electro Enigma</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Contact &amp; Support</h4>
+          <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.6; margin-bottom: 10px;">
+            Mr. Yuvanraj A.: <a href="tel:7339086778" style="color: inherit; text-decoration: none;">7339086778</a> | <a href="mailto:yuvanraj2505@gmail.com" style="color: var(--cyan); text-decoration: none;">yuvanraj2505@gmail.com</a><br>
+            Mr. Arun Annamalai G.: <a href="tel:+919360341413" style="color: inherit; text-decoration: none;">+91 93603 41413</a> | <a href="mailto:arunannamalai7939@gmail.com" style="color: var(--cyan); text-decoration: none;">arunannamalai7939@gmail.com</a>
+          </p>
+          <p style="margin-bottom: 8px;">
+            <a href="https://auucea.edu.in" target="_blank" rel="noopener noreferrer" style="color: var(--cyan); text-decoration: none; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 4px;">
+              <i data-lucide="globe" style="width: 12px; height: 12px;"></i> auucea.edu.in
+            </a>
+          </p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; color: var(--cyan); text-decoration: none; font-size: 0.82rem; font-weight: 600;">
+            <i data-lucide="external-link" style="width: 12px; height: 12px;"></i> Open Registration Form
+          </a>
+        </div>
+
+      </div>
+
+            <!-- ====================================================================
+           DEVELOPER DETAILS & CREDITS
+           ==================================================================== -->
+      <!-- ====================================================================
+           DEVELOPER INTERACTIVE HOVER BUTTON (Replaces Developer Card)
+           ==================================================================== -->
+      <div class="developer-btn-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 28px 0 20px; gap: 8px;">
+        <a href="developer.html" target="_blank" rel="noopener noreferrer" class="interactive-hover-btn" aria-label="Open Developer Profile">
+          <span class="btn-text-default">Developer</span>
+          <div class="btn-hover-overlay">
+            <span>Developer</span>
+            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+          </div>
+          <div class="btn-circle-bg"></div>
+        </a>
+        <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;">
+          VEERAKUMAR V
+        </span>
+      </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>(C) 2026 Department of Electrical &amp; Electronics Engineering, University College of Engineering, Ariyalur. All Rights Reserved.</p>
+        <p>Think Electric. Think Future. Be the Change! • Affiliated to Anna University, Chennai • <a href="https://auucea.edu.in" target="_blank" rel="noopener noreferrer" style="color: var(--cyan); text-decoration: none;">auucea.edu.in</a></p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Back to top button -->
+  <button class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to Top">
+    <i data-lucide="arrow-up" style="width: 18px; height: 18px;"></i>
+  </button>
+
+  <!-- JavaScript Libraries & Modules (No Audio Engine, No Electric Canvas) -->
+  <script src="js/config.js"></script>
+  <script src="js/simulators.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
