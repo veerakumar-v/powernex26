@@ -358,29 +358,130 @@
       // -----------------------------------------------------------------------
       // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - USING me.png
       // -----------------------------------------------------------------------
-                  // Social media CDN icons
-      const instaImg = new Image();
-      instaImg.crossOrigin = 'anonymous';
-      instaImg.src = 'https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Instagram.svg';
+                        // -----------------------------------------------------------------------
+      // 1. STANDARD NON-GLOWING ICON DRAWING UTILITIES
+      // Clean, professional, flat, normal brand styling (Zero glow/neon)
+      // -----------------------------------------------------------------------
+      
+      // Instagram Official Icon
+      function drawInstagramIcon(ctx, cx, cy, r) {
+        ctx.save();
+        // Base dark circle
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#181820';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
 
-      const linkedImg = new Image();
-      linkedImg.crossOrigin = 'anonymous';
-      linkedImg.src = 'https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/LinkedIn.svg';
+        // Instagram camera outline
+        const sz = r * 0.48;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 4;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.roundRect(cx - sz, cy - sz, sz * 2, sz * 2, 14);
+        ctx.stroke();
 
-      const gitImg = new Image();
-      gitImg.crossOrigin = 'anonymous';
-      gitImg.src = 'https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Github-Dark.svg';
+        // Inner lens
+        ctx.beginPath();
+        ctx.arc(cx, cy, sz * 0.48, 0, Math.PI * 2);
+        ctx.stroke();
 
-      function checkSocialLogos() {
-        renderFrontFaceHD();
-        frontTexture.needsUpdate = true;
+        // Top-right flash dot
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(cx + sz * 0.52, cy - sz * 0.52, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       }
-      instaImg.onload = checkSocialLogos;
-      linkedImg.onload = checkSocialLogos;
-      gitImg.onload = checkSocialLogos;
+
+      // LinkedIn Official Icon
+      function drawLinkedInIcon(ctx, cx, cy, r) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#0a66c2';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // White 'in' symbol
+        ctx.fillStyle = '#ffffff';
+        // Dot for 'i'
+        ctx.beginPath();
+        ctx.arc(cx - 24, cy - 20, 5, 0, Math.PI * 2);
+        ctx.fill();
+        // Stem for 'i'
+        ctx.fillRect(cx - 28, cy - 8, 8, 32);
+
+        // 'n'
+        ctx.fillRect(cx - 10, cy - 8, 8, 32);
+        ctx.beginPath();
+        ctx.arc(cx + 8, cy + 2, 15, Math.PI, 0, false);
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = '#ffffff';
+        ctx.stroke();
+        ctx.fillRect(cx + 19, cy + 2, 8, 22);
+        ctx.restore();
+      }
+
+      // GitHub Official Icon
+      function drawGitHubIcon(ctx, cx, cy, r) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#24292e';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Octocat vector silhouette
+        const p = new Path2D('M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z');
+        ctx.translate(cx - 36, cy - 36);
+        ctx.scale(3.0, 3.0);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill(p);
+        ctx.restore();
+      }
+
+      // Email / Mail Official Icon
+      function drawEmailIcon(ctx, cx, cy, r) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#1e2028';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // White envelope outline and flap
+        const ew = 38;
+        const eh = 26;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 4;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.roundRect(cx - ew, cy - eh, ew * 2, eh * 2, 6);
+        ctx.stroke();
+
+        // Flap
+        ctx.beginPath();
+        ctx.moveTo(cx - ew, cy - eh);
+        ctx.lineTo(cx, cy + 2);
+        ctx.lineTo(cx + ew, cy - eh);
+        ctx.stroke();
+        ctx.restore();
+      }
 
       // -----------------------------------------------------------------------
-      // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - REFINED GOLD PALETTE
+      // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - LARGE TYPOGRAPHY
       // -----------------------------------------------------------------------
       const frontCanvas = document.createElement('canvas');
       frontCanvas.width = isMobile ? 1024 : 2048;
@@ -417,7 +518,7 @@
         frontCtx.fillStyle = bgGrad;
         frontCtx.fillRect(0, 0, w, h);
 
-        // Refined Clean Gold Card Border (Non-glowing)
+        // Refined Clean Gold Card Border (Non-glowing, zero blur)
         frontCtx.save();
         frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.42)';
         frontCtx.lineWidth = 8;
@@ -444,10 +545,10 @@
         frontCtx.restore();
 
         // PHOTO: me.png (Preserving exact 1086x1448 native 3:4 aspect ratio, zero distortion)
-        const photoW = 960;
-        const photoH = 1280; // Exactly 3:4 aspect ratio matching native 1086:1448
-        const photoX = (w - photoW) / 2; // 544
-        const photoY = 280;
+        const photoW = 900;
+        const photoH = 1200; // Exactly 3:4 aspect ratio matching native 1086:1448
+        const photoX = (w - photoW) / 2; // 574
+        const photoY = 270;
         const photoRadius = 24;
 
         frontCtx.save();
@@ -469,7 +570,7 @@
         }
         frontCtx.restore();
 
-        // Clean Solid Gold Photo Frame Border (No glow)
+        // Clean Solid Gold Photo Frame Border (Flat, zero glow)
         frontCtx.save();
         frontCtx.strokeStyle = '#d4af37';
         frontCtx.lineWidth = 6;
@@ -478,56 +579,55 @@
         frontCtx.stroke();
         frontCtx.restore();
 
-        // 1. NAME: VEERAKUMAR V (Prominent, Bold, Highly Legible)
+        // 1. DEVELOPER NAME: VEERAKUMAR V (Substantially Larger, Bold, Highly Prominent)
         frontCtx.save();
         frontCtx.fillStyle = '#ffffff';
-        frontCtx.font = 'bold 110px Inter, sans-serif';
+        frontCtx.font = 'bold 136px Inter, sans-serif';
         frontCtx.textAlign = 'center';
         frontCtx.letterSpacing = '1px';
-        frontCtx.fillText('VEERAKUMAR V', w / 2, 1690);
+        frontCtx.fillText('VEERAKUMAR V', w / 2, 1630);
         frontCtx.restore();
 
-        // 2. ROLE & ACADEMIC YEAR
-        // Role: Web Developer & EEE Student
+        // 2. ROLE: Web Developer & EEE Student (Noticeably Larger)
         frontCtx.save();
-        frontCtx.fillStyle = '#fde047';
-        frontCtx.font = '600 62px Inter, sans-serif';
+        frontCtx.fillStyle = '#fbbf24';
+        frontCtx.font = 'bold 74px Inter, sans-serif';
         frontCtx.textAlign = 'center';
-        frontCtx.fillText('Web Developer & EEE Student', w / 2, 1785);
+        frontCtx.fillText('Web Developer & EEE Student', w / 2, 1745);
         frontCtx.restore();
 
-        // Academic Year: 2nd Year (Naturally placed near role)
+        // 3. ACADEMIC YEAR: 2nd Year (Larger, naturally placed near role)
         frontCtx.save();
         const yearText = '2nd Year';
-        frontCtx.font = 'bold 44px "Geist Mono", monospace';
+        frontCtx.font = 'bold 54px "Geist Mono", monospace';
         const yearMetrics = frontCtx.measureText(yearText);
-        const yearW = yearMetrics.width + 56;
-        const yearH = 72;
+        const yearW = yearMetrics.width + 64;
+        const yearH = 80;
         const yearX = (w - yearW) / 2;
-        const yearY = 1845;
+        const yearY = 1815;
 
         frontCtx.fillStyle = 'rgba(212, 175, 55, 0.12)';
         frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
-        frontCtx.lineWidth = 2.5;
+        frontCtx.lineWidth = 3;
         frontCtx.beginPath();
         frontCtx.roundRect(yearX, yearY, yearW, yearH, yearH / 2);
         frontCtx.fill();
         frontCtx.stroke();
 
-        frontCtx.fillStyle = '#fbbf24';
+        frontCtx.fillStyle = '#fde047';
         frontCtx.textAlign = 'center';
-        frontCtx.fillText(yearText, w / 2, yearY + 49);
+        frontCtx.fillText(yearText, w / 2, yearY + 56);
         frontCtx.restore();
 
-        // 3. DEPARTMENT & COLLEGE (with Graduation Cap Icon in Gold)
-        const capX = 230;
-        const capY = 2050;
-        const capSize = 46;
+        // 4. DEPARTMENT & COLLEGE (Noticeably Larger with Gold Graduation Cap Icon)
+        const capX = 200;
+        const capY = 2085;
+        const capSize = 54;
 
         frontCtx.save();
         frontCtx.strokeStyle = '#d4af37';
         frontCtx.fillStyle = '#d4af37';
-        frontCtx.lineWidth = 5;
+        frontCtx.lineWidth = 6;
         frontCtx.lineCap = 'round';
         frontCtx.lineJoin = 'round';
         // Diamond cap
@@ -549,16 +649,16 @@
         frontCtx.stroke();
         frontCtx.restore();
 
-        // Department & College Text
+        // Department & College Text (Large, High-Contrast Typography)
         frontCtx.save();
         frontCtx.textAlign = 'left';
         frontCtx.fillStyle = '#f8fafc';
-        frontCtx.font = 'bold 52px Inter, sans-serif';
-        frontCtx.fillText('Department of Electrical & Electronics Engineering', 320, 2025);
+        frontCtx.font = 'bold 64px Inter, sans-serif';
+        frontCtx.fillText('Department of Electrical & Electronics Engineering', 290, 2060);
 
-        frontCtx.fillStyle = '#94a3b8';
-        frontCtx.font = '500 48px Inter, sans-serif';
-        frontCtx.fillText('University College of Engineering, Ariyalur', 320, 2095);
+        frontCtx.fillStyle = '#cbd5e1';
+        frontCtx.font = '600 58px Inter, sans-serif';
+        frontCtx.fillText('University College of Engineering, Ariyalur', 290, 2145);
         frontCtx.restore();
 
         // Subtle Gold Separator Line
@@ -566,62 +666,47 @@
         frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
         frontCtx.lineWidth = 3;
         frontCtx.beginPath();
-        frontCtx.moveTo(180, 2220);
-        frontCtx.lineTo(w - 180, 2220);
+        frontCtx.moveTo(160, 2260);
+        frontCtx.lineTo(w - 160, 2260);
         frontCtx.stroke();
         frontCtx.restore();
 
-        // 4. SOCIAL MEDIA ICONS (Clean, Gold Accents, Flat Professional)
-        const socialY = 2440;
-        const iconRadius = 82;
+        // 5. FOUR NORMAL CONTACT / SOCIAL ICONS IN ONE ROW (Instagram | LinkedIn | GitHub | Email)
+        const socialY = 2430;
+        const iconRadius = 78;
         const socials = [
-          { name: 'Instagram', img: instaImg, x: 500 },
-          { name: 'LinkedIn', img: linkedImg, x: 1024 },
-          { name: 'GitHub', img: gitImg, x: 1548 }
+          { name: 'Instagram', draw: drawInstagramIcon, x: 400 },
+          { name: 'LinkedIn', draw: drawLinkedInIcon, x: 816 },
+          { name: 'GitHub', draw: drawGitHubIcon, x: 1232 },
+          { name: 'Email', draw: drawEmailIcon, x: 1648 }
         ];
 
         socials.forEach(s => {
-          // Circle with subtle gold border
-          frontCtx.save();
-          frontCtx.beginPath();
-          frontCtx.arc(s.x, socialY, iconRadius, 0, Math.PI * 2);
-          frontCtx.fillStyle = '#111116';
-          frontCtx.fill();
-          frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.5)';
-          frontCtx.lineWidth = 3.5;
-          frontCtx.stroke();
-          frontCtx.clip();
+          s.draw(frontCtx, s.x, socialY, iconRadius);
 
-          if (s.img && s.img.complete && s.img.naturalWidth > 0) {
-            frontCtx.imageSmoothingEnabled = true;
-            frontCtx.imageSmoothingQuality = 'high';
-            frontCtx.drawImage(
-              s.img,
-              s.x - iconRadius + 12,
-              socialY - iconRadius + 12,
-              (iconRadius - 12) * 2,
-              (iconRadius - 12) * 2
-            );
-          } else {
-            frontCtx.fillStyle = '#22222a';
-            frontCtx.fillRect(s.x - iconRadius, socialY - iconRadius, iconRadius * 2, iconRadius * 2);
-          }
-          frontCtx.restore();
-
-          // Label
+          // Sub-label under each icon
           frontCtx.save();
           frontCtx.fillStyle = '#cbd5e1';
-          frontCtx.font = '600 46px Inter, sans-serif';
+          frontCtx.font = '600 44px Inter, sans-serif';
           frontCtx.textAlign = 'center';
-          frontCtx.fillText(s.name, s.x, socialY + iconRadius + 70);
+          frontCtx.fillText(s.name, s.x, socialY + iconRadius + 65);
           frontCtx.restore();
         });
+
+        // 6. CONTACT ME TEXT LABEL UNDERNEATH
+        frontCtx.save();
+        frontCtx.fillStyle = '#fbbf24';
+        frontCtx.font = 'bold 52px "Geist Mono", monospace';
+        frontCtx.textAlign = 'center';
+        frontCtx.letterSpacing = '5px';
+        frontCtx.fillText('CONTACT ME', w / 2, 2710);
+        frontCtx.restore();
       }
 
       renderFrontFaceHD();
 
       // -----------------------------------------------------------------------
-      // 3. ULTRA-HD BACK CARD TEXTURE (2048 x 3072) - LARGE READABLE BALANCED
+      // 3. ULTRA-HD BACK CARD TEXTURE (2048 x 3072) - SUBSTANTIALLY LARGER TEXT
       // -----------------------------------------------------------------------
       const backCanvas = document.createElement('canvas');
       backCanvas.width = isMobile ? 1024 : 2048;
@@ -651,7 +736,7 @@
         backCtx.fillStyle = bgGrad;
         backCtx.fillRect(0, 0, w, h);
 
-        // Outer clean gold border
+        // Outer clean gold border (Flat, non-glowing)
         backCtx.save();
         backCtx.strokeStyle = 'rgba(212, 175, 55, 0.42)';
         backCtx.lineWidth = 8;
@@ -678,261 +763,223 @@
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // SECTION 1: ABOUT THE DEVELOPER
+        // SECTION 1: ABOUT THE DEVELOPER (Substantially Larger Typography)
         // -------------------------------------------------------------------
         const sec1Y = 260;
         // Clean Gold User Icon
         backCtx.save();
         backCtx.strokeStyle = '#d4af37';
-        backCtx.lineWidth = 5;
+        backCtx.lineWidth = 6;
         backCtx.lineCap = 'round';
         backCtx.beginPath();
-        backCtx.arc(220, sec1Y + 30, 24, 0, Math.PI * 2);
+        backCtx.arc(200, sec1Y + 34, 28, 0, Math.PI * 2);
         backCtx.stroke();
         backCtx.beginPath();
-        backCtx.arc(220, sec1Y + 95, 42, Math.PI * 1.15, Math.PI * 1.85);
+        backCtx.arc(200, sec1Y + 104, 46, Math.PI * 1.15, Math.PI * 1.85);
         backCtx.stroke();
         backCtx.restore();
 
-        // Heading: ABOUT THE DEVELOPER
+        // Heading: ABOUT THE DEVELOPER (Large 72px)
         backCtx.save();
-        backCtx.font = 'bold 62px "Geist Mono", monospace';
+        backCtx.font = 'bold 72px "Geist Mono", monospace';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('ABOUT THE DEVELOPER', 300, sec1Y + 70);
+        backCtx.fillText('ABOUT THE DEVELOPER', 280, sec1Y + 76);
         backCtx.restore();
 
-        // Bio paragraph (Concise, large, readable typography)
+        // Bio paragraph (Large 58px font, 88px line-height, comfortably filled)
         const bioText = "Veerakumar V is a second-year Electrical and Electronics Engineering student at University College of Engineering, Ariyalur, with an interest in web development, software development, UI/UX, cybersecurity, and technology-driven projects.";
         backCtx.save();
         backCtx.fillStyle = '#e2e8f0';
-        backCtx.font = '400 50px Inter, sans-serif';
+        backCtx.font = '500 58px Inter, sans-serif';
         backCtx.textAlign = 'left';
         
         let words = bioText.split(' ');
         let line = '';
-        let lineY = sec1Y + 165;
-        const maxTextW = 1680;
-        const lineH = 74;
+        let lineY = sec1Y + 180;
+        const maxTextW = 1720;
+        const lineH = 88;
 
         for (let n = 0; n < words.length; n++) {
           let testLine = line + words[n] + ' ';
           let metrics = backCtx.measureText(testLine);
           if (metrics.width > maxTextW && n > 0) {
-            backCtx.fillText(line.trim(), 180, lineY);
+            backCtx.fillText(line.trim(), 164, lineY);
             line = words[n] + ' ';
             lineY += lineH;
           } else {
             line = testLine;
           }
         }
-        backCtx.fillText(line.trim(), 180, lineY);
+        backCtx.fillText(line.trim(), 164, lineY);
         backCtx.restore();
 
         // Divider 1 (Subtle Gold Line)
-        const div1Y = 730;
+        const div1Y = 780;
         backCtx.save();
         backCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
         backCtx.lineWidth = 3;
         backCtx.beginPath();
-        backCtx.moveTo(180, div1Y);
-        backCtx.lineTo(w - 180, div1Y);
+        backCtx.moveTo(160, div1Y);
+        backCtx.lineTo(w - 160, div1Y);
         backCtx.stroke();
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // SECTION 2: TECHNICAL INTERESTS
+        // SECTION 2: TECHNICAL INTERESTS (Large Chips & High Legibility)
         // -------------------------------------------------------------------
-        const sec2Y = 810;
+        const sec2Y = 860;
         // Clean Gold Code Symbol </ >
         backCtx.save();
         backCtx.strokeStyle = '#d4af37';
-        backCtx.lineWidth = 5;
+        backCtx.lineWidth = 6;
         backCtx.lineCap = 'round';
         backCtx.lineJoin = 'round';
         backCtx.beginPath();
         backCtx.moveTo(205, sec2Y + 18);
-        backCtx.lineTo(185, sec2Y + 42);
-        backCtx.lineTo(205, sec2Y + 66);
-        backCtx.moveTo(245, sec2Y + 18);
-        backCtx.lineTo(265, sec2Y + 42);
-        backCtx.lineTo(245, sec2Y + 66);
-        backCtx.moveTo(235, sec2Y + 12);
-        backCtx.lineTo(215, sec2Y + 72);
+        backCtx.lineTo(180, sec2Y + 44);
+        backCtx.lineTo(205, sec2Y + 70);
+        backCtx.moveTo(250, sec2Y + 18);
+        backCtx.lineTo(275, sec2Y + 44);
+        backCtx.lineTo(250, sec2Y + 70);
+        backCtx.moveTo(240, sec2Y + 10);
+        backCtx.lineTo(215, sec2Y + 78);
         backCtx.stroke();
         backCtx.restore();
 
-        // Heading: TECHNICAL INTERESTS
+        // Heading: TECHNICAL INTERESTS (Large 72px)
         backCtx.save();
-        backCtx.font = 'bold 62px "Geist Mono", monospace';
+        backCtx.font = 'bold 72px "Geist Mono", monospace';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('TECHNICAL INTERESTS', 300, sec2Y + 54);
+        backCtx.fillText('TECHNICAL INTERESTS', 300, sec2Y + 58);
         backCtx.restore();
 
-        // Skills Chips Helper (Clean Gold/Glass Treatment)
+        // Skills Chips Helper (Clean Gold/Dark-Glass Treatment, Large 50px Font)
         function drawSkillPill(text, x, y, pw) {
-          const ph = 96;
+          const ph = 112;
           backCtx.save();
           backCtx.fillStyle = 'rgba(212, 175, 55, 0.08)';
-          backCtx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
-          backCtx.lineWidth = 2.5;
+          backCtx.strokeStyle = 'rgba(212, 175, 55, 0.38)';
+          backCtx.lineWidth = 3;
           backCtx.beginPath();
           backCtx.roundRect(x, y, pw, ph, ph / 2);
           backCtx.fill();
           backCtx.stroke();
 
           backCtx.fillStyle = '#f8fafc';
-          backCtx.font = '600 44px Inter, sans-serif';
+          backCtx.font = '600 50px Inter, sans-serif';
           backCtx.textAlign = 'center';
-          backCtx.fillText(text, x + pw / 2, y + 62);
+          backCtx.fillText(text, x + pw / 2, y + 73);
           backCtx.restore();
         }
 
-        // Row 1 (y = 930)
-        drawSkillPill('C / C++', 180, 930, 260);
-        drawSkillPill('Python', 470, 930, 260);
-        drawSkillPill('Web Development', 760, 930, 520);
-        drawSkillPill('Git & GitHub', 1310, 930, 410);
+        // Row 1 (y = 990)
+        drawSkillPill('C / C++', 164, 990, 270);
+        drawSkillPill('Python', 464, 990, 270);
+        drawSkillPill('Web Development', 764, 990, 540);
+        drawSkillPill('Git & GitHub', 1334, 990, 420);
 
-        // Row 2 (y = 1060)
-        drawSkillPill('UI/UX', 180, 1060, 220);
-        drawSkillPill('Software Testing', 430, 1060, 480);
-        drawSkillPill('Debugging', 940, 1060, 320);
-        drawSkillPill('Cybersecurity', 1290, 1060, 430);
+        // Row 2 (y = 1135)
+        drawSkillPill('UI/UX', 164, 1135, 230);
+        drawSkillPill('Software Testing', 424, 1135, 490);
+        drawSkillPill('Debugging', 944, 1135, 340);
+        drawSkillPill('Cybersecurity', 1314, 1135, 440);
 
-        // Row 3 (y = 1190)
-        drawSkillPill('Ethical Hacking', 180, 1190, 460);
-        drawSkillPill('Electronics & Embedded Systems', 670, 1190, 840);
+        // Row 3 (y = 1280)
+        drawSkillPill('Ethical Hacking', 164, 1280, 480);
+        drawSkillPill('Electronics & Embedded Systems', 674, 1280, 920);
 
         // Divider 2 (Subtle Gold Line)
-        const div2Y = 1360;
+        const div2Y = 1480;
         backCtx.save();
         backCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
         backCtx.lineWidth = 3;
         backCtx.beginPath();
-        backCtx.moveTo(180, div2Y);
-        backCtx.lineTo(w - 180, div2Y);
+        backCtx.moveTo(160, div2Y);
+        backCtx.lineTo(w - 160, div2Y);
         backCtx.stroke();
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // SECTION 3: POWERNEX 26
+        // SECTION 3: POWERNEX 26 (Large, Prominent Typography)
         // -------------------------------------------------------------------
-        const sec3Y = 1440;
+        const sec3Y = 1570;
         // Clean Gold Monitor Icon
         backCtx.save();
         backCtx.strokeStyle = '#d4af37';
-        backCtx.lineWidth = 5;
+        backCtx.lineWidth = 6;
         backCtx.lineCap = 'round';
         backCtx.lineJoin = 'round';
-        backCtx.strokeRect(185, sec3Y + 12, 68, 48);
+        backCtx.strokeRect(175, sec3Y + 14, 76, 54);
         backCtx.beginPath();
-        backCtx.moveTo(219, sec3Y + 60);
-        backCtx.lineTo(219, sec3Y + 76);
-        backCtx.moveTo(200, sec3Y + 76);
-        backCtx.lineTo(238, sec3Y + 76);
+        backCtx.moveTo(213, sec3Y + 68);
+        backCtx.lineTo(213, sec3Y + 86);
+        backCtx.moveTo(190, sec3Y + 86);
+        backCtx.lineTo(236, sec3Y + 86);
         backCtx.stroke();
         backCtx.restore();
 
-        // Header: POWERNEX 26
+        // Header: POWERNEX 26 (Large 72px)
         backCtx.save();
-        backCtx.font = 'bold 62px "Geist Mono", monospace';
+        backCtx.font = 'bold 72px "Geist Mono", monospace';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#ffffff';
-        backCtx.fillText('POWERNEX 26', 300, sec3Y + 54);
+        backCtx.fillText('POWERNEX 26', 285, sec3Y + 62);
         backCtx.restore();
 
-        // Subheading: Website Developer
+        // Subheading: Website Developer (Large 62px)
         backCtx.save();
-        backCtx.font = 'bold 54px Inter, sans-serif';
+        backCtx.font = 'bold 62px Inter, sans-serif';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('Website Developer', 180, sec3Y + 135);
+        backCtx.fillText('Website Developer', 164, sec3Y + 165);
         backCtx.restore();
 
-        // Role description
+        // Role description (Large 56px font, 86px line-height)
         const roleDesc = "Designed and developed the POWERNEX 26 symposium website, including its event information, registration interface, schedules, rulebook, and interactive user interface.";
         backCtx.save();
         backCtx.fillStyle = '#cbd5e1';
-        backCtx.font = '400 48px Inter, sans-serif';
+        backCtx.font = '500 56px Inter, sans-serif';
         backCtx.textAlign = 'left';
         
         words = roleDesc.split(' ');
         line = '';
-        lineY = sec3Y + 225;
+        lineY = sec3Y + 270;
 
         for (let n = 0; n < words.length; n++) {
           let testLine = line + words[n] + ' ';
           let metrics = backCtx.measureText(testLine);
           if (metrics.width > maxTextW && n > 0) {
-            backCtx.fillText(line.trim(), 180, lineY);
+            backCtx.fillText(line.trim(), 164, lineY);
             line = words[n] + ' ';
             lineY += lineH;
           } else {
             line = testLine;
           }
         }
-        backCtx.fillText(line.trim(), 180, lineY);
+        backCtx.fillText(line.trim(), 164, lineY);
         backCtx.restore();
 
         // Divider 3 (Subtle Gold Line)
-        const div3Y = 1940;
+        const div3Y = 2220;
         backCtx.save();
         backCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
         backCtx.lineWidth = 3;
         backCtx.beginPath();
-        backCtx.moveTo(180, div3Y);
-        backCtx.lineTo(w - 180, div3Y);
+        backCtx.moveTo(160, div3Y);
+        backCtx.lineTo(w - 160, div3Y);
         backCtx.stroke();
-        backCtx.restore();
-
-        // -------------------------------------------------------------------
-        // SECTION 4: CONTACT / EMAIL (Clickable Mailto)
-        // -------------------------------------------------------------------
-        const emailBoxX = 180;
-        const emailBoxY = 2050;
-        const emailBoxW = w - 360;
-        const emailBoxH = 200;
-
-        backCtx.save();
-        backCtx.fillStyle = 'rgba(212, 175, 55, 0.08)';
-        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.40)';
-        backCtx.lineWidth = 3;
-        backCtx.beginPath();
-        backCtx.roundRect(emailBoxX, emailBoxY, emailBoxW, emailBoxH, 32);
-        backCtx.fill();
-        backCtx.stroke();
-
-        // Envelope Icon in Gold
-        const envX = emailBoxX + 90;
-        const envY = emailBoxY + emailBoxH / 2;
-        backCtx.strokeStyle = '#fbbf24';
-        backCtx.lineWidth = 5;
-        backCtx.lineCap = 'round';
-        backCtx.lineJoin = 'round';
-        backCtx.strokeRect(envX - 36, envY - 24, 72, 48);
-        backCtx.beginPath();
-        backCtx.moveTo(envX - 36, envY - 24);
-        backCtx.lineTo(envX, envY + 4);
-        backCtx.lineTo(envX + 36, envY - 24);
-        backCtx.stroke();
-
-        // Email Text
-        backCtx.font = 'bold 56px "Geist Mono", monospace';
-        backCtx.fillStyle = '#fde047';
-        backCtx.textAlign = 'left';
-        backCtx.fillText('uceadeveloper@gmail.com', envX + 70, envY + 20);
         backCtx.restore();
 
         // -------------------------------------------------------------------
         // BOTTOM MOTTO: BUILD • LEARN • CREATE
         // -------------------------------------------------------------------
         backCtx.save();
-        backCtx.font = 'bold 48px "Geist Mono", monospace';
+        backCtx.font = 'bold 54px "Geist Mono", monospace';
         backCtx.fillStyle = 'rgba(212, 175, 55, 0.75)';
         backCtx.textAlign = 'center';
-        backCtx.letterSpacing = '6px';
+        backCtx.letterSpacing = '8px';
         backCtx.fillText('BUILD   •   LEARN   •   CREATE', w / 2, 2460);
         backCtx.restore();
       }
@@ -1156,28 +1203,30 @@
         });
       }
 
-                  function getClickedLink(hitPoint) {
+                        function getClickedLink(hitPoint) {
         const local = cardMesh.worldToLocal(hitPoint.clone());
         const normY = (1.825 - local.y) / 3.65;
         const normX = (local.x + 1.2) / 2.4;
 
         if (!isFlipped) {
-          // Front Face Social Buttons Row (normY between 0.74 and 0.88)
-          if (normY >= 0.74 && normY <= 0.88) {
-            if (normX >= 0.14 && normX <= 0.34) {
+          // Front Face 4-Icon Row (normY between 0.74 and 0.86)
+          if (normY >= 0.74 && normY <= 0.86) {
+            // Instagram (center ~0.195)
+            if (normX >= 0.12 && normX <= 0.27) {
               return 'https://instagram.com/mr_veerakumar.v';
             }
-            if (normX >= 0.40 && normX <= 0.60) {
+            // LinkedIn (center ~0.398)
+            if (normX >= 0.32 && normX <= 0.47) {
               return 'https://www.linkedin.com/in/v-veerakumar/';
             }
-            if (normX >= 0.66 && normX <= 0.86) {
+            // GitHub (center ~0.601)
+            if (normX >= 0.52 && normX <= 0.67) {
               return 'https://github.com/veerakumar-v';
             }
-          }
-        } else {
-          // Back Face Email Contact Box (normY between 0.64 and 0.77)
-          if (normY >= 0.64 && normY <= 0.77 && normX >= 0.08 && normX <= 0.92) {
-            return 'mailto:uceadeveloper@gmail.com';
+            // Email (center ~0.804)
+            if (normX >= 0.72 && normX <= 0.88) {
+              return 'mailto:uceadeveloper@gmail.com';
+            }
           }
         }
 
