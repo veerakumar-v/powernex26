@@ -237,6 +237,7 @@
     if (window.lucide) {
       window.lucide.createIcons();
     }
+    window.onerror = function(msg, url, line, col, error) { var div = document.createElement('div'); div.style.cssText = 'position:fixed;top:100px;left:20px;z-index:9999;color:red;background:white;font-size:20px;padding:20px;'; div.textContent = 'ERR: ' + msg + ' at line ' + line; document.body.appendChild(div); };
 
     // =========================================================================
     // HD HIGH-PERFORMANCE 3D ID CARD & LANYARD VIEWER
@@ -273,7 +274,8 @@
         alpha: false,
         powerPreference: 'high-performance'
       });
-      renderer.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.25) : Math.min(window.devicePixelRatio, 2));
+      const deviceDPR = Math.min(window.devicePixelRatio || 1, 2.5);
+      renderer.setPixelRatio(deviceDPR);
       renderer.setSize(window.innerWidth, window.innerHeight);
 
       const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
@@ -359,6 +361,7 @@
       // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - USING me.png
       // -----------------------------------------------------------------------
                         // -----------------------------------------------------------------------
+            // -----------------------------------------------------------------------
       // 1. STANDARD NON-GLOWING ICON DRAWING UTILITIES
       // Clean, professional, flat, normal brand styling (Zero glow/neon)
       // -----------------------------------------------------------------------
@@ -366,34 +369,30 @@
       // Instagram Official Icon
       function drawInstagramIcon(ctx, cx, cy, r) {
         ctx.save();
-        // Base dark circle
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = '#181820';
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
-        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.lineWidth = 3.5;
         ctx.stroke();
 
-        // Instagram camera outline
         const sz = r * 0.48;
         ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 4.5;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.beginPath();
         ctx.roundRect(cx - sz, cy - sz, sz * 2, sz * 2, 14);
         ctx.stroke();
 
-        // Inner lens
         ctx.beginPath();
         ctx.arc(cx, cy, sz * 0.48, 0, Math.PI * 2);
         ctx.stroke();
 
-        // Top-right flash dot
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
-        ctx.arc(cx + sz * 0.52, cy - sz * 0.52, 3.5, 0, Math.PI * 2);
+        ctx.arc(cx + sz * 0.52, cy - sz * 0.52, 3.8, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
@@ -405,27 +404,23 @@
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = '#0a66c2';
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
-        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.lineWidth = 3.5;
         ctx.stroke();
 
-        // White 'in' symbol
         ctx.fillStyle = '#ffffff';
-        // Dot for 'i'
         ctx.beginPath();
-        ctx.arc(cx - 24, cy - 20, 5, 0, Math.PI * 2);
+        ctx.arc(cx - 24, cy - 20, 5.5, 0, Math.PI * 2);
         ctx.fill();
-        // Stem for 'i'
-        ctx.fillRect(cx - 28, cy - 8, 8, 32);
+        ctx.fillRect(cx - 28, cy - 8, 9, 34);
 
-        // 'n'
-        ctx.fillRect(cx - 10, cy - 8, 8, 32);
+        ctx.fillRect(cx - 10, cy - 8, 9, 34);
         ctx.beginPath();
         ctx.arc(cx + 8, cy + 2, 15, Math.PI, 0, false);
-        ctx.lineWidth = 8;
+        ctx.lineWidth = 8.5;
         ctx.strokeStyle = '#ffffff';
         ctx.stroke();
-        ctx.fillRect(cx + 19, cy + 2, 8, 22);
+        ctx.fillRect(cx + 18, cy + 2, 9, 24);
         ctx.restore();
       }
 
@@ -436,14 +431,13 @@
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = '#24292e';
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
-        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.lineWidth = 3.5;
         ctx.stroke();
 
-        // Octocat vector silhouette
         const p = new Path2D('M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z');
-        ctx.translate(cx - 36, cy - 36);
-        ctx.scale(3.0, 3.0);
+        ctx.translate(cx - 38, cy - 38);
+        ctx.scale(3.15, 3.15);
         ctx.fillStyle = '#ffffff';
         ctx.fill(p);
         ctx.restore();
@@ -456,42 +450,42 @@
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = '#1e2028';
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
-        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.lineWidth = 3.5;
         ctx.stroke();
 
-        // White envelope outline and flap
-        const ew = 38;
-        const eh = 26;
+        const ew = 40;
+        const eh = 27;
         ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 4.5;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.beginPath();
         ctx.roundRect(cx - ew, cy - eh, ew * 2, eh * 2, 6);
         ctx.stroke();
 
-        // Flap
         ctx.beginPath();
         ctx.moveTo(cx - ew, cy - eh);
-        ctx.lineTo(cx, cy + 2);
+        ctx.lineTo(cx, cy + 3);
         ctx.lineTo(cx + ew, cy - eh);
         ctx.stroke();
         ctx.restore();
       }
 
       // -----------------------------------------------------------------------
-      // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - LARGE TYPOGRAPHY
+      // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - SHARP, LARGE TYPOGRAPHY
       // -----------------------------------------------------------------------
       const frontCanvas = document.createElement('canvas');
-      frontCanvas.width = isMobile ? 1024 : 2048;
-      frontCanvas.height = isMobile ? 1536 : 3072;
-      const frontCtx = frontCanvas.getContext('2d');
-      if (isMobile) frontCtx.scale(0.5, 0.5);
+      frontCanvas.width = 2048;
+      frontCanvas.height = 3072;
+      const frontCtx = frontCanvas.getContext('2d', { alpha: true });
+      frontCtx.textRendering = 'geometricPrecision';
+      frontCtx.imageSmoothingEnabled = true;
+      frontCtx.imageSmoothingQuality = 'high';
 
       const frontTexture = new THREE.CanvasTexture(frontCanvas);
-      frontTexture.generateMipmaps = false;
-      frontTexture.minFilter = THREE.LinearFilter;
+      frontTexture.generateMipmaps = true;
+      frontTexture.minFilter = THREE.LinearMipmapLinearFilter;
       frontTexture.magFilter = THREE.LinearFilter;
       frontTexture.anisotropy = maxAniso;
 
@@ -507,7 +501,13 @@
         const h = 3072;
         frontCtx.clearRect(0, 0, w, h);
 
-        // Solid Matte Pitch Black Card Base
+        // Subtle Rounded Corner Clipping for Card Face
+        frontCtx.save();
+        frontCtx.beginPath();
+        frontCtx.roundRect(0, 0, w, h, 64);
+        frontCtx.clip();
+
+        // Solid Matte Pitch Black Card Base with Subtle Tone
         frontCtx.fillStyle = '#08080a';
         frontCtx.fillRect(0, 0, w, h);
 
@@ -518,12 +518,12 @@
         frontCtx.fillStyle = bgGrad;
         frontCtx.fillRect(0, 0, w, h);
 
-        // Refined Clean Gold Card Border (Non-glowing, zero blur)
+        // Refined Clean Gold Card Border (Non-glowing, crisp solid gold)
         frontCtx.save();
-        frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.42)';
+        frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
         frontCtx.lineWidth = 8;
         frontCtx.beginPath();
-        frontCtx.roundRect(14, 14, w - 28, h - 28, 28);
+        frontCtx.roundRect(14, 14, w - 28, h - 28, 52);
         frontCtx.stroke();
         frontCtx.restore();
 
@@ -582,7 +582,7 @@
         // 1. DEVELOPER NAME: VEERAKUMAR V (Substantially Larger, Bold, Highly Prominent)
         frontCtx.save();
         frontCtx.fillStyle = '#ffffff';
-        frontCtx.font = 'bold 136px Inter, sans-serif';
+        frontCtx.font = 'bold 150px Inter, sans-serif';
         frontCtx.textAlign = 'center';
         frontCtx.letterSpacing = '1px';
         frontCtx.fillText('VEERAKUMAR V', w / 2, 1630);
@@ -591,23 +591,23 @@
         // 2. ROLE: Web Developer & EEE Student (Noticeably Larger)
         frontCtx.save();
         frontCtx.fillStyle = '#fbbf24';
-        frontCtx.font = 'bold 74px Inter, sans-serif';
+        frontCtx.font = 'bold 82px Inter, sans-serif';
         frontCtx.textAlign = 'center';
-        frontCtx.fillText('Web Developer & EEE Student', w / 2, 1745);
+        frontCtx.fillText('Web Developer & EEE Student', w / 2, 1748);
         frontCtx.restore();
 
         // 3. ACADEMIC YEAR: 2nd Year (Larger, naturally placed near role)
         frontCtx.save();
         const yearText = '2nd Year';
-        frontCtx.font = 'bold 54px "Geist Mono", monospace';
+        frontCtx.font = 'bold 62px "Geist Mono", monospace';
         const yearMetrics = frontCtx.measureText(yearText);
-        const yearW = yearMetrics.width + 64;
-        const yearH = 80;
+        const yearW = yearMetrics.width + 72;
+        const yearH = 88;
         const yearX = (w - yearW) / 2;
-        const yearY = 1815;
+        const yearY = 1822;
 
         frontCtx.fillStyle = 'rgba(212, 175, 55, 0.12)';
-        frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
+        frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.48)';
         frontCtx.lineWidth = 3;
         frontCtx.beginPath();
         frontCtx.roundRect(yearX, yearY, yearW, yearH, yearH / 2);
@@ -616,13 +616,13 @@
 
         frontCtx.fillStyle = '#fde047';
         frontCtx.textAlign = 'center';
-        frontCtx.fillText(yearText, w / 2, yearY + 56);
+        frontCtx.fillText(yearText, w / 2, yearY + 62);
         frontCtx.restore();
 
         // 4. DEPARTMENT & COLLEGE (Noticeably Larger with Gold Graduation Cap Icon)
-        const capX = 200;
-        const capY = 2085;
-        const capSize = 54;
+        const capX = 180;
+        const capY = 2060;
+        const capSize = 62;
 
         frontCtx.save();
         frontCtx.strokeStyle = '#d4af37';
@@ -653,32 +653,41 @@
         frontCtx.save();
         frontCtx.textAlign = 'left';
         frontCtx.fillStyle = '#f8fafc';
-        frontCtx.font = 'bold 64px Inter, sans-serif';
-        frontCtx.fillText('Department of Electrical & Electronics Engineering', 290, 2060);
+        frontCtx.font = 'bold 72px Inter, sans-serif';
+        frontCtx.fillText('Department of Electrical & Electronics Engineering', 280, 2035);
 
         frontCtx.fillStyle = '#cbd5e1';
-        frontCtx.font = '600 58px Inter, sans-serif';
-        frontCtx.fillText('University College of Engineering, Ariyalur', 290, 2145);
+        frontCtx.font = '600 66px Inter, sans-serif';
+        frontCtx.fillText('University College of Engineering, Ariyalur', 280, 2120);
         frontCtx.restore();
 
         // Subtle Gold Separator Line
         frontCtx.save();
-        frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+        frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         frontCtx.lineWidth = 3;
         frontCtx.beginPath();
-        frontCtx.moveTo(160, 2260);
-        frontCtx.lineTo(w - 160, 2260);
+        frontCtx.moveTo(160, 2225);
+        frontCtx.lineTo(w - 160, 2225);
         frontCtx.stroke();
         frontCtx.restore();
 
-        // 5. FOUR NORMAL CONTACT / SOCIAL ICONS IN ONE ROW (Instagram | LinkedIn | GitHub | Email)
-        const socialY = 2430;
-        const iconRadius = 78;
+        // 5. CONTACT ME TEXT LABEL (ABOVE THE FOUR SOCIAL ICONS)
+        frontCtx.save();
+        frontCtx.fillStyle = '#fbbf24';
+        frontCtx.font = 'bold 64px "Geist Mono", monospace';
+        frontCtx.textAlign = 'center';
+        frontCtx.letterSpacing = '8px';
+        frontCtx.fillText('CONTACT ME', w / 2, 2345);
+        frontCtx.restore();
+
+        // 6. FOUR NORMAL CONTACT / SOCIAL ICONS IN ONE ROW (Instagram | LinkedIn | GitHub | Email)
+        const socialY = 2545;
+        const iconRadius = 84;
         const socials = [
-          { name: 'Instagram', draw: drawInstagramIcon, x: 400 },
-          { name: 'LinkedIn', draw: drawLinkedInIcon, x: 816 },
-          { name: 'GitHub', draw: drawGitHubIcon, x: 1232 },
-          { name: 'Email', draw: drawEmailIcon, x: 1648 }
+          { name: 'Instagram', draw: drawInstagramIcon, x: 380 },
+          { name: 'LinkedIn', draw: drawLinkedInIcon, x: 808 },
+          { name: 'GitHub', draw: drawGitHubIcon, x: 1236 },
+          { name: 'Email', draw: drawEmailIcon, x: 1664 }
         ];
 
         socials.forEach(s => {
@@ -687,36 +696,31 @@
           // Sub-label under each icon
           frontCtx.save();
           frontCtx.fillStyle = '#cbd5e1';
-          frontCtx.font = '600 44px Inter, sans-serif';
+          frontCtx.font = '600 50px Inter, sans-serif';
           frontCtx.textAlign = 'center';
-          frontCtx.fillText(s.name, s.x, socialY + iconRadius + 65);
+          frontCtx.fillText(s.name, s.x, socialY + iconRadius + 70);
           frontCtx.restore();
         });
 
-        // 6. CONTACT ME TEXT LABEL UNDERNEATH
-        frontCtx.save();
-        frontCtx.fillStyle = '#fbbf24';
-        frontCtx.font = 'bold 52px "Geist Mono", monospace';
-        frontCtx.textAlign = 'center';
-        frontCtx.letterSpacing = '5px';
-        frontCtx.fillText('CONTACT ME', w / 2, 2710);
-        frontCtx.restore();
+        frontCtx.restore(); // end rounded card clip
       }
 
       renderFrontFaceHD();
 
       // -----------------------------------------------------------------------
-      // 3. ULTRA-HD BACK CARD TEXTURE (2048 x 3072) - SUBSTANTIALLY LARGER TEXT
+      // 3. ULTRA-HD BACK CARD TEXTURE (2048 x 3072) - SHARP, LARGE TYPOGRAPHY
       // -----------------------------------------------------------------------
       const backCanvas = document.createElement('canvas');
-      backCanvas.width = isMobile ? 1024 : 2048;
-      backCanvas.height = isMobile ? 1536 : 3072;
-      const backCtx = backCanvas.getContext('2d');
-      if (isMobile) backCtx.scale(0.5, 0.5);
+      backCanvas.width = 2048;
+      backCanvas.height = 3072;
+      const backCtx = backCanvas.getContext('2d', { alpha: true });
+      backCtx.textRendering = 'geometricPrecision';
+      backCtx.imageSmoothingEnabled = true;
+      backCtx.imageSmoothingQuality = 'high';
 
       const backTexture = new THREE.CanvasTexture(backCanvas);
-      backTexture.generateMipmaps = false;
-      backTexture.minFilter = THREE.LinearFilter;
+      backTexture.generateMipmaps = true;
+      backTexture.minFilter = THREE.LinearMipmapLinearFilter;
       backTexture.magFilter = THREE.LinearFilter;
       backTexture.anisotropy = maxAniso;
 
@@ -724,6 +728,12 @@
         const w = 2048;
         const h = 3072;
         backCtx.clearRect(0, 0, w, h);
+
+        // Subtle Rounded Corner Clipping for Back Card Face
+        backCtx.save();
+        backCtx.beginPath();
+        backCtx.roundRect(0, 0, w, h, 64);
+        backCtx.clip();
 
         // Pitch Black Base
         backCtx.fillStyle = '#08080a';
@@ -738,10 +748,10 @@
 
         // Outer clean gold border (Flat, non-glowing)
         backCtx.save();
-        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.42)';
+        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
         backCtx.lineWidth = 8;
         backCtx.beginPath();
-        backCtx.roundRect(14, 14, w - 28, h - 28, 28);
+        backCtx.roundRect(14, 14, w - 28, h - 28, 52);
         backCtx.stroke();
         backCtx.restore();
 
@@ -765,40 +775,40 @@
         // -------------------------------------------------------------------
         // SECTION 1: ABOUT THE DEVELOPER (Substantially Larger Typography)
         // -------------------------------------------------------------------
-        const sec1Y = 260;
+        const sec1Y = 250;
         // Clean Gold User Icon
         backCtx.save();
         backCtx.strokeStyle = '#d4af37';
         backCtx.lineWidth = 6;
         backCtx.lineCap = 'round';
         backCtx.beginPath();
-        backCtx.arc(200, sec1Y + 34, 28, 0, Math.PI * 2);
+        backCtx.arc(190, sec1Y + 34, 28, 0, Math.PI * 2);
         backCtx.stroke();
         backCtx.beginPath();
-        backCtx.arc(200, sec1Y + 104, 46, Math.PI * 1.15, Math.PI * 1.85);
+        backCtx.arc(190, sec1Y + 104, 46, Math.PI * 1.15, Math.PI * 1.85);
         backCtx.stroke();
         backCtx.restore();
 
-        // Heading: ABOUT THE DEVELOPER (Large 72px)
+        // Heading: ABOUT THE DEVELOPER (Large 78px)
         backCtx.save();
-        backCtx.font = 'bold 72px "Geist Mono", monospace';
+        backCtx.font = 'bold 78px "Geist Mono", monospace';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('ABOUT THE DEVELOPER', 280, sec1Y + 76);
+        backCtx.fillText('ABOUT THE DEVELOPER', 270, sec1Y + 76);
         backCtx.restore();
 
-        // Bio paragraph (Large 58px font, 88px line-height, comfortably filled)
+        // Bio paragraph (Large 64px font, 94px line-height, comfortably filled)
         const bioText = "Veerakumar V is a second-year Electrical and Electronics Engineering student at University College of Engineering, Ariyalur, with an interest in web development, software development, UI/UX, cybersecurity, and technology-driven projects.";
         backCtx.save();
         backCtx.fillStyle = '#e2e8f0';
-        backCtx.font = '500 58px Inter, sans-serif';
+        backCtx.font = '500 64px Inter, sans-serif';
         backCtx.textAlign = 'left';
         
         let words = bioText.split(' ');
         let line = '';
-        let lineY = sec1Y + 180;
+        let lineY = sec1Y + 185;
         const maxTextW = 1720;
-        const lineH = 88;
+        const lineH = 94;
 
         for (let n = 0; n < words.length; n++) {
           let testLine = line + words[n] + ' ';
@@ -817,7 +827,7 @@
         // Divider 1 (Subtle Gold Line)
         const div1Y = 780;
         backCtx.save();
-        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         backCtx.lineWidth = 3;
         backCtx.beginPath();
         backCtx.moveTo(160, div1Y);
@@ -836,31 +846,31 @@
         backCtx.lineCap = 'round';
         backCtx.lineJoin = 'round';
         backCtx.beginPath();
-        backCtx.moveTo(205, sec2Y + 18);
-        backCtx.lineTo(180, sec2Y + 44);
-        backCtx.lineTo(205, sec2Y + 70);
-        backCtx.moveTo(250, sec2Y + 18);
-        backCtx.lineTo(275, sec2Y + 44);
-        backCtx.lineTo(250, sec2Y + 70);
-        backCtx.moveTo(240, sec2Y + 10);
-        backCtx.lineTo(215, sec2Y + 78);
+        backCtx.moveTo(195, sec2Y + 18);
+        backCtx.lineTo(170, sec2Y + 44);
+        backCtx.lineTo(195, sec2Y + 70);
+        backCtx.moveTo(240, sec2Y + 18);
+        backCtx.lineTo(265, sec2Y + 44);
+        backCtx.lineTo(240, sec2Y + 70);
+        backCtx.moveTo(230, sec2Y + 10);
+        backCtx.lineTo(205, sec2Y + 78);
         backCtx.stroke();
         backCtx.restore();
 
-        // Heading: TECHNICAL INTERESTS (Large 72px)
+        // Heading: TECHNICAL INTERESTS (Large 78px)
         backCtx.save();
-        backCtx.font = 'bold 72px "Geist Mono", monospace';
+        backCtx.font = 'bold 78px "Geist Mono", monospace';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('TECHNICAL INTERESTS', 300, sec2Y + 58);
+        backCtx.fillText('TECHNICAL INTERESTS', 290, sec2Y + 58);
         backCtx.restore();
 
-        // Skills Chips Helper (Clean Gold/Dark-Glass Treatment, Large 50px Font)
+        // Skills Chips Helper (Clean Gold/Dark-Glass Treatment, Large 56px Font)
         function drawSkillPill(text, x, y, pw) {
-          const ph = 112;
+          const ph = 120;
           backCtx.save();
           backCtx.fillStyle = 'rgba(212, 175, 55, 0.08)';
-          backCtx.strokeStyle = 'rgba(212, 175, 55, 0.38)';
+          backCtx.strokeStyle = 'rgba(212, 175, 55, 0.40)';
           backCtx.lineWidth = 3;
           backCtx.beginPath();
           backCtx.roundRect(x, y, pw, ph, ph / 2);
@@ -868,32 +878,32 @@
           backCtx.stroke();
 
           backCtx.fillStyle = '#f8fafc';
-          backCtx.font = '600 50px Inter, sans-serif';
+          backCtx.font = '600 56px Inter, sans-serif';
           backCtx.textAlign = 'center';
-          backCtx.fillText(text, x + pw / 2, y + 73);
+          backCtx.fillText(text, x + pw / 2, y + 78);
           backCtx.restore();
         }
 
-        // Row 1 (y = 990)
-        drawSkillPill('C / C++', 164, 990, 270);
-        drawSkillPill('Python', 464, 990, 270);
-        drawSkillPill('Web Development', 764, 990, 540);
-        drawSkillPill('Git & GitHub', 1334, 990, 420);
+        // Row 1 (y = 970)
+        drawSkillPill('C / C++', 164, 970, 280);
+        drawSkillPill('Python', 474, 970, 280);
+        drawSkillPill('Web Development', 784, 970, 560);
+        drawSkillPill('Git & GitHub', 1374, 970, 510);
 
-        // Row 2 (y = 1135)
-        drawSkillPill('UI/UX', 164, 1135, 230);
-        drawSkillPill('Software Testing', 424, 1135, 490);
-        drawSkillPill('Debugging', 944, 1135, 340);
-        drawSkillPill('Cybersecurity', 1314, 1135, 440);
+        // Row 2 (y = 1120)
+        drawSkillPill('UI/UX', 164, 1120, 240);
+        drawSkillPill('Software Testing', 434, 1120, 520);
+        drawSkillPill('Debugging', 984, 1120, 360);
+        drawSkillPill('Cybersecurity', 1374, 1120, 510);
 
-        // Row 3 (y = 1280)
-        drawSkillPill('Ethical Hacking', 164, 1280, 480);
-        drawSkillPill('Electronics & Embedded Systems', 674, 1280, 920);
+        // Row 3 (y = 1270)
+        drawSkillPill('Ethical Hacking', 164, 1270, 500);
+        drawSkillPill('Electronics & Embedded Systems', 694, 1270, 1190);
 
         // Divider 2 (Subtle Gold Line)
-        const div2Y = 1480;
+        const div2Y = 1460;
         backCtx.save();
-        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         backCtx.lineWidth = 3;
         backCtx.beginPath();
         backCtx.moveTo(160, div2Y);
@@ -902,46 +912,33 @@
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // SECTION 3: POWERNEX 26 (Large, Prominent Typography)
+        // SECTION 3: POWERNEX 26 & WEBSITE DEVELOPER (Centered Horizontally)
         // -------------------------------------------------------------------
-        const sec3Y = 1570;
-        // Clean Gold Monitor Icon
-        backCtx.save();
-        backCtx.strokeStyle = '#d4af37';
-        backCtx.lineWidth = 6;
-        backCtx.lineCap = 'round';
-        backCtx.lineJoin = 'round';
-        backCtx.strokeRect(175, sec3Y + 14, 76, 54);
-        backCtx.beginPath();
-        backCtx.moveTo(213, sec3Y + 68);
-        backCtx.lineTo(213, sec3Y + 86);
-        backCtx.moveTo(190, sec3Y + 86);
-        backCtx.lineTo(236, sec3Y + 86);
-        backCtx.stroke();
-        backCtx.restore();
+        const sec3Y = 1535;
 
-        // Header: POWERNEX 26 (Large 72px)
+        // Header: POWERNEX 26 (Centered Horizontally as Requested)
         backCtx.save();
-        backCtx.font = 'bold 72px "Geist Mono", monospace';
-        backCtx.textAlign = 'left';
+        backCtx.font = 'bold 82px "Geist Mono", monospace';
+        backCtx.textAlign = 'center';
         backCtx.fillStyle = '#ffffff';
-        backCtx.fillText('POWERNEX 26', 285, sec3Y + 62);
+        backCtx.letterSpacing = '2px';
+        backCtx.fillText('POWERNEX 26', w / 2, sec3Y + 68);
         backCtx.restore();
 
-        // Subheading: Website Developer (Large 62px)
+        // Subheading: Website Developer (Positioned below POWERNEX 26, Centered)
         backCtx.save();
-        backCtx.font = 'bold 62px Inter, sans-serif';
-        backCtx.textAlign = 'left';
+        backCtx.font = 'bold 70px Inter, sans-serif';
+        backCtx.textAlign = 'center';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('Website Developer', 164, sec3Y + 165);
+        backCtx.fillText('Website Developer', w / 2, sec3Y + 165);
         backCtx.restore();
 
-        // Role description (Large 56px font, 86px line-height)
+        // Role description (Large 62px font, 92px line-height)
         const roleDesc = "Designed and developed the POWERNEX 26 symposium website, including its event information, registration interface, schedules, rulebook, and interactive user interface.";
         backCtx.save();
         backCtx.fillStyle = '#cbd5e1';
-        backCtx.font = '500 56px Inter, sans-serif';
-        backCtx.textAlign = 'left';
+        backCtx.font = '500 62px Inter, sans-serif';
+        backCtx.textAlign = 'center';
         
         words = roleDesc.split(' ');
         line = '';
@@ -951,20 +948,20 @@
           let testLine = line + words[n] + ' ';
           let metrics = backCtx.measureText(testLine);
           if (metrics.width > maxTextW && n > 0) {
-            backCtx.fillText(line.trim(), 164, lineY);
+            backCtx.fillText(line.trim(), w / 2, lineY);
             line = words[n] + ' ';
             lineY += lineH;
           } else {
             line = testLine;
           }
         }
-        backCtx.fillText(line.trim(), 164, lineY);
+        backCtx.fillText(line.trim(), w / 2, lineY);
         backCtx.restore();
 
         // Divider 3 (Subtle Gold Line)
         const div3Y = 2220;
         backCtx.save();
-        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+        backCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         backCtx.lineWidth = 3;
         backCtx.beginPath();
         backCtx.moveTo(160, div3Y);
@@ -973,51 +970,97 @@
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // BOTTOM MOTTO: BUILD • LEARN • CREATE
+        // BOTTOM MOTTO: BUILD • LEARN • CREATE (Below Website Developer Content)
         // -------------------------------------------------------------------
         backCtx.save();
-        backCtx.font = 'bold 54px "Geist Mono", monospace';
-        backCtx.fillStyle = 'rgba(212, 175, 55, 0.75)';
+        backCtx.font = 'bold 62px "Geist Mono", monospace';
+        backCtx.fillStyle = 'rgba(212, 175, 55, 0.85)';
         backCtx.textAlign = 'center';
-        backCtx.letterSpacing = '8px';
-        backCtx.fillText('BUILD   •   LEARN   •   CREATE', w / 2, 2460);
+        backCtx.letterSpacing = '10px';
+        backCtx.fillText('BUILD   •   LEARN   •   CREATE', w / 2, 2440);
         backCtx.restore();
+
+        backCtx.restore(); // end rounded card clip
       }
 
       renderBackFaceHD();
 
+      // Ensure crisp re-render once web fonts are fully loaded
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          renderFrontFaceHD();
+          renderBackFaceHD();
+          frontTexture.needsUpdate = true;
+          backTexture.needsUpdate = true;
+        });
+      }
+
       // Card Mesh & Materials
+            // Card Mesh & Materials (Crisp Native Contrast, Zero Specular Washout)
       const edgeMaterial = new THREE.MeshStandardMaterial({
-        color: 0x18181f,
-        metalness: 0.8,
-        roughness: 0.3
+        color: 0x141418,
+        roughness: 0.5,
+        metalness: 0.2
       });
 
-      const frontMaterial = new THREE.MeshStandardMaterial({
+      const frontMaterial = new THREE.MeshBasicMaterial({
         map: frontTexture,
-        roughness: 0.45,
-        metalness: 0.05
+        transparent: true,
+        alphaTest: 0.05
       });
 
-      const backMaterial = new THREE.MeshStandardMaterial({
+      const backMaterial = new THREE.MeshBasicMaterial({
         map: backTexture,
-        roughness: 0.45,
-        metalness: 0.05
+        transparent: true,
+        alphaTest: 0.05
       });
 
-      const materials = [
-        edgeMaterial,
-        edgeMaterial,
-        edgeMaterial,
-        edgeMaterial,
-        frontMaterial,
-        backMaterial
-      ];
-
-      const cardGeo = new THREE.BoxGeometry(CARD_WIDTH, CARD_HEIGHT, CARD_THICKNESS);
-      const cardMesh = new THREE.Mesh(cardGeo, materials);
-
+      // 3D Card Geometry: Create Card Mesh with Plane Faces & Rounded Frame
       const cardPivot = new THREE.Group();
+      const cardMesh = new THREE.Group();
+
+      // Front Face
+      const frontGeo = new THREE.PlaneGeometry(CARD_WIDTH, CARD_HEIGHT);
+      const frontMesh = new THREE.Mesh(frontGeo, frontMaterial);
+      frontMesh.position.z = CARD_THICKNESS / 2 + 0.001;
+      cardMesh.add(frontMesh);
+
+      // Back Face (Facing backward)
+      const backGeo = new THREE.PlaneGeometry(CARD_WIDTH, CARD_HEIGHT);
+      const backMesh = new THREE.Mesh(backGeo, backMaterial);
+      backMesh.position.z = -CARD_THICKNESS / 2 - 0.001;
+      backMesh.rotation.y = Math.PI;
+      cardMesh.add(backMesh);
+
+      // Card Core Body with Subtle Rounded Corners
+      function createRoundedCardBody(w, h, d, r) {
+        const shape = new THREE.Shape();
+        const x = -w / 2;
+        const y = -h / 2;
+        shape.moveTo(x + r, y);
+        shape.lineTo(x + w - r, y);
+        shape.quadraticCurveTo(x + w, y, x + w, y + r);
+        shape.lineTo(x + w, y + h - r);
+        shape.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        shape.lineTo(x + r, y + h);
+        shape.quadraticCurveTo(x, y + h, x, y + h - r);
+        shape.lineTo(x, y + r);
+        shape.quadraticCurveTo(x, y, x + r, y);
+
+        const extrudeSettings = {
+          depth: d,
+          bevelEnabled: false,
+          curveSegments: 16
+        };
+        const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+        geo.center();
+        return geo;
+      }
+
+      const cardBodyGeo = createRoundedCardBody(CARD_WIDTH, CARD_HEIGHT, CARD_THICKNESS, 0.075);
+      const cardBodyMesh = new THREE.Mesh(cardBodyGeo, edgeMaterial);
+      cardMesh.add(cardBodyMesh);
+
       cardMesh.position.y = -CARD_HEIGHT / 2 - 0.25;
       cardPivot.add(cardMesh);
 
@@ -1180,12 +1223,18 @@
       // -----------------------------------------------------------------------
       // 6. ROCK-SOLID FLIP CONTROLLER & TOUCH/CLICK INTERACTIONS
       // -----------------------------------------------------------------------
+      const flipToggleBtn = document.getElementById('card-flip-toggle-btn');
+      const flipBtnText = document.getElementById('flip-btn-text');
+
       let isFlipped = false;
       let targetRotationY = 0;
       let currentRotationY = 0;
-
-      const flipToggleBtn = document.getElementById('card-flip-toggle-btn');
-      const flipBtnText = document.getElementById('flip-btn-text');
+      if (new URLSearchParams(window.location.search).get('flip') === 'true') {
+        isFlipped = true;
+        targetRotationY = Math.PI;
+        currentRotationY = Math.PI;
+        if (flipBtnText) flipBtnText.textContent = 'SHOW FRONT';
+      }
 
       function performFlipToggle() {
         isFlipped = !isFlipped;
@@ -1203,28 +1252,28 @@
         });
       }
 
-                        function getClickedLink(hitPoint) {
+                              function getClickedLink(hitPoint) {
         const local = cardMesh.worldToLocal(hitPoint.clone());
         const normY = (1.825 - local.y) / 3.65;
         const normX = (local.x + 1.2) / 2.4;
 
         if (!isFlipped) {
-          // Front Face 4-Icon Row (normY between 0.74 and 0.86)
-          if (normY >= 0.74 && normY <= 0.86) {
-            // Instagram (center ~0.195)
-            if (normX >= 0.12 && normX <= 0.27) {
+          // Front Face 4-Icon Row (y=2545 on 3072 texture -> normY ~0.78 to 0.91)
+          if (normY >= 0.78 && normY <= 0.91) {
+            // Instagram (center ~0.185)
+            if (normX >= 0.10 && normX <= 0.27) {
               return 'https://instagram.com/mr_veerakumar.v';
             }
-            // LinkedIn (center ~0.398)
-            if (normX >= 0.32 && normX <= 0.47) {
+            // LinkedIn (center ~0.395)
+            if (normX >= 0.31 && normX <= 0.48) {
               return 'https://www.linkedin.com/in/v-veerakumar/';
             }
-            // GitHub (center ~0.601)
-            if (normX >= 0.52 && normX <= 0.67) {
+            // GitHub (center ~0.604)
+            if (normX >= 0.52 && normX <= 0.69) {
               return 'https://github.com/veerakumar-v';
             }
-            // Email (center ~0.804)
-            if (normX >= 0.72 && normX <= 0.88) {
+            // Email (center ~0.812)
+            if (normX >= 0.73 && normX <= 0.90) {
               return 'mailto:uceadeveloper@gmail.com';
             }
           }
@@ -1248,7 +1297,7 @@
         dragStartPos = { x: e.clientX, y: e.clientY };
 
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObject(cardMesh);
+        const intersects = raycaster.intersectObject(cardMesh, true);
         if (intersects.length > 0) {
           isDragging = true;
           canvas.classList.add('grabbing');
@@ -1276,7 +1325,7 @@
           }
         } else if (isFlipped) {
           raycaster.setFromCamera(mouse, camera);
-          const intersects = raycaster.intersectObject(cardMesh);
+          const intersects = raycaster.intersectObject(cardMesh, true);
           if (intersects.length > 0) {
             const link = getClickedLink(intersects[0].point);
             if (link) {
@@ -1305,7 +1354,7 @@
         // Generous tap distance threshold for capacitive touchscreens
         if (distMoved < 18) {
           raycaster.setFromCamera(mouse, camera);
-          const intersects = raycaster.intersectObject(cardMesh);
+          const intersects = raycaster.intersectObject(cardMesh, true);
           if (intersects.length > 0) {
             const link = getClickedLink(intersects[0].point);
             if (link) {
