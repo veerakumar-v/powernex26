@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // HYPER-REALISTIC MULTI-FRAME LIGHTNING PHYSICS ENGINE
   // Stepped Leader -> Return Stroke -> Multi-Dart Flickers -> Thermal Afterglow
+  // Optimized for 60/120fps mobile performance with zero scroll lag
   // ==========================================================================
   (function initRealisticLightningPhysics() {
     const canvas = document.getElementById('lightning-canvas');
@@ -215,14 +216,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window);
     let width = window.innerWidth;
     let height = window.innerHeight;
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
 
     function resizeCanvas() {
       width = window.innerWidth;
       height = window.innerHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       canvas.style.width = width + 'px';
@@ -233,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const activeBolts = [];
     let skyFlash = { alpha: 0, x: width / 2, y: 0, radius: width * 0.8 };
+    let isLoopRunning = false;
 
     // Fractal lightning path generator with natural plasma jitter
     function generateBoltPath(sx, sy, ex, ey, roughness = 32, depth = 0, maxDepth = 6) {
@@ -246,7 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const dy = ey - sy;
       const dist = Math.hypot(dx, dy);
 
-      // Perpendicular displacement
       const nx = -dy / (dist || 1);
       const ny = dx / (dist || 1);
       const offset = (Math.random() - 0.5) * roughness;
@@ -267,38 +269,32 @@ document.addEventListener('DOMContentLoaded', () => {
         this.ex = ex;
         this.ey = ey;
         this.isBranch = isBranch;
-        this.branchDelay = branchDelay; // frames before starting
+        this.branchDelay = branchDelay;
 
-        // Physical timings (in frames at 60fps)
         this.age = 0;
-        this.segments = generateBoltPath(sx, sy, ex, ey, isBranch ? 22 : 42, 0, isBranch ? 5 : 6);
+        this.segments = generateBoltPath(sx, sy, ex, ey, isBranch ? 22 : 42, 0, isBranch ? 5 : (isMobile ? 5 : 6));
         this.totalSegments = this.segments.length;
         
-        // Phase 1: Stepped Leader progress (propagates frame by frame)
-        this.steppedSpeed = isBranch ? 4 : 5; // segments revealed per frame
+        this.steppedSpeed = isBranch ? 4 : 5;
         this.visibleCount = isBranch ? 0 : 2;
         this.hasStruck = false;
 
-        // Phase 2 & 3: Multi-stroke return flickers
         this.returnStrokeAge = 0;
         this.flickerPattern = [1.0, 0.45, 0.95, 0.3, 0.75, 0.2, 0.5, 0.35, 0.25, 0.15, 0.08, 0.03, 0];
         this.flickerIdx = 0;
         this.done = false;
 
-        // Sub-branches
         this.branches = [];
-        if (!isBranch) {
-          // Generate 2 to 4 branches along the channel
-          const branchCount = 2 + Math.floor(Math.random() * 3);
+        if (!isBranch && !isMobile) {
+          const branchCount = 2 + Math.floor(Math.random() * 2);
           for (let b = 0; b < branchCount; b++) {
-            const segIdx = Math.floor(this.totalSegments * (0.2 + (b / branchCount) * 0.6));
+            const segIdx = Math.floor(this.totalSegments * (0.25 + (b / branchCount) * 0.5));
             if (segIdx < this.totalSegments) {
               const node = this.segments[segIdx];
               const angle = Math.atan2(ey - sy, ex - sx) + (Math.random() > 0.5 ? 1 : -1) * (0.5 + Math.random() * 0.4);
-              const branchLen = Math.hypot(ex - sx, ey - sy) * (0.22 + Math.random() * 0.28);
+              const branchLen = Math.hypot(ex - sx, ey - sy) * (0.22 + Math.random() * 0.25);
               const bx = node.x + Math.cos(angle) * branchLen;
               const by = node.y + Math.sin(angle) * branchLen;
-              // delay until stepped leader reaches this segment
               const delay = Math.floor(segIdx / this.steppedSpeed);
               this.branches.push(new RealisticBolt(node.x, node.y, bx, by, true, delay));
             }
@@ -314,13 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // Stepped leader phase: progressive frame-by-frame propagation
         if (this.visibleCount < this.totalSegments) {
           this.visibleCount += this.steppedSpeed;
           if (this.visibleCount >= this.totalSegments) {
             this.visibleCount = this.totalSegments;
             this.hasStruck = true;
-            // Trigger atmospheric return stroke flash
             if (!this.isBranch) {
               skyFlash = {
                 alpha: 0.22,
@@ -331,14 +325,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
         } else {
-          // Return stroke and multi-stroke flicker phase
           this.flickerIdx++;
           if (this.flickerIdx >= this.flickerPattern.length) {
             this.done = true;
           }
         }
 
-        // Update sub-branches
         for (let i = 0; i < this.branches.length; i++) {
           this.branches[i].update();
         }
@@ -347,10 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
       draw(ctx) {
         if (this.branchDelay > 0 || this.visibleCount < 2) return;
 
-        // Current brightness from stepped leader or multi-stroke flicker
         let brightness = 1.0;
         if (!this.hasStruck) {
-          brightness = 0.55 + Math.random() * 0.35; // Faint stepped leader ionization
+          brightness = 0.55 + Math.random() * 0.35;
         } else {
           brightness = this.flickerPattern[Math.min(this.flickerIdx, this.flickerPattern.length - 1)] || 0;
         }
@@ -358,18 +349,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (brightness <= 0.01) return;
 
         ctx.save();
-
-        // Thermal plasma micro-jitter during active stroke
         const jitter = this.hasStruck && this.flickerIdx < 6 ? (Math.random() - 0.5) * 1.5 : 0;
-
         const count = Math.min(this.visibleCount, this.totalSegments);
 
-        // PASS 1: Broad Cyan Plasma Corona Glow
+        // On mobile, skip heavy shadowBlur for 60/120fps silky smoothness
+        const useShadow = !isMobile;
+
+        // PASS 1: Broad Corona Glow
         ctx.globalAlpha = Math.min(1.0, brightness * 0.9);
         ctx.strokeStyle = '#00f0ff';
         ctx.lineWidth = (this.isBranch ? 3.0 : 6.0) * brightness;
-        ctx.shadowColor = '#00f0ff';
-        ctx.shadowBlur = (this.isBranch ? 14 : 28) * brightness;
+        if (useShadow) {
+          ctx.shadowColor = '#00f0ff';
+          ctx.shadowBlur = (this.isBranch ? 14 : 28) * brightness;
+        }
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
 
@@ -380,12 +373,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         ctx.stroke();
 
-        // PASS 2: Mid-tier Electric Blue Ionization Channel
+        // PASS 2: Mid Ionization Channel
         ctx.globalAlpha = Math.min(1.0, brightness * 0.95);
         ctx.strokeStyle = '#a5f3fc';
         ctx.lineWidth = (this.isBranch ? 1.8 : 3.4) * brightness;
-        ctx.shadowColor = '#38bdf8';
-        ctx.shadowBlur = (this.isBranch ? 8 : 16) * brightness;
+        if (useShadow) {
+          ctx.shadowColor = '#38bdf8';
+          ctx.shadowBlur = (this.isBranch ? 8 : 16) * brightness;
+        }
 
         ctx.beginPath();
         ctx.moveTo(this.segments[0].x + jitter, this.segments[0].y + jitter);
@@ -394,12 +389,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         ctx.stroke();
 
-        // PASS 3: Intense Pure White Electric Core Filament
+        // PASS 3: White Core Filament
         ctx.globalAlpha = Math.min(1.0, brightness);
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = (this.isBranch ? 1.0 : 1.8) * brightness;
-        ctx.shadowColor = '#ffffff';
-        ctx.shadowBlur = 6;
+        if (useShadow) {
+          ctx.shadowColor = '#ffffff';
+          ctx.shadowBlur = 6;
+        }
 
         ctx.beginPath();
         ctx.moveTo(this.segments[0].x + jitter, this.segments[0].y + jitter);
@@ -410,7 +407,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.restore();
 
-        // Draw sub-branches
         for (let i = 0; i < this.branches.length; i++) {
           this.branches[i].draw(ctx);
         }
@@ -422,28 +418,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Trigger natural multi-frame lightning bolt
+    function ensureLoopRunning() {
+      if (!isLoopRunning) {
+        isLoopRunning = true;
+        requestAnimationFrame(loop);
+      }
+    }
+
+    // Trigger realistic lightning bolt
     function triggerRealisticStrike(targetX, targetY) {
       if (typeof targetX === 'number' && typeof targetY === 'number') {
-        // Directed strike from sky down to cursor
         const sx = targetX + (Math.random() - 0.5) * 240;
         const sy = Math.max(-20, targetY - 380 - Math.random() * 200);
         activeBolts.push(new RealisticBolt(sx, sy, targetX, targetY));
+        ensureLoopRunning();
         return;
       }
 
-      // Natural atmospheric lightning across sky and ground
       const style = Math.random();
       let sx, sy, ex, ey;
 
       if (style < 0.65) {
-        // Cloud-to-ground / cloud-to-busbar vertical discharge
         sx = width * (0.12 + Math.random() * 0.76);
         sy = -30;
         ex = sx + (Math.random() - 0.5) * (width * 0.4);
         ey = height * (0.38 + Math.random() * 0.52);
       } else {
-        // High-voltage cloud-to-cloud horizontal arc across the header/horizon
         const fromLeft = Math.random() > 0.5;
         sx = fromLeft ? -30 : width + 30;
         sy = height * (0.08 + Math.random() * 0.45);
@@ -452,19 +452,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       activeBolts.push(new RealisticBolt(sx, sy, ex, ey));
+      ensureLoopRunning();
     }
 
-    // Interactive strike on click/tap anywhere on non-interactive regions
+    // Interactive strike on mouse click ONLY (prevents mobile touch scroll lag)
     window.addEventListener('pointerdown', (e) => {
-      if (!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('input')) {
+      if (e.pointerType === 'mouse' && !e.target.closest('a') && !e.target.closest('button') && !e.target.closest('input')) {
         triggerRealisticStrike(e.clientX, e.clientY);
       }
     }, { passive: true });
 
-    let nextStrikeTime = Date.now() + 1200;
+    // Expose breaker trigger
+    window.triggerMajorStrike = (x, y) => {
+      triggerRealisticStrike(x, y);
+      setTimeout(() => triggerRealisticStrike(x + 20, y + 10), 160);
+    };
 
-    // High performance frame-by-frame animation loop
+    // Idle-aware animation loop: stops when resting, saves 100% idle CPU/GPU
     function loop() {
+      if (activeBolts.length === 0 && skyFlash.alpha <= 0.005) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        isLoopRunning = false;
+        return;
+      }
+
       ctx.save();
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -483,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, width, height);
         ctx.restore();
-        skyFlash.alpha *= 0.82; // Smooth atmospheric decay
+        skyFlash.alpha *= 0.82;
       }
 
       // Update and draw lightning bolts
@@ -499,18 +510,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       ctx.restore();
-
-      // Schedule next natural atmospheric strike (every 2.4s to 4.8s)
-      const now = Date.now();
-      if (now > nextStrikeTime) {
-        triggerRealisticStrike();
-        // 35% chance of rapid natural twin/secondary discharge
-        if (Math.random() < 0.35) {
-          setTimeout(triggerRealisticStrike, 180 + Math.random() * 120);
-        }
-        nextStrikeTime = now + 2400 + Math.random() * 2400;
-      }
-
       requestAnimationFrame(loop);
     }
 
@@ -518,11 +517,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       triggerRealisticStrike();
       setTimeout(triggerRealisticStrike, 190);
-    }, 500);
+    }, 600);
 
-    requestAnimationFrame(loop);
+    // Natural atmospheric strike schedule (low overhead)
+    setInterval(() => {
+      if (document.hidden) return;
+      if (Math.random() < (isMobile ? 0.35 : 0.65)) {
+        triggerRealisticStrike();
+      }
+    }, isMobile ? 7000 : 3800);
   })();
-
 
   // ==========================================================================
   // EVENTS TRACK TABS CONTROLLER (TECHNICAL & NON-TECHNICAL TABS)
@@ -682,10 +686,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Tap-To-Flip Card Support
+  // Mobile Tap-To-Flip Card Support (Clean Tap vs Scroll Detection)
   document.querySelectorAll('.flip-card').forEach(card => {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    card.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+      }
+    }, { passive: true });
+
+    card.addEventListener('touchend', (e) => {
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      if (e.changedTouches && e.changedTouches[0]) {
+        const t = e.changedTouches[0];
+        const dist = Math.hypot(t.clientX - touchStartX, t.clientY - touchStartY);
+        const elapsed = Date.now() - touchStartTime;
+
+        // Clean deliberate tap (not a drag or scroll gesture)
+        if (dist < 12 && elapsed < 500) {
+          card.classList.toggle('is-flipped');
+        }
+      }
+    });
+
     card.addEventListener('click', (e) => {
-      if (!e.target.closest('a')) {
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         card.classList.toggle('is-flipped');
       }
     });
@@ -713,7 +744,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       window.addEventListener('load', hidePreloader);
       // Fallback safety timeout
-      setTimeout(hidePreloader, 2800);
+      setTimeout(hidePreloader, 1200);
     }
   }
 
@@ -728,44 +759,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('section[id]');
   const backToTopBtn = document.getElementById('back-to-top-btn');
 
-  function handleScroll() {
+  let isScrollTicking = false;
+
+  function updateScrollState() {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
 
     if (navbar) {
-      if (scrollY > 40) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      navbar.classList.toggle('scrolled', scrollY > 40);
     }
 
     if (backToTopBtn) {
-      if (scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
+      backToTopBtn.classList.toggle('visible', scrollY > 300);
     }
 
     let currentSectionId = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 140;
-      const sectionHeight = section.offsetHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        currentSectionId = section.getAttribute('id');
+    const triggerPoint = window.innerHeight * 0.35;
+    for (let i = 0; i < sections.length; i++) {
+      const rect = sections[i].getBoundingClientRect();
+      if (rect.top <= triggerPoint && rect.bottom >= triggerPoint) {
+        currentSectionId = sections[i].getAttribute('id');
+        break;
       }
-    });
+    }
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${{currentSectionId}}`) {
-        link.classList.add('active');
-      }
-    });
+    if (currentSectionId) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === #);
+      });
+    }
   }
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
+  window.addEventListener('scroll', () => {
+    if (!isScrollTicking) {
+      requestAnimationFrame(() => {
+        updateScrollState();
+        isScrollTicking = false;
+      });
+      isScrollTicking = true;
+    }
+  }, { passive: true });
+  updateScrollState();
 
   if (backToTopBtn) {
     backToTopBtn.addEventListener('click', () => {

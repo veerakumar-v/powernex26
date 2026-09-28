@@ -266,13 +266,14 @@
 
       const camera = new THREE.PerspectiveCamera(34, window.innerWidth / window.innerHeight, 0.1, 100);
 
+      const isMobile = window.innerWidth <= 768;
       const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true,
         alpha: false,
         powerPreference: 'high-performance'
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.25) : Math.min(window.devicePixelRatio, 2));
       renderer.setSize(window.innerWidth, window.innerHeight);
 
       const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
@@ -358,9 +359,10 @@
       // 2. ULTRA-HD FRONT CARD TEXTURE (2048 x 3072) - USING me.png
       // -----------------------------------------------------------------------
       const frontCanvas = document.createElement('canvas');
-      frontCanvas.width = 2048;
-      frontCanvas.height = 3072;
+      frontCanvas.width = isMobile ? 1024 : 2048;
+      frontCanvas.height = isMobile ? 1536 : 3072;
       const frontCtx = frontCanvas.getContext('2d');
+      if (isMobile) frontCtx.scale(0.5, 0.5);
 
       const frontTexture = new THREE.CanvasTexture(frontCanvas);
       frontTexture.generateMipmaps = false;
@@ -497,9 +499,10 @@
       // 3. ULTRA-HD BACK CARD TEXTURE (2048 x 3072) - LOGOS FROM THE INTERNET
       // -----------------------------------------------------------------------
       const backCanvas = document.createElement('canvas');
-      backCanvas.width = 2048;
-      backCanvas.height = 3072;
+      backCanvas.width = isMobile ? 1024 : 2048;
+      backCanvas.height = isMobile ? 1536 : 3072;
       const backCtx = backCanvas.getContext('2d');
+      if (isMobile) backCtx.scale(0.5, 0.5);
 
       const backTexture = new THREE.CanvasTexture(backCanvas);
       backTexture.generateMipmaps = false;
@@ -985,7 +988,8 @@
 
         const distMoved = Math.hypot(e.clientX - dragStartPos.x, e.clientY - dragStartPos.y);
 
-        if (distMoved < 7) {
+        // Generous tap distance threshold for capacitive touchscreens
+        if (distMoved < 18) {
           raycaster.setFromCamera(mouse, camera);
           const intersects = raycaster.intersectObject(cardMesh);
           if (intersects.length > 0) {
@@ -1009,6 +1013,8 @@
 
       canvas.addEventListener('pointerup', handlePointerUpOrCancel);
       canvas.addEventListener('pointercancel', handlePointerUpOrCancel);
+      window.addEventListener('pointerup', handlePointerUpOrCancel);
+      window.addEventListener('pointercancel', handlePointerUpOrCancel);
 
       // -----------------------------------------------------------------------
       // 7. RESPONSIVE VIEWPORT & CAMERA CALCULATION
@@ -1069,7 +1075,8 @@
 
         ropePoints[0].copy(ROPE_TOP);
 
-        for (let pass = 0; pass < 8; pass++) {
+        const physicsPasses = isMobile ? 4 : 7;
+        for (let pass = 0; pass < physicsPasses; pass++) {
           for (let i = 0; i < ROPE_SEGMENTS; i++) {
             const p1 = ropePoints[i];
             const p2 = ropePoints[i + 1];

@@ -2550,10 +2550,17 @@ html, body {
 }
 
 /* Flip on hover (desktop) AND flip on .is-flipped (mobile tap) */
-.flip-card:hover .flip-card-inner,
-.flip-card:focus-within .flip-card-inner,
+/* Flip on hover ONLY on desktop (hover: hover and pointer: fine) */
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:hover .flip-card-inner,
+  .flip-card:focus-within .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Flip on tap/click via class */
 .flip-card.is-flipped .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) !important;
 }
 
 .flip-card-front, .flip-card-back {
@@ -4014,5 +4021,43 @@ html, body {
     transform: translateX(-50%) scale(0.9) !important;
     width: max-content !important;
     max-width: 90vw !important;
+  }
+}
+
+
+/* Mobile GPU Acceleration & Scroll Optimization */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Hardware accelerated card flips */
+  .flip-card-inner {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Lightweight backdrop blur on mobile */
+  .power-nav,
+  .mobile-menu-drawer,
+  .climax-portal-card,
+  .reactor-time-hud {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Remove backdrop-filter on small badges and cards during mobile scroll */
+  .chip-item,
+  .info-pill-card,
+  .card-track-badge,
+  .timeline-box {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Optimize card box shadows on mobile */
+  .flip-card-front,
+  .flip-card-back {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
   }
 }
