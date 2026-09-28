@@ -5,6 +5,27 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ==========================================================================
+  // FAST FAIL-SAFE PRELOADER DISMISSAL
+  // ==========================================================================
+  const preloader = document.getElementById('site-preloader');
+  if (preloader) {
+    const hidePreloader = () => {
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+      }, 500);
+    };
+
+    if (document.readyState === 'complete') {
+      setTimeout(hidePreloader, 300);
+    } else {
+      window.addEventListener('load', hidePreloader);
+      // Hard fail-safe: never wait more than 900ms under any network condition
+      setTimeout(hidePreloader, 900);
+    }
+  }
+
 
   // ==========================================================================
   // PEEK RATING COMPONENT (React Bits vanilla implementation)
@@ -725,30 +746,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // ==========================================================================
-  // SMOOTH PRELOADER DISMISSAL
-  // ==========================================================================
-  const preloader = document.getElementById('site-preloader');
-  if (preloader) {
-    const hidePreloader = () => {
-      setTimeout(() => {
-        preloader.classList.add('fade-out');
-        setTimeout(() => {
-          if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
-        }, 500); // 500ms fade duration
-      }, 500); // 500ms loader display duration
-    };
-
-    if (document.readyState === 'complete') {
-      hidePreloader();
-    } else {
-      window.addEventListener('load', hidePreloader);
-      // Fallback safety timeout
-      setTimeout(hidePreloader, 1200);
-    }
-  }
-
-
   const REG_URL = "https://docs.google.com/forms/d/e/1FAIpQLSf4ZvPh7lYtd8h5oPpaSLUJMSXtntyTyIukRaRylSjwKcnkEQ/viewform?pli=1";
 
   // ==========================================================================
@@ -784,7 +781,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (currentSectionId) {
       navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === #);
+        link.classList.toggle('active', link.getAttribute('href') === '#' + currentSectionId);
       });
     }
   }

@@ -82,6 +82,28 @@
     </div>
   </div>
 
+  <!-- Fail-Safe Preloader Dismissal: Guarantees user is NEVER stuck on loader -->
+  <script>
+    (function() {
+      function dismissLoader() {
+        var el = document.getElementById('site-preloader');
+        if (el && !el.classList.contains('fade-out')) {
+          el.classList.add('fade-out');
+          setTimeout(function() {
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+          }, 500);
+        }
+      }
+      if (document.readyState === 'complete') {
+        setTimeout(dismissLoader, 250);
+      } else {
+        window.addEventListener('load', dismissLoader);
+        // Absolute safety timeout: preloader NEVER stays longer than 850ms
+        setTimeout(dismissLoader, 850);
+      }
+    })();
+  </script>
+
 
   <!-- Main App Wrapper -->
     <!-- Ambient Electric Pulse Layer & High-Voltage Lightning Canvas -->
