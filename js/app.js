@@ -602,17 +602,83 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // COPY SHARE LINK HANDLER (Requirement 10)
+  // TOAST NOTIFICATION UTILITY
   // ==========================================================================
+  function showShareToast(message) {
+    const toast = document.getElementById('toast-notification');
+    const toastMsg = document.getElementById('toast-message');
+    if (toast && toastMsg) {
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+      if (window.lucide) { window.lucide.createIcons(); }
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+  }
+
+  // ==========================================================================
+  // OFFICIAL SHARE & COPY LINK HANDLER (https://powernex26.vercel.app)
+  // ==========================================================================
+  const OFFICIAL_SHARE_URL = 'https://powernex26.vercel.app';
   const copyBtn = document.getElementById('copy-site-link-btn');
   if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const shareUrl = window.location.href;
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        alert('POWERNEX 26 link copied to clipboard!');
-      }).catch(() => {
-        prompt('Copy this link:', shareUrl);
-      });
+    copyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(OFFICIAL_SHARE_URL).then(() => {
+          showShareToast('Copied: ' + OFFICIAL_SHARE_URL);
+        }).catch(() => {
+          prompt('Copy official symposium link:', OFFICIAL_SHARE_URL);
+        });
+      } else {
+        prompt('Copy official symposium link:', OFFICIAL_SHARE_URL);
+      }
+    });
+  }
+
+  const shareBtn = document.getElementById('site-share-btn');
+  const shareContainer = document.getElementById('hero-share-container');
+  if (shareBtn && shareContainer) {
+    shareBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // If on mobile browser with native Web Share support
+      if (navigator.share && window.innerWidth <= 768) {
+        navigator.share({
+          title: 'POWERNEX 26',
+          text: 'Join POWERNEX 26 - National Level Technical Symposium at University College of Engineering Ariyalur! Think Electric. Think Future. Be the Change!',
+          url: OFFICIAL_SHARE_URL
+        }).catch(() => {});
+      } else {
+        shareContainer.classList.toggle('is-open');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!shareContainer.contains(e.target)) {
+        shareContainer.classList.remove('is-open');
+      }
+    });
+  }
+
+  const mobileDrawerShareBtn = document.getElementById('mobile-share-link-trigger');
+  if (mobileDrawerShareBtn) {
+    mobileDrawerShareBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (navigator.share) {
+        navigator.share({
+          title: 'POWERNEX 26',
+          text: 'Join POWERNEX 26 - National Level Technical Symposium at University College of Engineering Ariyalur! Think Electric. Think Future. Be the Change!',
+          url: OFFICIAL_SHARE_URL
+        }).catch(() => {});
+      } else if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(OFFICIAL_SHARE_URL).then(() => {
+          showShareToast('Copied: ' + OFFICIAL_SHARE_URL);
+        });
+      } else {
+        prompt('Copy official symposium link:', OFFICIAL_SHARE_URL);
+      }
     });
   }
 
