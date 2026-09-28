@@ -95,7 +95,7 @@ Awarded to the visiting engineering college securing the highest aggregate point
 
 ## Project Structure
 
-`
+```text
 powernex26/
 ├── 404.html                # Radar sweep interactive 404 page
 ├── index.html              # Main symposium web portal
@@ -105,7 +105,14 @@ powernex26/
 ├── README.md               # Project documentation
 ├── .gitignore              # Git ignore rules
 ├── app/                    # Font configurations
+│   └── fonts.ts
 ├── components/             # Reusable UI component modules
+│   └── ui/
+│       ├── interactive-hover-button.tsx
+│       ├── lanyard.tsx
+│       ├── Lanyard.css
+│       ├── gradient-tracing.tsx
+│       └── demo.tsx
 ├── css/                    # Modular stylesheet architecture
 │   ├── animations.css      # Keyframe animations
 │   ├── components.css      # Design system and UI components
@@ -117,7 +124,8 @@ powernex26/
 │   ├── electric-canvas.js  # Canvas electrical particles background
 │   └── simulators.js       # Interactive event sandboxes
 └── lib/                    # Shared utility helpers
-`
+    └── utils.ts
+```
 
 ---
 
