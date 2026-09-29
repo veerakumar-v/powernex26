@@ -579,32 +579,32 @@
         frontCtx.stroke();
         frontCtx.restore();
 
-        // 1. DEVELOPER NAME: VEERAKUMAR V (Large, Bold, Highly Prominent 164px)
+        // 1. DEVELOPER NAME: VEERAKUMAR V (Substantially Larger 180px bold)
         frontCtx.save();
         frontCtx.fillStyle = '#ffffff';
-        frontCtx.font = 'bold 164px Inter, sans-serif';
+        frontCtx.font = 'bold 180px Inter, sans-serif';
         frontCtx.textAlign = 'center';
         frontCtx.letterSpacing = '1px';
-        frontCtx.fillText('VEERAKUMAR V', w / 2, 1630);
+        frontCtx.fillText('VEERAKUMAR V', w / 2, 1635);
         frontCtx.restore();
 
-        // 2. ROLE: Web Developer & EEE Student (Large 92px)
+        // 2. ROLE: Web Developer & EEE Student (Substantially Larger 102px bold)
         frontCtx.save();
         frontCtx.fillStyle = '#fbbf24';
-        frontCtx.font = 'bold 92px Inter, sans-serif';
+        frontCtx.font = 'bold 102px Inter, sans-serif';
         frontCtx.textAlign = 'center';
-        frontCtx.fillText('Web Developer & EEE Student', w / 2, 1748);
+        frontCtx.fillText('Web Developer & EEE Student', w / 2, 1758);
         frontCtx.restore();
 
-        // 3. ACADEMIC YEAR: 2nd Year (Large 70px)
+        // 3. ACADEMIC YEAR: 2nd Year (Substantially Larger 78px bold)
         frontCtx.save();
         const yearText = '2nd Year';
-        frontCtx.font = 'bold 70px "Geist Mono", monospace';
+        frontCtx.font = 'bold 78px "Geist Mono", monospace';
         const yearMetrics = frontCtx.measureText(yearText);
-        const yearW = yearMetrics.width + 76;
-        const yearH = 92;
+        const yearW = yearMetrics.width + 84;
+        const yearH = 104;
         const yearX = (w - yearW) / 2;
-        const yearY = 1822;
+        const yearY = 1832;
 
         frontCtx.fillStyle = 'rgba(212, 175, 55, 0.12)';
         frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.48)';
@@ -616,18 +616,18 @@
 
         frontCtx.fillStyle = '#fde047';
         frontCtx.textAlign = 'center';
-        frontCtx.fillText(yearText, w / 2, yearY + 66);
+        frontCtx.fillText(yearText, w / 2, yearY + 74);
         frontCtx.restore();
 
-        // 4. DEPARTMENT & COLLEGE (Large High-Contrast Typography 70px / 66px with generous margin)
-        const capX = 145;
-        const capY = 2060;
-        const capSize = 62;
+        // 4. DEPARTMENT & COLLEGE (Substantially Larger 74px / 70px)
+        const capX = 140;
+        const capY = 2075;
+        const capSize = 66;
 
         frontCtx.save();
         frontCtx.strokeStyle = '#d4af37';
         frontCtx.fillStyle = '#d4af37';
-        frontCtx.lineWidth = 6;
+        frontCtx.lineWidth = 6.5;
         frontCtx.lineCap = 'round';
         frontCtx.lineJoin = 'round';
         // Diamond cap
@@ -649,16 +649,16 @@
         frontCtx.stroke();
         frontCtx.restore();
 
-        // Department & College Text (Fits cleanly with ample right margin)
+        // Department & College Text (Larger, High-Contrast Typography)
         frontCtx.save();
         frontCtx.textAlign = 'left';
         frontCtx.fillStyle = '#f8fafc';
-        frontCtx.font = 'bold 70px Inter, sans-serif';
-        frontCtx.fillText('Department of Electrical & Electronics Engineering', 235, 2038);
+        frontCtx.font = 'bold 74px Inter, sans-serif';
+        frontCtx.fillText('Department of Electrical & Electronics Engineering', 230, 2050);
 
         frontCtx.fillStyle = '#cbd5e1';
-        frontCtx.font = '600 66px Inter, sans-serif';
-        frontCtx.fillText('University College of Engineering, Ariyalur', 235, 2124);
+        frontCtx.font = '600 70px Inter, sans-serif';
+        frontCtx.fillText('University College of Engineering, Ariyalur', 230, 2140);
         frontCtx.restore();
 
         // Subtle Gold Separator Line
@@ -666,23 +666,23 @@
         frontCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         frontCtx.lineWidth = 3;
         frontCtx.beginPath();
-        frontCtx.moveTo(160, 2225);
-        frontCtx.lineTo(w - 160, 2225);
+        frontCtx.moveTo(160, 2245);
+        frontCtx.lineTo(w - 160, 2245);
         frontCtx.stroke();
         frontCtx.restore();
 
-        // 5. CONTACT ME TEXT LABEL (ABOVE THE FOUR SOCIAL ICONS - Large 76px)
+        // 5. CONTACT ME TEXT LABEL (ABOVE THE FOUR SOCIAL ICONS - Substantially Larger 86px)
         frontCtx.save();
         frontCtx.fillStyle = '#fbbf24';
-        frontCtx.font = 'bold 76px "Geist Mono", monospace';
+        frontCtx.font = 'bold 86px "Geist Mono", monospace';
         frontCtx.textAlign = 'center';
-        frontCtx.letterSpacing = '10px';
-        frontCtx.fillText('CONTACT ME', w / 2, 2350);
+        frontCtx.letterSpacing = '12px';
+        frontCtx.fillText('CONTACT ME', w / 2, 2375);
         frontCtx.restore();
 
         // 6. FOUR NORMAL CONTACT / SOCIAL ICONS IN ONE ROW (Instagram | LinkedIn | GitHub | Email)
-        const socialY = 2545;
-        const iconRadius = 85;
+        const socialY = 2565;
+        const iconRadius = 88;
         const socials = [
           { name: 'Instagram', draw: drawInstagramIcon, x: 380 },
           { name: 'LinkedIn', draw: drawLinkedInIcon, x: 808 },
@@ -693,12 +693,12 @@
         socials.forEach(s => {
           s.draw(frontCtx, s.x, socialY, iconRadius);
 
-          // Sub-label under each icon (Large 56px)
+          // Sub-label under each icon (Substantially Larger 62px)
           frontCtx.save();
           frontCtx.fillStyle = '#cbd5e1';
-          frontCtx.font = '600 56px Inter, sans-serif';
+          frontCtx.font = '600 62px Inter, sans-serif';
           frontCtx.textAlign = 'center';
-          frontCtx.fillText(s.name, s.x, socialY + iconRadius + 72);
+          frontCtx.fillText(s.name, s.x, socialY + iconRadius + 76);
           frontCtx.restore();
         });
 
@@ -773,42 +773,42 @@
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // SECTION 1: ABOUT THE DEVELOPER (Substantially Larger Typography 86px / 66px)
+        // SECTION 1: ABOUT THE DEVELOPER (Substantially Larger 94px / 70px)
         // -------------------------------------------------------------------
         const sec1Y = 240;
         // Clean Gold User Icon
         backCtx.save();
         backCtx.strokeStyle = '#d4af37';
-        backCtx.lineWidth = 6;
+        backCtx.lineWidth = 6.5;
         backCtx.lineCap = 'round';
         backCtx.beginPath();
-        backCtx.arc(180, sec1Y + 36, 28, 0, Math.PI * 2);
+        backCtx.arc(180, sec1Y + 40, 30, 0, Math.PI * 2);
         backCtx.stroke();
         backCtx.beginPath();
-        backCtx.arc(180, sec1Y + 106, 46, Math.PI * 1.15, Math.PI * 1.85);
+        backCtx.arc(180, sec1Y + 112, 48, Math.PI * 1.15, Math.PI * 1.85);
         backCtx.stroke();
         backCtx.restore();
 
-        // Heading: ABOUT THE DEVELOPER (Large 86px)
+        // Heading: ABOUT THE DEVELOPER (Large 94px)
         backCtx.save();
-        backCtx.font = 'bold 86px "Geist Mono", monospace';
+        backCtx.font = 'bold 94px "Geist Mono", monospace';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('ABOUT THE DEVELOPER', 265, sec1Y + 80);
+        backCtx.fillText('ABOUT THE DEVELOPER', 265, sec1Y + 86);
         backCtx.restore();
 
-        // Bio paragraph (Large 66px font, 96px line-height, comfortably filled)
+        // Bio paragraph (Large 70px font, 102px line-height, comfortably filled)
         const bioText = "Veerakumar V is a second-year Electrical and Electronics Engineering student at University College of Engineering, Ariyalur, with an interest in web development, software development, UI/UX, cybersecurity, and technology-driven projects.";
         backCtx.save();
         backCtx.fillStyle = '#e2e8f0';
-        backCtx.font = '500 66px Inter, sans-serif';
+        backCtx.font = '500 70px Inter, sans-serif';
         backCtx.textAlign = 'left';
         
         let words = bioText.split(' ');
         let line = '';
-        let lineY = sec1Y + 190;
+        let lineY = sec1Y + 200;
         const maxTextW = 1720;
-        const lineH = 96;
+        const lineH = 102;
 
         for (let n = 0; n < words.length; n++) {
           let testLine = line + words[n] + ' ';
@@ -825,7 +825,7 @@
         backCtx.restore();
 
         // Divider 1 (Subtle Gold Line)
-        const div1Y = 780;
+        const div1Y = 795;
         backCtx.save();
         backCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         backCtx.lineWidth = 3;
@@ -836,72 +836,72 @@
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // SECTION 2: TECHNICAL INTERESTS (Large Chips & High Legibility 86px / 62px)
+        // SECTION 2: TECHNICAL INTERESTS (Large Chips & High Legibility 94px / 66px)
         // -------------------------------------------------------------------
-        const sec2Y = 855;
+        const sec2Y = 865;
         // Clean Gold Code Symbol </ >
         backCtx.save();
         backCtx.strokeStyle = '#d4af37';
-        backCtx.lineWidth = 6;
+        backCtx.lineWidth = 6.5;
         backCtx.lineCap = 'round';
         backCtx.lineJoin = 'round';
         backCtx.beginPath();
-        backCtx.moveTo(195, sec2Y + 18);
-        backCtx.lineTo(170, sec2Y + 44);
-        backCtx.lineTo(195, sec2Y + 70);
-        backCtx.moveTo(240, sec2Y + 18);
-        backCtx.lineTo(265, sec2Y + 44);
-        backCtx.lineTo(240, sec2Y + 70);
-        backCtx.moveTo(230, sec2Y + 10);
-        backCtx.lineTo(205, sec2Y + 78);
+        backCtx.moveTo(195, sec2Y + 20);
+        backCtx.lineTo(170, sec2Y + 48);
+        backCtx.lineTo(195, sec2Y + 76);
+        backCtx.moveTo(240, sec2Y + 20);
+        backCtx.lineTo(265, sec2Y + 48);
+        backCtx.lineTo(240, sec2Y + 76);
+        backCtx.moveTo(230, sec2Y + 12);
+        backCtx.lineTo(205, sec2Y + 84);
         backCtx.stroke();
         backCtx.restore();
 
-        // Heading: TECHNICAL INTERESTS (Large 86px)
+        // Heading: TECHNICAL INTERESTS (Large 94px)
         backCtx.save();
-        backCtx.font = 'bold 86px "Geist Mono", monospace';
+        backCtx.font = 'bold 94px "Geist Mono", monospace';
         backCtx.textAlign = 'left';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('TECHNICAL INTERESTS', 285, sec2Y + 64);
+        backCtx.fillText('TECHNICAL INTERESTS', 285, sec2Y + 70);
         backCtx.restore();
 
-        // Skills Chips Helper (Large 62px Font, Height 124px)
+        // Skills Chips Helper (Large 66px Font, Height 132px)
         function drawSkillPill(text, x, y, pw) {
-          const ph = 124;
+          const ph = 132;
           backCtx.save();
           backCtx.fillStyle = 'rgba(212, 175, 55, 0.08)';
           backCtx.strokeStyle = 'rgba(212, 175, 55, 0.40)';
-          backCtx.lineWidth = 3;
+          backCtx.lineWidth = 3.5;
           backCtx.beginPath();
           backCtx.roundRect(x, y, pw, ph, ph / 2);
           backCtx.fill();
           backCtx.stroke();
 
           backCtx.fillStyle = '#f8fafc';
-          backCtx.font = '600 62px Inter, sans-serif';
+          backCtx.font = '600 66px Inter, sans-serif';
           backCtx.textAlign = 'center';
-          backCtx.fillText(text, x + pw / 2, y + 81);
+          backCtx.fillText(text, x + pw / 2, y + 86);
           backCtx.restore();
         }
 
-        // Row 1 (y = 970)
-        drawSkillPill('C / C++', 164, 970, 290);
-        drawSkillPill('Python', 484, 970, 290);
-        drawSkillPill('Web Development', 804, 970, 580);
-        drawSkillPill('Git & GitHub', 1414, 970, 470);
+        // Row 1 (y = 985)
+        drawSkillPill('C / C++', 164, 985, 290);
+        drawSkillPill('Python', 484, 985, 290);
+        drawSkillPill('Web Development', 804, 985, 580);
+        drawSkillPill('Git & GitHub', 1414, 985, 470);
 
-        // Row 2 (y = 1125)
-        drawSkillPill('UI/UX', 164, 1125, 260);
-        drawSkillPill('Software Testing', 454, 1125, 540);
-        drawSkillPill('Debugging', 1024, 1125, 370);
-        drawSkillPill('Cybersecurity', 1424, 1125, 460);
+        // Row 2 (y = 1150)
+        drawSkillPill('UI/UX', 164, 1150, 260);
+        drawSkillPill('Software Testing', 454, 1150, 540);
+        drawSkillPill('Debugging', 1024, 1150, 370);
+        drawSkillPill('Cybersecurity', 1424, 1150, 460);
 
-        // Row 3 (y = 1280)
-        drawSkillPill('Ethical Hacking', 164, 1280, 520);
-        drawSkillPill('Electronics & Embedded Systems', 714, 1280, 1170);
+        // Row 3 (y = 1315)
+        drawSkillPill('Ethical Hacking', 164, 1315, 520);
+        drawSkillPill('Electronics & Embedded Systems', 714, 1315, 1170);
 
         // Divider 2 (Subtle Gold Line)
-        const div2Y = 1465;
+        const div2Y = 1500;
         backCtx.save();
         backCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         backCtx.lineWidth = 3;
@@ -914,36 +914,36 @@
         // -------------------------------------------------------------------
         // SECTION 3: POWERNEX 26 & WEBSITE DEVELOPER (Centered Horizontally)
         // -------------------------------------------------------------------
-        const sec3Y = 1540;
+        const sec3Y = 1570;
 
-        // Header: POWERNEX 26 (Large 92px, Centered Horizontally)
+        // Header: POWERNEX 26 (Large 104px, Centered Horizontally)
         backCtx.save();
-        backCtx.font = 'bold 92px "Geist Mono", monospace';
+        backCtx.font = 'bold 104px "Geist Mono", monospace';
         backCtx.textAlign = 'center';
         backCtx.fillStyle = '#ffffff';
         backCtx.letterSpacing = '3px';
-        backCtx.fillText('POWERNEX 26', w / 2, sec3Y + 76);
+        backCtx.fillText('POWERNEX 26', w / 2, sec3Y + 85);
         backCtx.restore();
 
-        // Subheading: Website Developer (Large 78px, Centered)
+        // Subheading: Website Developer (Large 86px, Centered)
         backCtx.save();
-        backCtx.font = 'bold 78px Inter, sans-serif';
+        backCtx.font = 'bold 86px Inter, sans-serif';
         backCtx.textAlign = 'center';
         backCtx.fillStyle = '#fbbf24';
-        backCtx.fillText('Website Developer', w / 2, sec3Y + 175);
+        backCtx.fillText('Website Developer', w / 2, sec3Y + 195);
         backCtx.restore();
 
-        // Role description (Large 66px font, 96px line-height)
+        // Role description (Large 72px font, 108px line-height)
         const roleDesc = "Designed and developed the POWERNEX 26 symposium website, including its event information, registration interface, schedules, rulebook, and interactive user interface.";
         backCtx.save();
         backCtx.fillStyle = '#cbd5e1';
-        backCtx.font = '500 66px Inter, sans-serif';
+        backCtx.font = '500 72px Inter, sans-serif';
         backCtx.textAlign = 'center';
         
         words = roleDesc.split(' ');
         line = '';
-        lineY = sec3Y + 285;
-        const lineH3 = 96;
+        lineY = sec3Y + 320;
+        const lineH3 = 108;
 
         for (let n = 0; n < words.length; n++) {
           let testLine = line + words[n] + ' ';
@@ -959,8 +959,8 @@
         backCtx.fillText(line.trim(), w / 2, lineY);
         backCtx.restore();
 
-        // Divider 3 (Subtle Gold Line)
-        const div3Y = 2210;
+        // Divider 3 (Subtle Gold Line above the bottom motto)
+        const div3Y = 2810;
         backCtx.save();
         backCtx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
         backCtx.lineWidth = 3;
@@ -971,14 +971,15 @@
         backCtx.restore();
 
         // -------------------------------------------------------------------
-        // BOTTOM MOTTO: BUILD • LEARN • CREATE (Large 74px)
+        // BOTTOM MOTTO: BUILD • LEARN • CREATE (MOVED TO THE BOTTOM OF THE ID CARD)
+        // Positioned cleanly above bottom border (y = 2940 on 3072 canvas)
         // -------------------------------------------------------------------
         backCtx.save();
-        backCtx.font = 'bold 74px "Geist Mono", monospace';
-        backCtx.fillStyle = 'rgba(212, 175, 55, 0.85)';
+        backCtx.font = 'bold 82px "Geist Mono", monospace';
+        backCtx.fillStyle = 'rgba(212, 175, 55, 0.88)';
         backCtx.textAlign = 'center';
-        backCtx.letterSpacing = '10px';
-        backCtx.fillText('BUILD   \u2022   LEARN   \u2022   CREATE', w / 2, 2390);
+        backCtx.letterSpacing = '12px';
+        backCtx.fillText('BUILD   \u2022   LEARN   \u2022   CREATE', w / 2, 2940);
         backCtx.restore();
 
         backCtx.restore(); // end rounded card clip
